@@ -10,7 +10,7 @@ from tadr_benchmark.validation import planned_runs, validate_completed
 
 
 @pytest.mark.parametrize("change", [{"status": "unknown"}, {"scenario_ids": ["a", "a"]},
-                                    {"target_git_commit": "main"}, {"benchmark_git_commit": None},
+                                    {"target_git_commit": "main"}, {"benchmark_git_commit": "main"},
                                     {"repeat_policy": None}, {"extra": 1}, {"python_version": None}])
 def test_campaign_rejects_invalid_execution_metadata(campaign, change):
     with pytest.raises(ValidationError):
@@ -76,6 +76,6 @@ def test_json_round_trip(campaign, scenario, completed):
 
 def test_dataset_drift_between_repeats_is_rejected(campaign, scenario, completed, environment):
     runs = list(completed[0])
-    runs[0] = RunResult.model_validate({**runs[0].model_dump(), "dataset_sha256": "f" * 64})
+    runs[0] = RunResult.model_validate({**runs[0].model_dump(), "source_file_sha256": "f" * 64})
     with pytest.raises(ValueError, match="same generated dataset"):
         validate_completed(campaign, [scenario], runs, {environment.environment_id: environment})

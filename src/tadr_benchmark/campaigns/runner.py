@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Protocol
 
 from ..models import CampaignManifest, DatasetArtifact, RunResult, RunSpec
+from ..companions import RunFailure
 from ..targets.base import TargetAdapter
 
 
@@ -17,4 +18,4 @@ class InstrumentedExecutor(Protocol):
 
     def execute(self, campaign: CampaignManifest, run: RunSpec,
                 dataset: DatasetArtifact, target: TargetAdapter,
-                repository: Path) -> RunResult: ...
+                repository: Path) -> RunResult | RunFailure: ...

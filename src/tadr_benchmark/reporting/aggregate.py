@@ -2,6 +2,7 @@ from collections import defaultdict
 from statistics import median
 
 from ..models import CampaignSummary, RunResult, SummaryGroup
+from ..companions import RunFailure
 from ..serialization import canonical_bytes, sha256
 
 
@@ -11,14 +12,15 @@ def run_bytes(runs: list[RunResult]) -> bytes:
     return b"".join(canonical_bytes(run) for run in sorted(runs, key=lambda item: item.run_id))
 
 
-def aggregate(campaign_id: str, runs: list[RunResult]) -> CampaignSummary:
+def aggregate(campaign_id: str, runs: list[RunResult], failures: list[RunFailure] | None = None) -> CampaignSummary:
+    failures = failures or []
     groups = defaultdict(list)
     for run in runs:
         if run.campaign_id != campaign_id:
             raise ValueError("mixed campaigns")
         if run.phase == "measurement":
             groups[(run.scenario_id, run.scenario_version, run.analysis_variant, run.environment_id)].append(run)
-    if not groups:
+    if not groups and not failures:
         raise ValueError("no measured runs to summarize")
     summaries = []
     for (scenario, version, variant, environment), members in sorted(groups.items()):
@@ -38,4 +40,8 @@ def aggregate(campaign_id: str, runs: list[RunResult]) -> CampaignSummary:
             absent_violations=sum(len(item.detection_outcome.violated_absent_expectations) for item in members),
             unexpected_findings=sum(len(item.detection_outcome.unexpected_finding_ids) for item in members),
             deterministic=len({item.canonical_report_sha256 for item in members}) == 1))
-    return CampaignSummary(campaign_id=campaign_id, run_data_sha256=sha256(run_bytes(runs)), groups=summaries)
+    if any(f.campaign_id != campaign_id or f.adjudication != "valid_target_outcome" for f in failures):
+        raise ValueError("summary requires adjudicated adverse target outcomes")
+    return CampaignSummary(campaign_id=campaign_id, run_data_sha256=sha256(run_bytes(runs)), groups=summaries,
+                           successful_runs=len(runs), adverse_target_outcomes=len(failures),
+                           failures_sha256=sha256(run_bytes(failures)))

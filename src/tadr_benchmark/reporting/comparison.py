@@ -4,7 +4,7 @@ from ..models import ComparisonResult, RunResult
 def compare(left: RunResult, right: RunResult,
             approved_environment_classes: dict[str, str] | None = None) -> ComparisonResult:
     """Approvals are explicit research inputs, never inferred from OS/CPU labels."""
-    dimensions = ("scenario_id", "scenario_version", "scenario_sha256", "dataset_sha256",
+    dimensions = ("scenario_id", "scenario_version", "scenario_sha256", "logical_dataset_sha256",
                   "benchmark_protocol_version", "result_schema_version", "source_format", "task_type",
                   "row_count", "column_count", "analysis_variant", "constraints", "analysis_mode",
                   "sample_ratio", "phase", "instrumentation_policy", "determinism_context")
@@ -15,7 +15,10 @@ def compare(left: RunResult, right: RunResult,
     classes = approved_environment_classes or {}
     same_class = bool(classes.get(left.environment_id)) and (
         classes.get(left.environment_id) == classes.get(right.environment_id))
-    performance = detection and same_class
+    same_bytes = left.source_file_sha256 == right.source_file_sha256
+    performance = detection and same_class and same_bytes
+    if not same_bytes:
+        reasons.append("different source_file_sha256; physical inputs are not byte-identical")
     if not same_class:
         reasons.append("environment classes are not explicitly approved as equivalent")
     a, b = set(left.finding_ids), set(right.finding_ids)

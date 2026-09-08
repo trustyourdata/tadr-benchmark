@@ -52,7 +52,7 @@ class RepeatPolicy(Contract):
 
 
 class InstrumentationPolicy(Contract):
-    protocol_version: Version
+    protocol_version: Literal["1.0"] = "1.0"
     timeout_seconds: Annotated[float, Field(gt=0)]
     memory_sampling_interval_seconds: Annotated[float, Field(gt=0)]
     process_scope: Literal["worker_and_children"] = "worker_and_children"
@@ -81,6 +81,46 @@ class AnalysisVariant(Contract):
     constraints: dict[str, JsonValue]
 
 
+class ScenarioSelector(Contract):
+    include_prefixes: list[Identifier] = []
+    include_ids: list[Identifier] = []
+    exclude_ids: list[Identifier] = []
+
+    @model_validator(mode="after")
+    def finite_selection(self):
+        if not (self.include_prefixes or self.include_ids):
+            raise ValueError("selector must include scenarios")
+        for values in (self.include_prefixes, self.include_ids, self.exclude_ids):
+            if len(values) != len(set(values)):
+                raise ValueError("duplicate selector entry")
+        return self
+
+
+class ExecutionGroup(Contract):
+    group_id: Identifier
+    selector: ScenarioSelector
+    variant_ids: list[Identifier] = Field(min_length=1)
+    context_ids: list[Identifier] = Field(min_length=1)
+    repeat_policy: RepeatPolicy
+    instrumentation_policy: InstrumentationPolicy
+
+    @model_validator(mode="after")
+    def unique_axes(self):
+        if any(len(v) != len(set(v)) for v in (self.variant_ids, self.context_ids)):
+            raise ValueError("duplicate execution-group axis")
+        return self
+
+
+class ExecutionReadiness(Contract):
+    platform: Literal["Linux"] = "Linux"
+    architecture: Literal["x86_64"] = "x86_64"
+    python_version: Literal["3.11.9"] = "3.11.9"
+    polars_max_threads: Literal[4] = 4
+    host_provisioned: bool = False
+    instrumentation_validated: bool = False
+    target_retrieval_verified: bool = False
+
+
 class CampaignManifest(TargetMetadata):
     campaign_id: Identifier
     status: Literal["planned", "ready", "frozen"]
@@ -99,6 +139,8 @@ class CampaignManifest(TargetMetadata):
     scenario_ids: list[Identifier]
     determinism_cases: list[DeterminismCase]
     analysis_variants: list[AnalysisVariant]
+    execution_groups: list[ExecutionGroup] = []
+    execution_readiness: ExecutionReadiness | None = None
     planned_scope: PlannedScope
     frozen_date: Annotated[str, Field(pattern=r"^\d{4}-\d{2}-\d{2}$")] | None = None
 
@@ -112,15 +154,27 @@ class CampaignManifest(TargetMetadata):
             raise ValueError("duplicate determinism cases")
         if len({variant.variant_id for variant in self.analysis_variants}) != len(self.analysis_variants):
             raise ValueError("duplicate analysis variants")
+        if len({g.group_id for g in self.execution_groups}) != len(self.execution_groups):
+            raise ValueError("duplicate execution groups")
         if self.status != "planned":
-            required = (self.target_git_commit, self.benchmark_git_commit,
-                        self.python_version, self.repeat_policy,
-                        self.instrumentation_policy, self.scenario_ids, self.determinism_cases,
+            required = (self.target_git_commit, self.python_version,
+                        self.execution_groups or (self.repeat_policy and self.instrumentation_policy),
+                        self.scenario_ids, self.determinism_cases,
                         self.analysis_variants)
             if not all(required):
                 raise ValueError("ready/frozen campaigns require exact provenance and execution policies")
             if self.reproducibility_status == "unverified":
                 raise ValueError("ready/frozen campaigns must declare target availability")
+            if self.campaign_id == "ALPHA_BENCHMARK_V1":
+                ready = self.execution_readiness
+                if not ready or not (ready.host_provisioned and ready.instrumentation_validated):
+                    raise ValueError("Alpha requires a provisioned and validated execution host")
+                if self.python_version != ready.python_version:
+                    raise ValueError("Alpha Python protocol differs from execution environment")
+                if self.reproducibility_status == "public_revision" and not ready.target_retrieval_verified:
+                    raise ValueError("Alpha target retrieval must be verified")
+        if self.status == "frozen" and self.benchmark_git_commit is None:
+            raise ValueError("frozen manifest requires resolved benchmark revision")
         if self.reproducibility_status == "public_revision" and not (
                 self.target_repository_url_or_null and self.target_git_commit):
             raise ValueError("public revision requires repository URL and exact commit")
@@ -197,7 +251,8 @@ class ScenarioSpec(GroundTruth):
 
 class DatasetArtifact(Contract):
     relative_path: str
-    dataset_sha256: Digest
+    logical_dataset_sha256: Digest
+    source_file_sha256: Digest
     scenario_sha256: Digest
     ground_truth: GroundTruth
 
@@ -223,6 +278,8 @@ class RunSpec(Contract):
     determinism_context: DeterminismCase
     analysis_variant: Identifier
     constraints: dict[str, JsonValue]
+    execution_group_id: Identifier | None = None
+    instrumentation_policy: InstrumentationPolicy
 
     @model_validator(mode="after")
     def context_identity(self):
@@ -279,7 +336,8 @@ class RunResult(TargetMetadata):
     determinism_context: DeterminismCase
     analysis_variant: Identifier
     constraints: dict[str, JsonValue]
-    dataset_sha256: Digest
+    logical_dataset_sha256: Digest
+    source_file_sha256: Digest
     benchmark_git_commit: Commit
     benchmark_package_version: Version
     task_type: TaskType
@@ -310,6 +368,7 @@ class RunResult(TargetMetadata):
     canonical_report_sha256: Digest
     environment_id: Digest
     instrumentation_policy: InstrumentationPolicy
+    execution_group_id: Identifier | None = None
 
     @model_validator(mode="after")
     def valid_record(self):
@@ -358,6 +417,9 @@ class CampaignSummary(Contract):
     campaign_id: Identifier
     run_data_sha256: Digest
     groups: list[SummaryGroup]
+    successful_runs: NonnegativeInt = 0
+    adverse_target_outcomes: NonnegativeInt = 0
+    failures_sha256: Digest | None = None
 
 
 class ComparisonResult(Contract):

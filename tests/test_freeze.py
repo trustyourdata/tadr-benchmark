@@ -10,7 +10,7 @@ from tadr_benchmark.serialization import sha256
 @pytest.fixture
 def freeze_fixture(tmp_path, monkeypatch, campaign, scenario, completed, environment):
     # Isolate filesystem publication tests from the developer's real Git state.
-    monkeypatch.setattr(publication, "require_clean_revision", lambda *args: None)
+    monkeypatch.setattr(publication, "require_clean_revision", lambda *args: "b" * 40)
     monkeypatch.setattr(publication, "repository_issues", lambda *args, **kwargs: [])
     runs, reports = completed
     return dict(root=tmp_path, manifest=campaign, scenarios=[scenario], runs=runs,

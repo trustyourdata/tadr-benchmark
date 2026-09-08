@@ -2,7 +2,7 @@ from ..models import RunResult, SamplingComparison, TargetMetadata
 
 
 def compare_sampling(reference: RunResult, sampled: RunResult) -> SamplingComparison:
-    dimensions = (*TargetMetadata.model_fields, "scenario_sha256", "dataset_sha256", "scenario_id",
+    dimensions = (*TargetMetadata.model_fields, "scenario_sha256", "logical_dataset_sha256", "source_file_sha256", "scenario_id",
                   "scenario_version", "benchmark_protocol_version", "result_schema_version",
                   "source_format", "task_type", "row_count", "column_count", "determinism_context")
     if any(getattr(reference, key) != getattr(sampled, key) for key in dimensions):

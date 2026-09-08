@@ -32,7 +32,10 @@ def load_model(path: Path, model: type[Contract]):
 
 
 def load_campaign(path: Path) -> CampaignManifest:
-    return load_model(path, CampaignManifest)
+    manifest = load_model(path, CampaignManifest)
+    if manifest.status != "frozen" and manifest.benchmark_git_commit is not None:
+        raise ValueError("source manifests keep benchmark_git_commit unresolved")
+    return manifest
 
 
 def load_scenario(path: Path) -> ScenarioSpec:

@@ -5,6 +5,9 @@ from pathlib import Path
 from .campaigns.freeze import verify_frozen, verify_history
 from .instrumentation.environment import capture_environment
 from .models import CampaignManifest, EnvironmentInfo, RunResult, RunSpec, ScenarioSpec, TargetMetadata
+from .companions import (DatasetIdentity, DiagnosticRecord, InstrumentationRecord, OutcomeAccounting,
+                         PhysicalLedger, RunFailure, ScenarioExpectations, WriterPolicy)
+from .scenarios.families import FamilyDefinition, FamilyInventory
 from .reporting.markdown import results_index
 from .safety import repository_issues
 from .serialization import canonical_bytes
@@ -27,7 +30,9 @@ def main(argv: list[str] | None = None) -> int:
     history.add_argument("base_ref")
     schema = sub.add_parser("schema", help="print a versioned JSON schema")
     models = {model.__name__: model for model in (CampaignManifest, ScenarioSpec, RunSpec, RunResult,
-                                                 EnvironmentInfo, TargetMetadata)}
+                                                 EnvironmentInfo, TargetMetadata, RunFailure, OutcomeAccounting,
+                                                 ScenarioExpectations, PhysicalLedger, DatasetIdentity, WriterPolicy,
+                                                 InstrumentationRecord, DiagnosticRecord, FamilyDefinition, FamilyInventory)}
     schema.add_argument("model", choices=sorted(models))
     args = parser.parse_args(argv)
     try:

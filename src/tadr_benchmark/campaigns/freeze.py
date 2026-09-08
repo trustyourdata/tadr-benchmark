@@ -6,6 +6,9 @@ import tempfile
 from pathlib import Path
 
 from ..models import CampaignManifest, CampaignSummary, EnvironmentInfo, RunResult, ScenarioSpec
+from ..companions import (DatasetIdentity, DiagnosticRecord, InstrumentationRecord,
+                          RunFailure, ScenarioExpectations)
+from .companions import validate_companions
 from ..paths import campaign_directory, contained
 from ..reporting.aggregate import aggregate, run_bytes
 from ..reporting.figures import write_runtime_figure
@@ -16,13 +19,23 @@ from ..serialization import canonical_bytes, sha256
 from ..validation import planned_runs, validate_completed, validate_historical_scenarios
 
 
-def require_clean_revision(root: Path, expected: str) -> None:
+def require_clean_revision(root: Path, expected: str | None = None) -> str:
     def git(*args):
         return subprocess.run(["git", *args], cwd=root, check=True, capture_output=True, text=True).stdout.strip()
     if git("status", "--porcelain", "--untracked-files=all"):
         raise ValueError("benchmark working tree must be clean before freeze")
-    if git("rev-parse", "HEAD") != expected:
+    revision = git("rev-parse", "HEAD")
+    if expected is not None and revision != expected:
         raise ValueError("benchmark checkout differs from campaign revision")
+    return revision
+
+
+def resolve_manifest(root: Path, manifest: CampaignManifest) -> CampaignManifest:
+    """Bind execution to an existing clean revision without editing source YAML."""
+    if manifest.status != "ready":
+        raise ValueError("only ready campaigns can resolve execution provenance")
+    revision = require_clean_revision(root, manifest.benchmark_git_commit)
+    return CampaignManifest.model_validate({**manifest.model_dump(), "benchmark_git_commit": revision})
 
 
 def validate_reports(runs: list[RunResult], reports: dict[str, bytes]) -> None:
@@ -58,7 +71,12 @@ def validate_reports(runs: list[RunResult], reports: dict[str, bytes]) -> None:
 
 def freeze(root: Path, manifest: CampaignManifest, scenarios: list[ScenarioSpec],
            runs: list[RunResult], environments: dict[str, EnvironmentInfo],
-           reports: dict[str, bytes], frozen_date: str, *, public_reviewed: bool) -> Path:
+           reports: dict[str, bytes], frozen_date: str, *, public_reviewed: bool,
+           failures: list[RunFailure] | None = None,
+           expectations: list[ScenarioExpectations] | None = None,
+           datasets: list[DatasetIdentity] | None = None,
+           instrumentation: list[InstrumentationRecord] | None = None,
+           diagnostics: list[DiagnosticRecord] | None = None) -> Path:
     if not public_reviewed:
         raise ValueError("publication review must be explicitly recorded before freeze")
     if manifest.status != "ready":
@@ -66,13 +84,16 @@ def freeze(root: Path, manifest: CampaignManifest, scenarios: list[ScenarioSpec]
     destination = campaign_directory(root, manifest.campaign_id)
     if destination.exists():
         raise ValueError("frozen campaign directory already exists; create a new campaign ID")
-    require_clean_revision(root, manifest.benchmark_git_commit)
+    manifest = resolve_manifest(root, manifest)
+    failures, expectations, datasets = failures or [], expectations or [], datasets or []
+    instrumentation, diagnostics = instrumentation or [], diagnostics or []
     if repository_issues(root, include_untracked=True):
         raise ValueError("repository public-safety scan failed")
-    validate_completed(manifest, scenarios, runs, environments)
+    validate_completed(manifest, scenarios, runs, environments, failures)
+    validate_companions(manifest, scenarios, runs, failures, expectations, datasets, instrumentation, diagnostics)
     validate_historical_scenarios(root, scenarios)
     validate_reports(runs, reports)
-    summary = aggregate(manifest.campaign_id, runs)
+    summary = aggregate(manifest.campaign_id, runs, failures)
     frozen = CampaignManifest.model_validate({**manifest.model_dump(), "status": "frozen", "frozen_date": frozen_date})
     work = contained(root, ".work/freeze")
     work.mkdir(parents=True, exist_ok=True)
@@ -84,24 +105,31 @@ def freeze(root: Path, manifest: CampaignManifest, scenarios: list[ScenarioSpec]
             "environment.json": canonical_bytes({key: env.model_dump(mode="json") for key, env in environments.items()}),
             "summary.json": canonical_bytes(summary),
             "runs.jsonl": run_bytes(runs),
+            "failures.jsonl": run_bytes(failures),
+            "expectations.json": canonical_bytes([e.model_dump(mode="json") for e in sorted(expectations, key=lambda e: e.scenario_id)]),
+            "dataset_manifest.json": canonical_bytes([d.model_dump(mode="json") for d in sorted(datasets, key=lambda d: d.scenario_id)]),
+            "instrumentation.jsonl": b"".join(canonical_bytes(i) for i in sorted(instrumentation, key=lambda i: i.run_id)),
             "run_specs.json": canonical_bytes([run.model_dump(mode="json") for run in planned_runs(manifest, scenarios)]),
             "tables/summary.csv": summary_csv(summary).encode("utf-8"),
             "REPORT.md": campaign_report(frozen, summary).encode("utf-8"),
             **{f"scenarios/{scenario.scenario_id}.json": canonical_bytes(scenario) for scenario in scenarios},
             **{f"reports/{run_id}.json": data for run_id, data in reports.items()},
+            **{f"diagnostics/{d.primary_run_id}.json": canonical_bytes(d) for d in diagnostics},
         }
         for relative, data in artifacts.items():
             path = contained(stage, relative)
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(data)
-        (stage / "figures").mkdir()
-        write_runtime_figure(summary, stage / "figures" / "runtime.svg")
+        if summary.groups:
+            (stage / "figures").mkdir()
+            write_runtime_figure(summary, stage / "figures" / "runtime.svg")
         files = sorted(path.relative_to(stage).as_posix() for path in stage.rglob("*") if path.is_file())
         if scan_files(stage, files):
             raise ValueError("generated artifacts failed public-safety scan")
         checksums = "".join(f"{sha256((stage / name).read_bytes())}  {name}\n" for name in files)
         (stage / "checksums.sha256").write_text(checksums, encoding="utf-8", newline="\n")
         verify_frozen(stage, check_directory_name=False)
+        require_clean_revision(root, manifest.benchmark_git_commit)
         destination.parent.mkdir(parents=True, exist_ok=True)
         if destination.exists():
             raise ValueError("frozen destination appeared during validation")
@@ -136,15 +164,25 @@ def verify_frozen(directory: Path, *, check_directory_name: bool = True) -> tupl
     scenarios = [ScenarioSpec.model_validate_json(path.read_bytes())
                  for path in sorted((directory / "scenarios").glob("*.json"))]
     runs = [RunResult.model_validate_json(line) for line in (directory / "runs.jsonl").read_bytes().splitlines()]
+    failures = [RunFailure.model_validate_json(line) for line in (directory / "failures.jsonl").read_bytes().splitlines()]
+    expectations = [ScenarioExpectations.model_validate_json(json.dumps(item)) for item in
+                    json.loads((directory / "expectations.json").read_bytes())]
+    datasets = [DatasetIdentity.model_validate_json(json.dumps(item)) for item in
+                json.loads((directory / "dataset_manifest.json").read_bytes())]
+    instrumentation = [InstrumentationRecord.model_validate_json(line) for line in
+                       (directory / "instrumentation.jsonl").read_bytes().splitlines()]
+    diagnostics = [DiagnosticRecord.model_validate_json(p.read_bytes()) for p in
+                   sorted((directory / "diagnostics").glob("*.json"))]
     environments = {key: EnvironmentInfo.model_validate_json(json.dumps(value)) for key, value in
                     json.loads((directory / "environment.json").read_bytes()).items()}
-    validate_completed(manifest, scenarios, runs, environments)
+    validate_completed(manifest, scenarios, runs, environments, failures)
+    validate_companions(manifest, scenarios, runs, failures, expectations, datasets, instrumentation, diagnostics)
     if (directory / "run_specs.json").read_bytes() != canonical_bytes(
             [run.model_dump(mode="json") for run in planned_runs(manifest, scenarios)]):
         raise ValueError("frozen execution plan mismatch")
     validate_reports(runs, {path.stem: path.read_bytes() for path in (directory / "reports").glob("*.json")})
     summary = CampaignSummary.model_validate_json((directory / "summary.json").read_bytes())
-    if summary != aggregate(manifest.campaign_id, runs):
+    if summary != aggregate(manifest.campaign_id, runs, failures):
         raise ValueError("frozen summary does not derive from run records")
     if (directory / "tables" / "summary.csv").read_text(encoding="utf-8") != summary_csv(summary):
         raise ValueError("frozen table is stale")
