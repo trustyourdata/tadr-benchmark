@@ -27,6 +27,7 @@ def campaign(scenario):
     planned = load_campaign(Path(__file__).parents[1] / "campaigns" / "ALPHA_BENCHMARK_V1.yaml")
     return CampaignManifest.model_validate({
         **planned.model_dump(), "campaign_id": "FIXTURE_V1", "status": "ready",
+        "execution_groups": [], "execution_readiness": None,
         "scale_matrix": [10], "scenario_ids": [scenario.scenario_id],
         "benchmark_git_commit": "b" * 40, "python_version": "3.11.0",
         "reproducibility_status": "target_unavailable",
@@ -57,7 +58,7 @@ def completed(campaign, scenario, environment):
     for spec in planned_runs(campaign, [scenario]):
         run = RunResult(
             **{field: getattr(campaign, field) for field in TargetMetadata.model_fields},
-            **spec.model_dump(), dataset_sha256="d" * 64,
+            **spec.model_dump(), logical_dataset_sha256="d" * 64, source_file_sha256="c" * 64,
             benchmark_git_commit=campaign.benchmark_git_commit,
             benchmark_package_version=campaign.benchmark_package_version,
             task_type="analytics", source_format="csv", row_count=10, column_count=2,
@@ -66,8 +67,19 @@ def completed(campaign, scenario, environment):
             category_risks={"quality": 0.0}, finding_ids=[], finding_subjects=[], finding_severities=[],
             hard_gates=[], remediation_ids=[], expected_finding_ids_or_patterns=[],
             detection_outcome=evaluate(scenario.ground_truth(), [], [], []),
-            canonical_report_sha256=sha256(report), environment_id=environment.environment_id,
-            instrumentation_policy=campaign.instrumentation_policy)
+            canonical_report_sha256=sha256(report), environment_id=environment.environment_id)
         runs.append(run)
         reports[run.run_id] = report
     return runs, reports
+
+
+@pytest.fixture(autouse=True)
+def prohibit_live_target_import(monkeypatch):
+    """Phase 1 tests may mock adapter transport but must never load the target."""
+    import builtins
+    original = builtins.__import__
+    def guarded(name, *args, **kwargs):
+        if name == "tadr" or name.startswith("tadr."):
+            raise AssertionError("Live target imports are forbidden in Phase 1 software tests")
+        return original(name, *args, **kwargs)
+    monkeypatch.setattr(builtins, "__import__", guarded)
