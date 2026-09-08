@@ -13,6 +13,7 @@ inside the Core adapter; do not add a dependency on target implementation module
 | `RunSpec` | One planned repeat, variant and determinism context, with stable identity |
 | `RunResult` | One completed execution, raw observations, instrumentation and evaluation |
 | `RunFailure` / `OutcomeAccounting` | Typed adverse terminal outcomes, unresolved/infrastructure failures and exact plan coverage |
+| `AttemptRecord` | Immutable operational history, explicit infrastructure resolution and exactly one selected scientific outcome per RunSpec |
 | `ScenarioExpectations` | Physical ledger, pinned normative labels and separate research challenges |
 | `InstrumentationRecord` / `DiagnosticRecord` | Allowlisted monitor evidence and untimed diagnostic companions |
 | `EnvironmentInfo` | Sanitized allowlisted metadata and content-derived identity |
@@ -22,9 +23,9 @@ inside the Core adapter; do not add a dependency on target implementation module
 | `SamplingComparison` | Full-reference/sample agreement and score/risk/confidence deltas |
 
 The installed package has no implicit target installation, source-path discovery
-or benchmark execution. Phase 1 adds versioned family expansion, row-addressable
-construction/injection and pinned CSV/Parquet writers. The heavy executor remains
-an interface. Tests recount small constructed conditions and inspect scale schemas
+or benchmark execution. Versioned family expansion, row-addressable
+construction/injection and pinned CSV/Parquet writers supply isolated workers
+through a verified source cache and attempt ledger. Tests recount small constructed conditions and inspect scale schemas
 and mathematical placement ledgers without materializing research-scale datasets.
 
 ## Transport and observations
@@ -37,14 +38,12 @@ The adapter propagates target errors. It does not repair reports or infer missin
 checks. The current frozen-report validator recognizes the Core Alpha report
 transport; future report contracts require an explicit adapter and schema review.
 
-## Future execution boundary
+## Execution boundary
 
-The executor must launch a fresh worker with the configured hash seed, timezone
-and Decimal context before target import. It must enforce timeout externally,
-sample worker-and-child RSS, and measure wall time around target analysis only.
-Generation, environment discovery and process startup are outside target wall
-time. Process-tree RSS is a sampled sum, potentially including shared pages more
-than once. Do not substitute a logical memory budget for this measurement.
+The supervisor, worker, source cache, ledger and auxiliary diagnostic path follow
+the [execution contract](execution.md). Public target import occurs only in a
+fresh context-controlled worker. Target logical planning budgets and measured
+process-tree RSS remain separate quantities.
 
 Do not use a global RNG. A generator must return independently authored truth
 and dataset/spec hashes. The runner must verify those artifacts, call the target,
@@ -60,7 +59,7 @@ is `results/campaigns/<lowercase-campaign-id>/`; IDs cannot contain path separat
 Path helpers reject traversal and resolved escapes. Publication staging occurs
 under `.work/freeze/`; final destinations cannot already exist.
 
-Reporting groups by scenario/version, analysis variant and environment. Campaign
+Reporting groups by scenario/version, analysis variant, context and environment. Campaign
 validation fixes the remaining dimensions within each group. Compare explicitly
 matched records; do not pool non-equivalent hardware into one timing claim.
 Declared check-scope additions are calculated from manifests, not from whether

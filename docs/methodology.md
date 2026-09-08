@@ -40,6 +40,15 @@ known full-data rate from a target's sampled estimate.
 
 ## Detection and negative controls
 
+The [Alpha opportunity mapping](opportunity_mapping.md) specifies the fixed subject
+frames, separate physical and normative denominators, shared entity OR detection,
+and independent suppression evaluation. It also defines the three reporting layers:
+Finding rates conditional on successful canonical reports, opportunity-weighted
+successful-report coverage, and separate end-to-end physical detection yield.
+Selected failures without reports are UNEVALUABLE for Finding evaluation; they
+are not false negatives or negative predictions. Conditional rates must always be
+read alongside coverage and the separate failure taxonomy.
+
 Raw outcomes retain matched and missed positive expectations, violated explicit
 absences, unexpected Findings and gate agreement. A miss does not crash the
 harness. Unexpected Findings merit examination; they are not automatically false
@@ -48,8 +57,8 @@ positives unless ground truth explicitly excludes that condition.
 Precision, recall and false-positive-rate analyses must predeclare their
 units and denominators: scenario, subject, defect instance or check opportunity.
 Report support counts and applicability exclusions. Undefined denominators stay
-undefined, not zero. Current reporting provides expectation counts; it does not
-silently assign statistical meanings to them. Preserve failures and negative
+undefined, not zero. Reporting retains fixed-frame counts and descriptive ratios;
+these do not imply population accuracy. Preserve failures and negative
 controls alongside favorable cases.
 
 ## Scores, hard gates and suppression

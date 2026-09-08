@@ -4,8 +4,8 @@ Pydantic contracts live in `src/tadr_benchmark/models.py`. Unknown fields and
 invalid types are rejected; non-finite numbers are forbidden. Get the exact JSON
 schema with `tadr-benchmark schema CampaignManifest`, `ScenarioSpec`, `RunSpec`,
 `RunResult`, `RunFailure`, `ScenarioExpectations`, `DatasetIdentity`, `WriterPolicy`,
-`InstrumentationRecord`, `DiagnosticRecord`, `OutcomeAccounting`, `FamilyInventory`,
-`TargetMetadata` or `EnvironmentInfo`. Serialized objects sort keys;
+`InstrumentationRecord`, `DiagnosticRecord`, `AttemptRecord`, `OutcomeAccounting`, `FamilyInventory`,
+`TargetMetadata`, `EnvironmentInfo`, `ReportCoverage` or `DetectionMetrics`. Serialized objects sort keys;
 arrays retain their declared order. Target canonical bytes use the target's own
 serializer and are never reconstructed for hashing.
 
@@ -16,10 +16,13 @@ serializer and are never reconstructed for hashing.
 | Run specification | Campaign/scenario identity and hash; stable run ID; phase/repeat; variant/constraints; complete determinism context |
 | Result | Run specification; logical dataset/source-file/report hashes; flattened target and resolved benchmark provenance; dimensions/task/format; mode/sample ratio; runtime/throughput/RSS; original report observations; independent detection outcome; environment ID and measurement policy |
 | Failure | Run specification and resolved provenance; logical/source hashes; safe enumerated failure kind/stage/code/class; input-validation and adjudication state; optional censored elapsed/limit diagnostics; no fictional success observations |
+| Attempt | Deterministic attempt ID/ordinal and retry lineage; execution group; safe status/category/code; explicit infrastructure resolution; selected-outcome flag; complete typed provenance-bound outcome and canonical checksum; available safe instrumentation |
 | Expectations | Scenario snapshot hash; independent physical conditions/counts/masks; variant-specific Finding severity/subject/population, gates, suppression and category caps; separate research challenges and primary clean-control eligibility |
 | Dataset identity | Scenario/version/hash; canonical logical schema/row count; separate logical and exact file hashes; explicit pinned writer policy |
 | Instrumentation / diagnostics | Typed allowlisted monitor evidence and untimed public-bundle primitive values, with null/unavailable reasons and primary-run provenance |
 | Environment | OS/version; architecture; Python; optional CPU model/core counts; RAM; allowlisted dependency versions |
+| Report coverage | Finding evaluability; planned/evaluable/unevaluable opportunities by positive/negative class; successful/planned/pending reports; selected target failures by category; opportunity-weighted coverage ratios |
+| Detection metrics | Report coverage plus conditional TP/FP/FN/TN and precision/recall/FPR; separate physical end-to-end detection yield; severity/localization/scenario metrics; mapped detector details |
 
 All target provenance fields use the `target_` prefix: `name`, `package_version`,
 `git_commit`, `repository_url_or_null`, `algorithm_version`, `threshold_profile`,
@@ -46,6 +49,25 @@ gate agreement. Relational validation recomputes this from scenario truth.
 Expected affected columns describe the experimental condition; exact subject
 expectations are used when subject-specific matching is required.
 
+Derived `ReportCoverage` and `DetectionMetrics` contracts live in
+`src/tadr_benchmark/evaluation/metrics.py`. Every ratio carries `numerator`,
+`denominator` and nullable `value`; validators check count partitions and exact
+ratios. Tables flatten these as named numerator/denominator/value columns.
+The conditional rate names are `conditional_precision`, `conditional_recall` and
+`conditional_fpr`. Planned and evaluable positive/negative opportunity counts,
+successful-report coverage and failure-category counts accompany each rate.
+`end_to_end_detection_yield` applies only to the controlled-condition track;
+its normative value is null. See the authoritative
+[opportunity and denominator policy](opportunity_mapping.md).
+
+Without a canonical report, Finding evaluation is `UNEVALUABLE`: confusion counts
+receive no entries, and observed Finding lists/counts, gate/suppression observations
+and scenario normative conformance are null. Mixed aggregates are
+`PARTIALLY_EVALUABLE`. Clean-control rows retain failed cells and their unevaluable
+negative opportunities. Pending reports remain distinct in partial working queries;
+freeze rejects incomplete plans. No selected failure or operational retry is
+converted into an FN, TN or an additional scientific observation.
+
 Environment IDs hash canonical allowlisted metadata. CPU model is currently
 omitted at capture. Hardware equivalence approvals are supplied separately to
 comparison functions; metadata equality does not automatically authorize a
@@ -53,12 +75,18 @@ speedup claim. Canonical reports are retained only after public-data review.
 
 Summary records bind to the SHA-256 of canonical, run-ID-sorted `runs.jsonl`.
 They also bind to `failures.jsonl` and disclose successful/adverse terminal counts.
+They bind separately to `attempts.jsonl` and disclose operational attempt, retry
+and resolved-infrastructure counts. The selected attempt's complete outcome must
+agree exactly with its record in `runs.jsonl` or `failures.jsonl`. Attempt schema
+version is 1.0; scientific result multiplicity is unchanged. See
+[execution and retry semantics](execution.md).
 An all-adverse campaign can have zero successful summary groups and no performance
 figure; failures cannot be silently dropped from coverage. Fine-grained labels,
 dataset identities, monitor records and diagnostic snapshots are checksummed and
 relationally validated at freeze. Initial result/protocol versions remain 1.0.
 They exclude warmups and group only compatible scenario/variant/environment
-records. Comparison schemas expose eligibility reasons and null deltas when
+and determinism-context records. Raw performance repeat values remain available;
+the two-run 5M policy is marked weak evidence. Comparison schemas expose eligibility reasons and null deltas when
 ineligible. Added/removed Findings are observations, not automatic labels of
 improvement/regression. Sampling comparison records have their own eligibility
 rules and preserve risk, score and confidence deltas.

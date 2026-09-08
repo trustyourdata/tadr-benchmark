@@ -25,7 +25,9 @@ or discover a target. The target repository is treated as read-only.
 
 Frozen artifacts include exact canonical reports and hashes, canonical scenario
 snapshots, all requested run records including warmups, environment inventory,
-the execution plan, summary, generated tables/figures/report and checksums.
+the execution plan, complete `attempts.jsonl` operational history, selected
+`runs.jsonl`/`failures.jsonl`, frozen `protocol.md`, summary, generated
+tables/figures/report and checksums. Attempt retries are not independent results.
 Generated source datasets remain in `.work/datasets/`; generators reproduce
 logical rows from the same family snapshots and versioned integer recipes.
 `logical_dataset_sha256` hashes canonical schema/ordered rows independently of
@@ -39,14 +41,15 @@ external-artifact transport is not implemented at bootstrap.
 
 Use `verify-frozen` before analyzing a frozen artifact. The verifier rechecks
 schemas, relational consistency, original report hashes, run completion, derived
-summary/table/report content and the entire file inventory. Figure bytes are
-checksummed; reproduction uses the recorded Matplotlib/dependency environment,
+summary/table/figure/protocol/report content and the entire file inventory.
+Figure reproduction uses the recorded Matplotlib/dependency environment,
 fixed SVG hash salt, stable data ordering and no generation date. Exact SVG
 identity across different rendering-library versions is not promised.
 
-The full campaign runner is intentionally deferred. Once implemented and reviewed,
-reproduction will use the archived revisions and execution plan on a controlled
-environment. Detection and score comparisons may span different environments;
+The explicit campaign execution API requires a resolved READY manifest and uses
+a verified working ledger. See [execution](execution.md) for worker barriers,
+cache conditions and resumability. Reproduction uses archived revisions and the
+execution plan on a controlled environment. Detection and score comparisons may span different environments;
 performance claims require explicit reviewed equivalence and identical protocol.
 
 The tracked source benchmark SHA stays null. Resolve a clean existing HEAD before

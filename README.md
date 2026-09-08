@@ -6,7 +6,7 @@ independent ground truth, measurement contracts and public research artifacts.
 TADR Core (`tadr-core`, imported as `tadr`) is the reference implementation under
 evaluation.
 
-**Status: Phase 1 infrastructure and scenario definitions. `ALPHA_BENCHMARK_V1` is PLANNED / NOT YET RUN.**
+**Status: Experimental framework. `ALPHA_BENCHMARK_V1` is PLANNED / NOT YET RUN.**
 There are no published benchmark measurements, generated campaign datasets or
 Alpha figures. The [results index](RESULTS.md) records campaign status and will
 link to immutable reports when campaigns have been executed and reviewed.
@@ -66,12 +66,11 @@ Versioned family specifications -> concrete ScenarioSpec
   -> immutable campaign / longitudinal comparison
 ```
 
-The foundation implements strict models, declarative loaders, target transport,
-environment capture, expectation evaluation, aggregation, comparison eligibility,
-report generation and artifact freezing/verification. Phase 1 adds selective
-execution groups, terminal outcome accounting, independent companions, 370
-expanded scenarios, deterministic generators/injectors and pinned source writers.
-**The live campaign runner and research execution remain deferred.**
+The package implements strict models, declarative scenarios, independent generators,
+verified working sources, isolated public-API workers, sampled RSS instrumentation,
+an immutable attempt ledger, typed outcomes, comparison queries and deterministic
+artifact generation/verification. Scientific campaign execution requires a READY
+manifest and the approved environment. See the [execution contract](docs/execution.md).
 
 Repository areas:
 
@@ -126,6 +125,12 @@ Expectation matching records misses and explicit negative-control violations;
 unexpected Findings remain visible. Summary tables report counts, score ranges,
 runtime median, median absolute deviation and RSS/throughput medians. These
 counts are not automatically interpreted as population precision or recall.
+
+Finding-based precision, recall and FPR are conditional on successful canonical
+reports and are always paired with planned/evaluable opportunity support, report
+coverage and terminal failures by category. End-to-end physical detection yield
+separately includes planned positive opportunities without reports. The
+[opportunity policy](docs/opportunity_mapping.md) defines these denominators.
 
 Cross-version comparisons require matching scenario content, data, format, task,
 scale and semantic/measurement protocol. Detection and score comparisons can
@@ -182,10 +187,16 @@ use `python -m tadr_benchmark.cli` instead of the console command if needed.
 Inspect the machine-readable contracts with `tadr-benchmark schema RunResult`.
 `tadr-benchmark environment` emits sanitized metadata only.
 
+After installing the pinned target, `tadr-benchmark preflight` explicitly runs a
+fixed six-case NON-RESEARCH software/protocol check under ignored `.work/`.
+It covers two 10k inputs, one 300k full/bounded pair and 100k inputs with 20 and
+100 columns. It never freezes results or updates the results index. See
+[execution](docs/execution.md) for scope, continuation and host requirements.
+
 ## Running future campaigns
 
-The next phase implements and reviews the fresh-process runner. There is no
-`run` command. The source manifest keeps `benchmark_git_commit` null; clean-tree
+The explicit `campaigns.runner.run_campaign` API uses fresh workers and a verified
+resume ledger. There is no `run` CLI command. The source manifest keeps `benchmark_git_commit` null; clean-tree
 resolution records the existing HEAD in execution provenance and the frozen manifest.
 Alpha cannot become `ready` until the Linux x86_64 / Python 3.11.9 host is provisioned,
 instrumentation is validated, and target availability is explicitly resolved.
@@ -202,11 +213,11 @@ the target. Generated figures and tables are functions of the same raw records.
 ## Reproducing frozen results
 
 No frozen campaigns exist yet. A future artifact contains `manifest.json`,
-`environment.json`, `run_specs.json`, `runs.jsonl`, `failures.jsonl`, typed label,
+`environment.json`, `run_specs.json`, `attempts.jsonl`, selected `runs.jsonl` and `failures.jsonl`, typed label,
 dataset identity, instrumentation and diagnostic companions, `summary.json`, scenario and
-canonical report snapshots, tables, figures, `REPORT.md` and `checksums.sha256`.
+canonical report snapshots, `protocol.md`, tables, figures, `REPORT.md` and `checksums.sha256`.
 Verify it with `tadr-benchmark verify-frozen results/campaigns/<campaign>` and use
-its exact revisions, dependencies and execution plan with the future runner.
+its exact revisions, dependencies and execution plan with the isolated runner.
 Update the root index with `tadr-benchmark results-index`. Schema migrations must
 be explicit; readers reject unknown schema versions. See
 [reproducibility](docs/reproducibility.md) and [result schema](docs/result_schema.md).
@@ -233,7 +244,7 @@ prevalence, fairness, downstream model quality or production suitability.
 Deterministic sampling can miss adversarially placed defects; sampled RSS can
 miss short-lived peaks. Harness test success is not a scientific benchmark result.
 
-1. Review Phase 1, then implement the runner and authorize `ALPHA_BENCHMARK_V1` execution separately.
+1. Validate the approved execution host and protocol, then authorize `ALPHA_BENCHMARK_V1` execution separately.
 2. Evaluate complete Algorithm v1 in `TADR_BENCHMARK_V1` with an expanded corpus.
 3. Evaluate optimized Algorithm v1 in `TADR_BENCHMARK_V1_FINAL_RESULTS` while
    preserving the common historical subset.

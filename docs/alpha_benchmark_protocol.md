@@ -117,13 +117,10 @@ follow the [campaign freeze requirements](campaign_versioning.md).
 ## Execution prerequisites
 
 The preferred host is Linux x86_64, Python 3.11.9, POLARS_MAX_THREADS=4. Provision
-and validate it before READY. Confirm effective timezone/hash/Decimal contexts
-in fresh workers. Instrumentation will time target analysis only, excluding
-generation/startup, and sample worker-tree RSS every 10 ms. Baseline RSS, sample
-coverage and context acknowledgements have typed companion fields. A sampled
-8 GiB abort threshold is supervision, not a guaranteed hard physical-memory cap.
-No cold-cache claim is supported; generation and checksum reads affect caching.
-The live monitor and worker implementation remains deferred.
+and validate it before READY. The [execution contract](execution.md) defines
+worker barriers, the analyze-only timer, sampled process-tree RSS, context
+acknowledgements, supervisor limits, recently prepared cache conditions and
+immutable attempt history.
 
 Source manifests retain a null benchmark SHA. Clean-tree resolution binds runs
 and the frozen manifest to an existing HEAD and checks it again before publication.

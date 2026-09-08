@@ -17,6 +17,10 @@ The `safety` CLI scans Git-tracked files, including force-added ignored files;
 obvious developer paths, network/machine identifiers, common secret formats,
 credential URLs and restricted artifacts. Symlinks and unreviewable binaries are
 rejected. Diagnostics identify rule/file without echoing matched content.
+Structured JSON and JSONL also reject process/command identifiers, user/host
+fields, environment dumps, raw exception-message fields and traceback fields.
+This includes `attempts.jsonl` and the observation companions; instrumentation
+does not create an exception to the public-data boundary.
 
 Frozen artifacts are scanned again before publication. Generated figure binaries
 under frozen campaign directories require human visual/metadata review; SVG is

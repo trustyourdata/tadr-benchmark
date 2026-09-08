@@ -42,7 +42,7 @@ working tree at its recorded revision, matching target/environment provenance,
 complete requested warmups and measurements as successful reports or adjudicated
 adverse target outcomes, independent truth for every scenario, required companions,
 valid original report hashes and a passing public-safety scan. Missing, pending or
-infrastructure outcomes block freeze. Successful reports with missed Findings,
+unresolved infrastructure outcomes block freeze. Successful reports with missed Findings,
 false positives or deterministic mismatches remain valid adverse research evidence.
 
 It generates canonical scenario/report snapshots, the execution plan, raw run
@@ -51,8 +51,26 @@ are verified before a new frozen directory is created. Existing destinations
 cannot be overwritten. Deterministic mismatches and missed defects remain
 research outcomes in the published data, not infrastructure failures.
 
+The authoritative artifact set is `manifest.json`, `environment.json`,
+`run_specs.json`, `runs.jsonl`, `failures.jsonl`, `attempts.jsonl`, `scenarios/*.json`,
+`expectations.json`, `dataset_manifest.json`, `reports/*.json`, `diagnostics/*.json`,
+`instrumentation.jsonl`, `protocol.md`, `summary.json`, generated `tables/*`,
+eligible `figures/*`, `REPORT.md` and `checksums.sha256`.
+
+Attempt validation checks declared RunSpecs, sequential ordinals, immediate retry
+lineage, exact outcome checksums, unchanged provenance, explicit infrastructure
+resolution and one selected outcome per required RunSpec. Selected instrumentation
+must agree with the authoritative monitor companion. Resolved failed attempts
+remain permanently visible; retries never become extra scientific observations.
+See [execution](execution.md) for the complete retry policy.
+
 `verify-frozen` checks inventory, hashes, schemas, provenance, completion and
-regenerated summaries/tables/reports. CI also compares frozen directories with
+regenerated summaries, all table/figure bytes, protocol and report. Detection tables
+derive conditional detection rates, planned opportunity coverage and separate
+end-to-end physical detection yield from the declared plan and selected outcomes.
+Failure-category and unevaluable-opportunity support cannot be removed by editing
+a derived table. Figure regeneration
+requires the recorded rendering dependencies. CI also compares frozen directories with
 the pull-request base using `verify-history`, rejecting edits or deletions even
 if a contributor rewrites the checksums. The active scenario corpus cannot
 change the content of an ID/version already present in frozen snapshots.
