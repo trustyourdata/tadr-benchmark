@@ -47,18 +47,17 @@ def analyze(data, task, constraints):
 
 
 @pytest.fixture
-def controlled_worker(tmp_path, campaign, scenario):
+def controlled_worker(tmp_path, campaign, scenario, private_wheel):
     (tmp_path / "tadr.py").write_text(FAKE_TARGET, encoding="utf-8")
-    metadata = tmp_path / "tadr_core-0.1.0.dist-info"
-    metadata.mkdir()
-    (metadata / "METADATA").write_text("Metadata-Version: 2.1\nName: tadr-core\nVersion: 0.1.0\n", encoding="utf-8")
-    (metadata / "direct_url.json").write_text(json.dumps({"vcs_info": {"vcs": "git", "commit_id": campaign.target_git_commit}}), encoding="utf-8")
+    artifact, digest = private_wheel(tmp_path)
     source = tmp_path / "settings.json"
     source.write_text("{}", encoding="utf-8")
     run = planned_runs(campaign, [scenario])[0]
     from tadr_benchmark.models import TargetMetadata
     request = {"source": str(source), "task": {}, "constraints": {},
                "target": {k: getattr(campaign, k) for k in TargetMetadata.model_fields}}
+    request["installation_artifact"] = str(artifact)
+    request["target"]["target_installation_artifact_sha256"] = digest
     return tmp_path, source, run, request
 
 
@@ -79,13 +78,14 @@ def test_context_timing_barriers_and_original_bytes(controlled_worker):
     assert result.instrumentation.monitor_completeness == "complete"
 
 
-def test_nonstandard_seed_and_decimal_context_are_applied_before_import(controlled_worker):
+def test_nonstandard_seed_and_decimal_context_are_applied_before_import(controlled_worker, private_wheel):
     directory, source, run, request = controlled_worker
     case = run.determinism_context.model_copy(update={"case_id": "fixture.context", "python_hash_seed": 42,
         "decimal_precision": 34, "decimal_rounding": "ROUND_DOWN"})
     run = run.model_copy(update={"determinism_case_id": case.case_id, "determinism_context": case})
     (directory / "tadr.py").write_text(FAKE_TARGET.replace('== "0"', '== "42"').replace('prec == 28',
         'prec == 34\nassert decimal.getcontext().rounding == "ROUND_DOWN"'), encoding="utf-8")
+    _, request["target"]["target_installation_artifact_sha256"] = private_wheel(directory)
     result = invoke_worker(run, request, cwd=directory)
     assert result.failure_kind is None and result.instrumentation.effective_context == case
 

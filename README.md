@@ -37,7 +37,7 @@ truth is authored before target execution.
   and Decimal contexts?
 - What is lost when bounded `HEAD_STRIDE_V1` analysis replaces full-data analysis?
 - How do wall time, throughput and measured peak RSS change across selected scales?
-- Which behaviors improve or regress between exact target revisions on common scenarios?
+- Which behaviors improve or regress between exact target artifacts on common scenarios?
 
 ## Principles and methodology
 
@@ -49,7 +49,7 @@ from independent experimental units. Preserve raw measurements before aggregatio
 
 The [methodology](docs/methodology.md) covers detection, score characterization,
 determinism, sampling fidelity, robustness and statistical limitations. Fixed
-heuristic thresholds are evaluated as properties of the target revision, not
+heuristic thresholds are evaluated as properties of the target implementation, not
 recalibrated implicitly by the benchmark.
 
 ## Architecture
@@ -142,23 +142,29 @@ have a separate full-reference-versus-`HEAD_STRIDE_V1` contract.
 
 ## Reproducibility and target pinning
 
-Frozen artifacts record the exact target Git commit, package version, Algorithm
-version, threshold profile, AnalysisBundle protocol and baseline revision, plus
-the benchmark revision, Python and dependency versions. The candidate Alpha
-metadata is package `0.1.0`, Algorithm `1.0`, profile `MVP_V1`, bundle `1.0`,
-baseline `1.0.12`; the manifest records the observed candidate commit. Its public
-availability has not been verified.
+Frozen artifacts identify the proprietary `tadr-core` implementation by package
+version `0.1.0`, Algorithm `1.0`, threshold profile `MVP_V1`, AnalysisBundle
+protocol `1.0`, implementation baseline `1.0.12` and the SHA-256 of the exact
+installation artifact. They also record the benchmark revision, Python and
+dependency versions. `target_source_distribution` is `proprietary`; the public
+source URL is null.
 
-Install a target from an exact public Git revision when available. The adapter
-checks installed distribution provenance and fails if the commit cannot be
-verified. For an editable development checkout, callers may supply a local path
-from ignored `benchmark.local.toml` configuration using
-`TadrCoreAdapter.from_local_config(metadata, repository)`, or directly to
-`TadrCoreAdapter(local_checkout=...)`. The TOML file has a `[target]` table with
-a `checkout` string; relative paths resolve against the benchmark repository.
-That checkout must be clean, at the pinned revision, and the imported package
-must originate there. Local paths never belong in public campaign metadata.
-Core is an optional system under test, not an automatic benchmark dependency.
+The benchmark methodology, synthetic datasets, ground truth, scenario definitions,
+execution protocol, evaluation code and published evaluation artifacts are public.
+The evaluated TADR Core implementation is proprietary. The exact implementation
+used for a campaign is identified by versioned target metadata and a cryptographic
+fingerprint of the execution artifact; the proprietary artifact and its source
+code are not distributed by this repository. Source-level rebuild reproducibility
+is not publicly available. Re-execution requires authorized access to the exact
+artifact. Alpha has not yet run. See the [reproducibility boundary](docs/reproducibility.md).
+
+Install the target from an authorized private wheel. The adapter verifies the
+wheel hash, installed payload and package/runtime version before analysis. The
+artifact location is supplied through the execution API's `installation_artifact`
+argument or ignored `benchmark.local.toml`, whose `[target]` table contains only
+an `installation_artifact` string. Relative paths resolve against the benchmark
+repository. Local paths never enter public campaign metadata. Core remains an
+optional system under test, not an automatic benchmark dependency.
 
 Environment capture allows OS/version, architecture, Python, core counts, total
 RAM and allowlisted dependency versions. CPU model is nullable and currently
@@ -198,8 +204,10 @@ It covers two 10k inputs, one 300k full/bounded pair and 100k inputs with 20 and
 The explicit `campaigns.runner.run_campaign` API uses fresh workers and a verified
 resume ledger. There is no `run` CLI command. The source manifest keeps `benchmark_git_commit` null; clean-tree
 resolution records the existing HEAD in execution provenance and the frozen manifest.
-Alpha cannot become `ready` until the Linux x86_64 / Python 3.11.9 host is provisioned,
-instrumentation is validated, and target availability is explicitly resolved.
+Alpha cannot become `ready` until the Linux x86_64 / Python 3.11.9 host is provisioned
+and instrumentation is validated. READY also requires an available, fingerprinted
+installation artifact and verified target metadata. Proprietary source distribution
+does not block READY; an unresolved executable artifact does.
 `expand_run_plan` validates a finite plan without execution; `planned_runs` rejects PLANNED campaigns.
 All data and working outputs go under `.work/`.
 
@@ -217,14 +225,16 @@ No frozen campaigns exist yet. A future artifact contains `manifest.json`,
 dataset identity, instrumentation and diagnostic companions, `summary.json`, scenario and
 canonical report snapshots, `protocol.md`, tables, figures, `REPORT.md` and `checksums.sha256`.
 Verify it with `tadr-benchmark verify-frozen results/campaigns/<campaign>` and use
-its exact revisions, dependencies and execution plan with the isolated runner.
+its exact benchmark revision, fingerprinted target artifact, dependencies and
+execution plan with the isolated runner.
 Update the root index with `tadr-benchmark results-index`. Schema migrations must
 be explicit; readers reject unknown schema versions. See
 [reproducibility](docs/reproducibility.md) and [result schema](docs/result_schema.md).
 
 ## Public data and licensing
 
-Repository-authored code and documentation use Apache-2.0. No third-party data
+Repository-authored code and documentation use Apache-2.0; that license does not
+cover the proprietary TADR Core implementation. No third-party data
 are included. A downloadable dataset is not automatically redistributable;
 [THIRD_PARTY_DATA.md](THIRD_PARTY_DATA.md) defines the required registry. Generated
 datasets remain ignored working artifacts; publishing them requires an explicit

@@ -10,7 +10,7 @@ from tadr_benchmark.validation import planned_runs, validate_completed
 
 
 @pytest.mark.parametrize("change", [{"status": "unknown"}, {"scenario_ids": ["a", "a"]},
-                                    {"target_git_commit": "main"}, {"benchmark_git_commit": "main"},
+                                    {"target_installation_artifact_sha256": "main"}, {"benchmark_git_commit": "main"},
                                     {"repeat_policy": None}, {"extra": 1}, {"python_version": None}])
 def test_campaign_rejects_invalid_execution_metadata(campaign, change):
     with pytest.raises(ValidationError):
@@ -34,7 +34,7 @@ def test_conflicting_ground_truth_is_rejected(scenario):
 
 @pytest.mark.parametrize("change", [{"peak_rss_bytes": -1}, {"runtime_seconds": float("nan")},
                                     {"sample_ratio": 1.1}, {"readiness_score": 101},
-                                    {"throughput_rows_per_second": 999.0}, {"target_git_commit": None},
+                                    {"throughput_rows_per_second": 999.0}, {"target_installation_artifact_sha256": None},
                                     {"finding_ids": ["one"]}, {"result_schema_version": "2.0"}])
 def test_run_result_rejects_invalid_records(completed, change):
     with pytest.raises(ValidationError):

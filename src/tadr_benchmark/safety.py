@@ -32,7 +32,7 @@ def structured_issues(value) -> list[str]:
     forbidden = {"pid", "ppid", "pids", "process_id", "process_ids", "command_line", "commandline", "cmdline", "argv",
                  "hostname", "host_name", "username", "user_name", "environment_dump", "environ", "env",
                  "traceback", "stacktrace", "exception_message", "error_message", "raw_exception",
-                 "stdout", "stderr", "cwd", "home_directory", "local_checkout", "checkout_path"}
+                 "stdout", "stderr", "cwd", "home_directory", "local_checkout", "checkout_path", "installation_artifact", "target_artifact_path", "target_git_commit"}
     issues = set()
     def visit(node):
         if isinstance(node, dict):

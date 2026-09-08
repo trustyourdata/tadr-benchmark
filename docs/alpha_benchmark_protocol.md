@@ -124,10 +124,12 @@ immutable attempt history.
 
 Source manifests retain a null benchmark SHA. Clean-tree resolution binds runs
 and the frozen manifest to an existing HEAD and checks it again before publication.
-The exact Core revision and contract versions remain pinned; its public URL stays
-null because retrieval is unverified. Resolve public availability or explicitly
-declare target_unavailable before READY; do not claim full external reproducibility
-for unavailable source. No changes to the target repository are required.
+The approved Core package/algorithm/profile/bundle/baseline metadata remain fixed.
+The implementation is proprietary, with no public source URL or source-rebuild
+claim. READY requires an available fingerprinted installation artifact and verified
+installed target metadata, together with a validated scientific execution host.
+The artifact fingerprint remains null while PLANNED. See the
+[reproducibility boundary](reproducibility.md).
 
 Execution and publication require review before measured tables or figures are
 released. Software test success does not establish benchmark research outcomes.

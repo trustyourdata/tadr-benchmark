@@ -4,6 +4,16 @@ from ..models import CampaignManifest, CampaignSummary
 
 
 def campaign_report(manifest: CampaignManifest, summary: CampaignSummary, *, tables=(), figures=()) -> str:
+    source_note = (
+        "The evaluated TADR Core implementation is proprietary; an external party cannot "
+        "rebuild the evaluated implementation from public source. Benchmark methodology, "
+        "synthetic datasets, ground truth, scenario definitions, execution protocol, evaluation "
+        "and published result artifacts are public. The exact target is identified by versioned "
+        "metadata and the execution artifact SHA-256. This repository distributes neither the "
+        "proprietary artifact nor its source code. Re-execution requires authorized artifact access.\n\n")
+    artifact_note = (f"Installation artifact SHA-256: `{manifest.target_installation_artifact_sha256}`.\n\n"
+                     if manifest.target_installation_artifact_sha256 else
+                     "Installation artifact SHA-256: not recorded.\n\n")
     rows = ["| Scenario / variant | Runs | Runtime median (s) | MAD (s) | Peak RSS median (bytes) | Deterministic |",
             "| --- | ---: | ---: | ---: | ---: | --- |"]
     for group in summary.groups:
@@ -11,12 +21,12 @@ def campaign_report(manifest: CampaignManifest, summary: CampaignSummary, *, tab
                     f"{group.runtime_median_seconds:.6g} | {group.runtime_mad_seconds:.6g} | "
                     f"{group.peak_rss_median_bytes:.6g} | {group.deterministic} |")
     return (f"# {manifest.campaign_id}\n\n"
-            f"Target: `{manifest.target_name}` `{manifest.target_package_version}` at "
-            f"`{manifest.target_git_commit}`. Algorithm `{manifest.target_algorithm_version}`, "
+            f"Target: `{manifest.target_name}` `{manifest.target_package_version}`. Algorithm `{manifest.target_algorithm_version}`, "
             f"profile `{manifest.target_threshold_profile}`, bundle `{manifest.target_bundle_protocol}`, "
             f"baseline `{manifest.target_baseline_revision}`.\n\n"
-            f"Reproducibility: `{manifest.reproducibility_status}`. Run data SHA-256: "
+            f"Target source distribution: `{manifest.target_source_distribution}`. Run data SHA-256: "
             f"`{summary.run_data_sha256}`.\n\n"
+            + source_note + artifact_note +
             f"Benchmark `{manifest.benchmark_package_version}` at `{manifest.benchmark_git_commit}`. "
             f"Environment and dependency identities are retained in environment.json.\n\n"
             "## Methodology and scenario matrix\n\n"
@@ -73,7 +83,7 @@ def campaign_report(manifest: CampaignManifest, summary: CampaignSummary, *, tab
             "real-world prevalence, model quality or production guarantees. Sampled RSS can miss "
             "short peaks. Review outcomes before drawing scientific conclusions.\n\n"
             "## Reproduction\n\n"
-            "Use exact benchmark and target revisions, dependency versions in environment.json, "
+            "Use the exact benchmark revision and fingerprinted target artifact, dependency versions in environment.json, "
             "scenario snapshots and run_specs.json. Verify checksums before analysis. "
             "Execution requires a resolved ready manifest and a verified working ledger.\n\n"
             "## Generated artifact queries\n\n"
@@ -95,13 +105,15 @@ def results_index(root: Path, manifests: list[CampaignManifest]) -> str:
     for manifest in frozen:
         rows.append(f"| {manifest.campaign_id} | {manifest.target_package_version} | "
                     f"{manifest.target_algorithm_version} | {len(manifest.planned_scope.check_ids)} declared | "
-                    f"{manifest.frozen_date} | {manifest.reproducibility_status} | "
+                    f"{manifest.frozen_date} | Proprietary target; artifact fingerprinted | "
                     f"[Report](results/campaigns/{manifest.campaign_id.lower()}/REPORT.md) |")
     frozen_ids = {item.campaign_id for item in frozen}
     for manifest in sorted(manifests, key=lambda item: item.campaign_id):
         if manifest.campaign_id not in frozen_ids:
+            provenance = ("Proprietary target; artifact fingerprinted" if manifest.target_installation_artifact_sha256
+                          else "Proprietary target; artifact pending")
             rows.append(f"| {manifest.campaign_id} | {manifest.target_package_version} (planned) | "
-                        f"{manifest.target_algorithm_version} | planned scope only | Not run | Unverified | Not available |")
+                        f"{manifest.target_algorithm_version} | planned scope only | Not run | {provenance} | Not available |")
     rows.extend(["", "## Core Alpha — ALPHA_BENCHMARK_V1", ""])
     if "ALPHA_BENCHMARK_V1" not in frozen_ids:
         rows.extend(["**PLANNED / NOT YET RUN.** No benchmark measurements or figures have been published.", "",

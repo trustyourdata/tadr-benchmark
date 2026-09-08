@@ -41,7 +41,7 @@ def source_snapshot(root: Path) -> dict:
             "working_source_inventory_sha256": sha256(canonical_bytes(inventory))}
 
 
-def run_preflight(root: Path, *, local_checkout: Path | None = None, resume: bool = False) -> dict:
+def run_preflight(root: Path, *, installation_artifact: Path | None = None, resume: bool = False) -> dict:
     manifest = load_campaign(root / "campaigns" / "ALPHA_BENCHMARK_V1.yaml")
     context = next(c for c in manifest.determinism_cases if c.case_id == "standard")
     variants = {v.variant_id: v for v in manifest.analysis_variants}
@@ -110,7 +110,7 @@ def run_preflight(root: Path, *, local_checkout: Path | None = None, resume: boo
             else:
                 write_once(spec_path, canonical_bytes(spec))
             request = {"target": target, "source": str(source), "task": {"task_type": recipe.task, **task_parameters(recipe)},
-                       "constraints": spec.constraints, "local_checkout": str(local_checkout) if local_checkout else None}
+                       "constraints": spec.constraints, "installation_artifact": str(installation_artifact) if installation_artifact else None}
             if name in completed:
                 row = deepcopy(completed[name])
                 original = (directory / (name+".report.json")).read_bytes()

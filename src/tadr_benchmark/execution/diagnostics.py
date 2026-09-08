@@ -126,11 +126,11 @@ def load_diagnostic(path: Path, primary: RunResult, original_report: bytes) -> D
 
 
 def invoke_diagnostic(primary: RunResult, source: Path, task: dict, case: str, original_report: bytes,
-                      *, local_checkout: Path | None = None, python=sys.executable) -> DiagnosticRecord:
+                      *, installation_artifact: Path | None = None, python=sys.executable) -> DiagnosticRecord:
     request = {"target": {k: getattr(primary, k) for k in TargetMetadata.model_fields},
         "context": primary.determinism_context.model_dump(mode="json"), "source": str(source), "task": task,
         "constraints": primary.constraints, "case": case,
-        "local_checkout": str(local_checkout) if local_checkout else None}
+        "installation_artifact": str(installation_artifact) if installation_artifact else None}
     return diagnostic_record(primary, original_report,
         request_diagnostic(request, primary.determinism_context, primary.instrumentation_policy.timeout_seconds, python=python))
 

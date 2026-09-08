@@ -6,8 +6,8 @@
   "result_schema_version": "1.0",
   "target_name": "tadr-core",
   "target_package_version": "0.1.0",
-  "target_git_commit": "136664f41597e1878e91b9b7cf0699b94f4122c1",
   "target_repository_url_or_null": null,
+  "target_installation_artifact_sha256": null,
   "target_algorithm_version": "1.0",
   "target_threshold_profile": "MVP_V1",
   "target_bundle_protocol": "1.0",
@@ -15,7 +15,6 @@
   "python_version": "3.11.9",
   "benchmark_package_version": "0.1.0",
   "benchmark_git_commit": null,
-  "reproducibility_status": "unverified",
   "formats": [
     "csv",
     "parquet"
@@ -790,7 +789,7 @@
       "peak_rss",
       "limitations"
     ],
-    "notes": "Phase 1 definitions and infrastructure implemented; PLANNED / NOT YET RUN. Exactly 370 scenarios, 578 primary calls including 13 warmups and 72 auxiliary diagnostic calls are planned. Execution is deferred. Source benchmark revision remains null until clean-tree resolution. Public target retrieval and the Linux execution host remain unverified."
+    "notes": "PLANNED / NOT YET RUN. Exactly 370 scenarios, 578 primary calls including 13 warmups and 72 auxiliary diagnostic calls are planned. The evaluated TADR Core implementation is proprietary; its source and installation artifact are not distributed by this repository. READY requires an available fingerprinted artifact and verified installed target metadata; no public source rebuild is claimed. The execution environment remains unvalidated. Source benchmark revision and installation-artifact fingerprint remain null until execution preparation."
   },
   "frozen_date": null,
   "execution_readiness": {
@@ -800,6 +799,8 @@
     "polars_max_threads": 4,
     "host_provisioned": false,
     "instrumentation_validated": false,
-    "target_retrieval_verified": false
-  }
+    "target_artifact_verified": false,
+    "target_metadata_verified": false
+  },
+  "target_source_distribution": "proprietary"
 }

@@ -31,9 +31,11 @@ and mathematical placement ledgers without materializing research-scale datasets
 ## Transport and observations
 
 `TargetReport` holds original canonical bytes and their parsed JSON object. The
-adapter checks the installed package version and Git provenance before analysis.
-Algorithm/profile/bundle/baseline metadata are reviewed declarations associated
-with that exact revision, because these are not all exposed by the public facade.
+adapter checks the private installation artifact hash, installed payload, and
+package/runtime identity before analysis. Algorithm/profile/bundle/baseline
+metadata are reviewed release declarations bound to that artifact, because these
+are not all exposed by the public facade. See the
+[target provenance contract](reproducibility.md#target-installation-provenance).
 The adapter propagates target errors. It does not repair reports or infer missing
 checks. The current frozen-report validator recognizes the Core Alpha report
 transport; future report contracts require an explicit adapter and schema review.

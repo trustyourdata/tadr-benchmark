@@ -34,7 +34,7 @@ retained separately. Avoid overlapping positive patterns when estimating rates.
 
 Threshold studies require below/exact/above cases, including integer rounding of
 defect counts. Derive threshold values from the reviewed target specification for
-the pinned revision; record them as scenario parameters, not benchmark scoring
+the pinned implementation; record them as scenario parameters, not benchmark scoring
 code. Sampling may alter the observed population, so distinguish an injection's
 known full-data rate from a target's sampled estimate.
 

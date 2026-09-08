@@ -3,25 +3,72 @@
 Install the benchmark independently of the target. Development dependency ranges
 are not publication pins. Each execution environment must record resolved
 dependency versions, Python version and sanitized hardware/OS metadata. Frozen
-campaigns also require exact benchmark and target commits and versioned scenario,
-generator, injector, protocol, RNG and determinism definitions.
+campaigns also require an exact benchmark revision, fingerprinted target artifact
+and versioned scenario, generator, injector, protocol, RNG and determinism definitions.
 
-The Alpha manifest records an observed candidate Core revision and current public
-contract metadata. Its URL is null because public retrieval was not verified.
-`unverified` cannot become a ready/frozen campaign. Before execution, either
-verify public availability and supply the repository URL with `public_revision`,
-or explicitly use `target_unavailable`. Do not imply external reproducibility
-when source retrieval is unavailable.
+## Reproducibility boundary
 
-The Core adapter verifies Git provenance from an installed VCS distribution's
-`direct_url.json`. A local editable checkout may instead be passed explicitly as
-`local_checkout`; it must be clean, at the configured commit, and contain the
-imported module. `TadrCoreAdapter.from_local_config(metadata, repository)` reads
-ignored `benchmark.local.toml` with a `[target]` table and one `checkout` string;
-relative paths resolve against the benchmark repository. No path is embedded in
-campaign/result metadata. No local
-configuration file is created by bootstrap, and the CLI does not silently install
-or discover a target. The target repository is treated as read-only.
+The benchmark methodology, synthetic datasets, ground truth, execution protocol,
+and published evaluation artifacts are public. The evaluated TADR Core
+implementation is proprietary. The exact implementation used for a campaign is
+identified by versioned target metadata and a cryptographic fingerprint of the
+execution artifact; the proprietary artifact and its source code are not
+distributed by this repository.
+
+| Layer | Reproduction boundary |
+| --- | --- |
+| Benchmark methodology and scenarios | Public definitions, opportunity mapping and evaluation/aggregation code describe the method independently of Core source. |
+| Synthetic datasets and ground truth | Public deterministic generators, recipes, independent labels and identity rules support regeneration without Core. Generated datasets remain ignored working artifacts. |
+| Execution protocol | Public worker, timing, RSS, context, scheduling and retry contracts describe execution. Re-execution requires authorized access to the exact target artifact and a validated environment. |
+| Published evaluation artifacts | Public frozen records, checksums and derivation code support verification and re-aggregation without Core. Alpha has no published measurements yet. |
+| Target implementation | Reproducibly identified by artifact SHA-256 and version metadata. Source-level rebuild reproducibility is not publicly available. |
+
+## Target installation provenance
+
+`target_source_distribution: proprietary` describes a permanent source-distribution
+boundary. `target_repository_url_or_null` is null. Public source retrieval is not
+required for READY or freeze. Private source revisions and build/release records
+stay outside the public benchmark contract.
+
+`target_installation_artifact_sha256` is the lowercase 64-character SHA-256 of the
+exact private installation wheel bytes. Do not substitute a source revision or a
+hash of an installation directory. PLANNED may leave this field null. READY,
+success/failure records and frozen provenance require a resolved fingerprint;
+the same value binds manifests, outcomes, attempts and diagnostic companions.
+
+Before READY, select and retain the authorized wheel in the execution environment,
+hash it, install it, and verify it with `TadrCoreAdapter.metadata()` in that
+prepared environment. Supply its private location through `installation_artifact`
+or ignored `benchmark.local.toml`: the `[target]` table accepts only an
+`installation_artifact` string, with relative paths resolved against the repository.
+The worker uses that configuration when no explicit artifact is supplied. No
+installer, artifact discovery, source checkout or public download is implicit.
+
+The adapter verifies the exact wheel hash, wheel package name/version, installed
+package version, matching installed payload and distribution metadata bytes,
+import origin, and public runtime `__version__`. The supported Core wheel contains
+`tadr/` and its distribution metadata; the verifier rejects other layouts rather
+than guessing installation mappings. Every worker rechecks before the timed
+analysis barrier. Local paths, artifact bytes, source contents and private Git
+records are never copied into public provenance.
+
+The Alpha target contract fixes package `tadr-core` `0.1.0`, Algorithm `1.0`, profile
+`MVP_V1`, AnalysisBundle protocol `1.0` and implementation baseline `1.0.12`.
+Algorithm/profile/bundle/baseline are reviewed release declarations bound to the
+selected artifact; the public facade does not expose all of these as runtime
+metadata. Hash verification proves artifact identity, not the truth of arbitrary
+release declarations. Review the authorized release record against this contract
+and verify installed package/runtime identity before recording
+`target_metadata_verified: true`. Record `target_artifact_verified: true` only
+after verifying that the selected artifact is available and matches its hash and
+installation. These flags retain the readiness review; they do not bypass worker
+verification. Keep the private revision-to-build record outside public artifacts.
+
+A missing artifact, unresolved/mismatched fingerprint, unverified metadata or
+unvalidated execution environment blocks scientific execution. Proprietary source
+distribution limits source-level reproduction claims; it does not block READY.
+No exact Alpha execution artifact has been selected here, so its fingerprint and
+verification flags remain unresolved and its status remains PLANNED.
 
 Frozen artifacts include exact canonical reports and hashes, canonical scenario
 snapshots, all requested run records including warmups, environment inventory,
@@ -48,16 +95,16 @@ identity across different rendering-library versions is not promised.
 
 The explicit campaign execution API requires a resolved READY manifest and uses
 a verified working ledger. See [execution](execution.md) for worker barriers,
-cache conditions and resumability. Reproduction uses archived revisions and the
+cache conditions and resumability. Reproduction uses the archived benchmark revision, fingerprinted target artifact and the
 execution plan on a controlled environment. Detection and score comparisons may span different environments;
 performance claims require explicit reviewed equivalence and identical protocol.
 
 The tracked source benchmark SHA stays null. Resolve a clean existing HEAD before
 execution and bind all success/failure records to that revision; freeze resolves
 and rechecks it. Initial schema/protocol versions remain 1.0 and package 0.1.0.
-Alpha prefers Linux x86_64, Python 3.11.9 and POLARS_MAX_THREADS=4. Its actual host,
-instrumentation validation and public target retrieval remain unresolved; it is
-PLANNED, with no measurements. Parquet writer behavior pins PyArrow 25.0.1;
+Alpha prefers Linux x86_64, Python 3.11.9 and POLARS_MAX_THREADS=4. Its actual host
+and instrumentation validation remain unresolved; it is PLANNED, with no
+measurements. Parquet writer behavior pins PyArrow 25.0.1;
 Polars is pinned to 1.44.1. These pins do not claim the future Linux host is validated.
 
 Current lightweight verification:

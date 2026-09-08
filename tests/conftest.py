@@ -12,6 +12,23 @@ from tadr_benchmark.validation import planned_runs
 
 
 @pytest.fixture
+def private_wheel():
+    """Build a tiny fake target artifact; never uses Core or research data."""
+    def build(directory):
+        from zipfile import ZipFile
+        metadata = directory / "tadr_core-0.1.0.dist-info"
+        metadata.mkdir(exist_ok=True)
+        (metadata / "METADATA").write_text("Metadata-Version: 2.1\nName: tadr-core\nVersion: 0.1.0\n", encoding="utf-8")
+        artifact = directory / "fixture.whl"
+        with ZipFile(artifact, "w") as wheel:
+            payload = sorted((directory / "tadr").rglob("*.py")) if (directory / "tadr").is_dir() else [directory / "tadr.py"]
+            for path in [*payload, metadata / "METADATA"]:
+                wheel.write(path, path.relative_to(directory).as_posix())
+        return artifact, sha256(artifact.read_bytes())
+    return build
+
+
+@pytest.fixture
 def scenario():
     return ScenarioSpec(
         scenario_id="fixture.clean", scenario_version="1.0", description="Harness contract fixture only",
@@ -30,7 +47,7 @@ def campaign(scenario):
         "execution_groups": [], "execution_readiness": None,
         "scale_matrix": [10], "scenario_ids": [scenario.scenario_id],
         "benchmark_git_commit": "b" * 40, "python_version": "3.11.0",
-        "reproducibility_status": "target_unavailable",
+        "target_installation_artifact_sha256": "a" * 64,
         "repeat_policy": {"warmup_runs": 1, "measurement_runs": 2},
         "instrumentation_policy": {"protocol_version": "1.0", "timeout_seconds": 60.0,
                                    "memory_sampling_interval_seconds": 0.01},

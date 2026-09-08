@@ -1,7 +1,6 @@
 """Version 1 benchmark contracts, independent of TADR check semantics."""
 
 from typing import Annotated, Literal
-from urllib.parse import urlsplit
 
 from pydantic import BaseModel, ConfigDict, Field, JsonValue, field_validator, model_validator
 
@@ -24,26 +23,14 @@ class Contract(BaseModel):
 class TargetMetadata(Contract):
     target_name: Identifier = "tadr-core"
     target_package_version: Version
-    target_git_commit: Commit | None
-    target_repository_url_or_null: str | None
+    target_source_distribution: Literal["proprietary"] = "proprietary"
+    target_repository_url_or_null: None = None
+    # Reviewed installation artifact bytes; never inferred from a source revision.
+    target_installation_artifact_sha256: Digest | None = None
     target_algorithm_version: Version
     target_threshold_profile: Version
     target_bundle_protocol: Version
     target_baseline_revision: Version
-
-    @field_validator("target_repository_url_or_null")
-    @classmethod
-    def public_url(cls, value):
-        if value is None:
-            return value
-        from .safety import text_issues
-        parsed = urlsplit(value)
-        if (parsed.scheme != "https" or not parsed.hostname or parsed.username
-                or parsed.password or parsed.query or parsed.fragment
-                or parsed.hostname in {"localhost", "localhost.localdomain"}
-                or "." not in parsed.hostname or text_issues(value)):
-            raise ValueError("target URL must be a credential-free public HTTPS repository URL")
-        return value
 
 
 class RepeatPolicy(Contract):
@@ -118,7 +105,8 @@ class ExecutionReadiness(Contract):
     polars_max_threads: Literal[4] = 4
     host_provisioned: bool = False
     instrumentation_validated: bool = False
-    target_retrieval_verified: bool = False
+    target_artifact_verified: bool = False
+    target_metadata_verified: bool = False
 
 
 class CampaignManifest(TargetMetadata):
@@ -130,7 +118,6 @@ class CampaignManifest(TargetMetadata):
     python_version: Version | None
     benchmark_package_version: Version
     benchmark_git_commit: Commit | None
-    reproducibility_status: Literal["unverified", "public_revision", "target_unavailable"]
     formats: list[SourceFormat] = Field(min_length=1)
     task_types: list[TaskType] = Field(min_length=1)
     scale_matrix: list[PositiveInt] = Field(min_length=1)
@@ -157,27 +144,27 @@ class CampaignManifest(TargetMetadata):
         if len({g.group_id for g in self.execution_groups}) != len(self.execution_groups):
             raise ValueError("duplicate execution groups")
         if self.status != "planned":
-            required = (self.target_git_commit, self.python_version,
+            required = (self.target_installation_artifact_sha256, self.python_version,
                         self.execution_groups or (self.repeat_policy and self.instrumentation_policy),
                         self.scenario_ids, self.determinism_cases,
                         self.analysis_variants)
             if not all(required):
-                raise ValueError("ready/frozen campaigns require exact provenance and execution policies")
-            if self.reproducibility_status == "unverified":
-                raise ValueError("ready/frozen campaigns must declare target availability")
+                raise ValueError("ready/frozen campaigns require an artifact fingerprint and exact provenance and execution policies")
             if self.campaign_id == "ALPHA_BENCHMARK_V1":
                 ready = self.execution_readiness
                 if not ready or not (ready.host_provisioned and ready.instrumentation_validated):
                     raise ValueError("Alpha requires a provisioned and validated execution host")
                 if self.python_version != ready.python_version:
                     raise ValueError("Alpha Python protocol differs from execution environment")
-                if self.reproducibility_status == "public_revision" and not ready.target_retrieval_verified:
-                    raise ValueError("Alpha target retrieval must be verified")
+                if not (ready.target_artifact_verified and ready.target_metadata_verified):
+                    raise ValueError("Alpha requires verified target artifact and installed metadata")
         if self.status == "frozen" and self.benchmark_git_commit is None:
             raise ValueError("frozen manifest requires resolved benchmark revision")
-        if self.reproducibility_status == "public_revision" and not (
-                self.target_repository_url_or_null and self.target_git_commit):
-            raise ValueError("public revision requires repository URL and exact commit")
+        if self.campaign_id == "ALPHA_BENCHMARK_V1" and (
+                self.target_name, self.target_package_version, self.target_algorithm_version,
+                self.target_threshold_profile, self.target_bundle_protocol, self.target_baseline_revision
+        ) != ("tadr-core", "0.1.0", "1.0", "MVP_V1", "1.0", "1.0.12"):
+            raise ValueError("Alpha target metadata differs from the approved contract")
         if (self.status == "frozen") != (self.frozen_date is not None):
             raise ValueError("frozen_date is required only for frozen campaigns")
         if self.frozen_date:
@@ -375,8 +362,8 @@ class RunResult(TargetMetadata):
         import math
         if self.determinism_case_id != self.determinism_context.case_id:
             raise ValueError("determinism context identity mismatch")
-        if self.target_git_commit is None:
-            raise ValueError("run records require an exact target commit")
+        if self.target_installation_artifact_sha256 is None:
+            raise ValueError("run records require an exact target artifact fingerprint")
         if not (len(self.finding_ids) == len(self.finding_subjects) == len(self.finding_severities)):
             raise ValueError("Finding fields must be positionally aligned")
         if len(set(self.finding_ids)) != len(self.finding_ids):

@@ -28,8 +28,9 @@ def safe_exception(error: Exception) -> tuple[str, str | None]:
 def prepare_target(request):
     from ..targets.tadr_core import TadrCoreAdapter
     expected = TargetMetadata.model_validate(request["target"])
-    checkout = Path(request["local_checkout"]) if request.get("local_checkout") else None
-    adapter = TadrCoreAdapter(expected, checkout)
+    artifact = Path(request["installation_artifact"]) if request.get("installation_artifact") else None
+    adapter = (TadrCoreAdapter(expected, artifact) if artifact is not None else
+               TadrCoreAdapter.from_local_config(expected, Path.cwd()))
     return adapter.prepare(Path(request["source"]), request["task"], request["constraints"])
 
 

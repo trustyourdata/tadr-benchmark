@@ -25,11 +25,22 @@ serializer and are never reconstructed for hashing.
 | Detection metrics | Report coverage plus conditional TP/FP/FN/TN and precision/recall/FPR; separate physical end-to-end detection yield; severity/localization/scenario metrics; mapped detector details |
 
 All target provenance fields use the `target_` prefix: `name`, `package_version`,
-`git_commit`, `repository_url_or_null`, `algorithm_version`, `threshold_profile`,
-`bundle_protocol` and `baseline_revision`. Commits are full lowercase 40-character
-Git SHA-1 IDs; content hashes are 64-character SHA-256. Public target URLs must
-use HTTPS without credentials, query strings or fragments. Public reachability
-is a separate reviewed claim; the model does not make network requests.
+`source_distribution`, `repository_url_or_null`, `algorithm_version`,
+`threshold_profile`, `bundle_protocol`, `baseline_revision` and
+`installation_artifact_sha256`. Source distribution is typed as `proprietary`;
+the public source URL is null. Private source revisions and locations are excluded.
+
+The artifact fingerprint may be null only for PLANNED metadata. READY/frozen
+manifests and success/failure records require a lowercase 64-character SHA-256
+of exact installation artifact bytes. It propagates through manifests, outcomes,
+attempts and diagnostics and must agree across bound provenance. No private
+artifact or source publication is implied. See
+[installation provenance](reproducibility.md#target-installation-provenance).
+
+Alpha readiness separately records `target_artifact_verified` and
+`target_metadata_verified`, alongside the host/instrumentation gates. Its approved
+package/algorithm/profile/bundle/baseline tuple is validated. Public source retrieval
+is not a readiness requirement. Initial contract versions remain 1.0.
 
 Run measurements require strictly positive wall time, nonnegative measured RSS,
 sample ratio in [0,1], positive input dimensions and throughput equal to input

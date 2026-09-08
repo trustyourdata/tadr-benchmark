@@ -26,9 +26,9 @@ def alpha_schedule(monkeypatch, environment):
     root = Path(__file__).parents[1]
     source = load_campaign(root / "campaigns/ALPHA_BENCHMARK_V1.yaml")
     manifest = CampaignManifest.model_validate({**source.model_dump(), "status": "ready",
-        "benchmark_git_commit": "b" * 40, "reproducibility_status": "target_unavailable",
+        "benchmark_git_commit": "b" * 40, "target_installation_artifact_sha256": "a" * 64,
         "execution_readiness": {**source.execution_readiness.model_dump(),
-                                "host_provisioned": True, "instrumentation_validated": True}})
+                                "host_provisioned": True, "instrumentation_validated": True, "target_artifact_verified": True, "target_metadata_verified": True}})
     scenarios = load_family_scenarios(root)
     plan = expand_run_plan(manifest, scenarios)
     # Synthetic readiness only; no production host check or target is invoked.

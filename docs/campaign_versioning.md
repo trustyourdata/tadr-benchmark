@@ -3,16 +3,21 @@
 The campaign lifecycle is `planned` -> `ready` -> `frozen`. Planned manifests
 may have no concrete scenarios or execution policy, but still declare candidate
 target metadata and intended scope. A ready manifest requires an exact target
-commit, Python version, concrete scenarios, variants, determinism
-contexts, warmup/repeat counts and instrumentation policy. It also declares
-whether the target revision is public or unavailable.
+installation artifact fingerprint, Python version, concrete scenarios, variants,
+determinism contexts, warmup/repeat counts and instrumentation policy.
 
 Tracked source manifests keep `benchmark_git_commit` null. `resolve_manifest`
 requires a clean working tree, resolves existing HEAD, and binds execution and
 frozen provenance to that SHA. Freeze checks that the revision remains clean and
 unchanged; it never requires a self-referential SHA edit in a source manifest.
 Alpha also requires provisioned/validated Linux x86_64 execution, Python 3.11.9,
-four Polars threads and an explicit target-availability decision before READY.
+four Polars threads before READY. The selected private target artifact must be
+available, fingerprinted, and verified against installed package/runtime metadata;
+the release declarations must match the approved Alpha target contract. Readiness
+records artifact and metadata verification separately from host/instrumentation
+validation. Public source retrieval is not required for the proprietary target.
+See [target installation provenance](reproducibility.md#target-installation-provenance).
+All other provenance, environment and completion gates apply.
 
 Campaign IDs identify experiments. `benchmark_protocol_version` and
 `result_schema_version` currently accept only `1.0`; `scenario_set_version` is

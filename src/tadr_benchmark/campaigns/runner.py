@@ -15,7 +15,7 @@ from .freeze import resolve_manifest
 from .schedule import execution_schedule
 
 
-def run_campaign(root: Path, manifest: CampaignManifest, scenarios: list[ScenarioSpec], *, local_checkout: Path | None = None):
+def run_campaign(root: Path, manifest: CampaignManifest, scenarios: list[ScenarioSpec], *, installation_artifact: Path | None = None):
     """Run the explicitly requested READY plan; never retries infrastructure or freezes.
 
     An infrastructure outcome stops further execution. The caller must diagnose
@@ -39,7 +39,7 @@ def run_campaign(root: Path, manifest: CampaignManifest, scenarios: list[Scenari
     with RunLedger(directory / "ledger", specs, binding) as ledger:
         for spec in schedule:
             scenario = by_id[spec.scenario_id]
-            outcome = execute_run(root, manifest, spec, scenario, environment, ledger, local_checkout=local_checkout)
+            outcome = execute_run(root, manifest, spec, scenario, environment, ledger, installation_artifact=installation_artifact)
             if isinstance(outcome, RunFailure) and outcome.failure_kind == "infrastructure":
                 return ledger.snapshot()
             if isinstance(outcome, RunResult) and spec.scenario_id.startswith("sampling.") and (
@@ -53,6 +53,6 @@ def run_campaign(root: Path, manifest: CampaignManifest, scenarios: list[Scenari
                     source = contained(root, f".work/datasets/{scenario.scenario_id}.parquet")
                     diagnostic = invoke_diagnostic(outcome, source,
                         {"task_type": scenario.task_type, **scenario.task_parameters}, scenario.generator_parameters["case"],
-                        report, local_checkout=local_checkout)
+                        report, installation_artifact=installation_artifact)
                     persist_diagnostic(path, diagnostic)
         return ledger.snapshot()

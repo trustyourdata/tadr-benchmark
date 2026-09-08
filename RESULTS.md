@@ -4,7 +4,7 @@
 
 | Campaign | Target | Algorithm | Checks | Date | Reproducibility | Report |
 | --- | --- | --- | --- | --- | --- | --- |
-| ALPHA_BENCHMARK_V1 | 0.1.0 (planned) | 1.0 | planned scope only | Not run | Unverified | Not available |
+| ALPHA_BENCHMARK_V1 | 0.1.0 (planned) | 1.0 | planned scope only | Not run | Proprietary target; artifact pending | Not available |
 
 ## Core Alpha — ALPHA_BENCHMARK_V1
 

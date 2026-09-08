@@ -247,7 +247,7 @@ class RunFailure(TargetMetadata, RunSpec):
 
     @model_validator(mode="after")
     def honest_terminal_state(self):
-        if self.target_git_commit is None:
+        if self.target_installation_artifact_sha256 is None:
             raise ValueError("failure requires exact target provenance")
         if self.adjudication == "valid_target_outcome" and (
                 self.failure_kind == "infrastructure" or not self.independently_validated_input

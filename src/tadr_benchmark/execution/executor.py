@@ -49,7 +49,7 @@ def successful_result(binding: dict, scenario: ScenarioSpec, observation: Invoca
 
 
 def execute_run(root: Path, manifest: CampaignManifest, spec: RunSpec, scenario: ScenarioSpec,
-                environment: EnvironmentInfo, ledger: RunLedger, *, local_checkout: Path | None = None):
+                environment: EnvironmentInfo, ledger: RunLedger, *, installation_artifact: Path | None = None):
     """One authorized ready RunSpec; never expands or retries a campaign implicitly."""
     if manifest.status != "ready" or manifest.benchmark_git_commit is None:
         raise ValueError("research execution requires a resolved ready manifest")
@@ -77,8 +77,8 @@ def execute_run(root: Path, manifest: CampaignManifest, spec: RunSpec, scenario:
     identity = ledger.begin(reservation)
     request = {"target": target, "source": str(contained(root, dataset.relative_path)),
                "task": {"task_type": scenario.task_type, **scenario.task_parameters}, "constraints": spec.constraints}
-    if local_checkout is not None:
-        request["local_checkout"] = str(local_checkout)
+    if installation_artifact is not None:
+        request["installation_artifact"] = str(installation_artifact)
     observation = invoke_worker(spec, request, cwd=root)
     if observation.failure_kind:
         outcome = RunFailure(**binding, failure_kind=observation.failure_kind, stage=observation.stage,

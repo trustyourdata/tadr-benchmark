@@ -8,7 +8,8 @@ from tadr_benchmark.safety import scan_files, text_issues
 
 
 @pytest.mark.parametrize("key", ["pid", "command_line", "hostname", "username", "environ", "env",
-                                  "traceback", "exception_message", "stdout", "local_checkout"])
+                                  "traceback", "exception_message", "stdout", "local_checkout",
+                                  "installation_artifact", "target_artifact_path", "target_git_commit"])
 def test_public_observation_json_rejects_private_diagnostic_keys(tmp_path, key):
     import json
     name = "attempts.jsonl"
