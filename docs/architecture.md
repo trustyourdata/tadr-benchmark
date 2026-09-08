@@ -8,10 +8,13 @@ inside the Core adapter; do not add a dependency on target implementation module
 | --- | --- |
 | `ScenarioSpec` | Immutable experimental conditions, versioned generator/injectors and expectations |
 | `GroundTruth` | Independently authored expected/absent Finding patterns and subjects, affected columns and gate expectation |
-| `DatasetArtifact` | Working relative path, dataset/spec hashes and independently produced truth |
+| `DatasetArtifact` / `DatasetIdentity` | Separate logical-row and exact source-byte hashes, writer policy and spec provenance |
 | `TargetAdapter` | Exact target metadata and unchanged canonical report transport |
 | `RunSpec` | One planned repeat, variant and determinism context, with stable identity |
 | `RunResult` | One completed execution, raw observations, instrumentation and evaluation |
+| `RunFailure` / `OutcomeAccounting` | Typed adverse terminal outcomes, unresolved/infrastructure failures and exact plan coverage |
+| `ScenarioExpectations` | Physical ledger, pinned normative labels and separate research challenges |
+| `InstrumentationRecord` / `DiagnosticRecord` | Allowlisted monitor evidence and untimed diagnostic companions |
 | `EnvironmentInfo` | Sanitized allowlisted metadata and content-derived identity |
 | `CampaignManifest` | Experimental scope, exact provenance and execution policies |
 | `CampaignSummary` | Groups derived from measured records; warmups excluded |
@@ -19,10 +22,10 @@ inside the Core adapter; do not add a dependency on target implementation module
 | `SamplingComparison` | Full-reference/sample agreement and score/risk/confidence deltas |
 
 The installed package has no implicit target installation, source-path discovery
-or benchmark execution. Generator/injector and executor protocols are extension
-points for the next pass. The bootstrap's executable paths cover loading,
-validation, environment capture, adapter transport, evaluation and reporting.
-Unit tests use tiny in-memory harness fixtures; they are not Alpha scenarios.
+or benchmark execution. Phase 1 adds versioned family expansion, row-addressable
+construction/injection and pinned CSV/Parquet writers. The heavy executor remains
+an interface. Tests recount small constructed conditions and inspect scale schemas
+and mathematical placement ledgers without materializing research-scale datasets.
 
 ## Transport and observations
 
@@ -47,7 +50,8 @@ Do not use a global RNG. A generator must return independently authored truth
 and dataset/spec hashes. The runner must verify those artifacts, call the target,
 preserve canonical bytes, record observations, and evaluate expected conditions.
 Missing defects are completed experimental outcomes. Infrastructure failures
-remain working diagnostics and cannot be submitted as successful `RunResult`s.
+block freeze. Valid adverse target outcomes use adjudicated `RunFailure` records;
+they count toward terminal coverage and never invent a report or successful timing.
 
 ## Output boundaries
 

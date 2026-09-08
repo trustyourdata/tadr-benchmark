@@ -26,8 +26,13 @@ or discover a target. The target repository is treated as read-only.
 Frozen artifacts include exact canonical reports and hashes, canonical scenario
 snapshots, all requested run records including warmups, environment inventory,
 the execution plan, summary, generated tables/figures/report and checksums.
-Generated source datasets remain in `.work/datasets/`; the future generator
-must reproduce them from the same scenario definitions and dependency versions.
+Generated source datasets remain in `.work/datasets/`; generators reproduce
+logical rows from the same family snapshots and versioned integer recipes.
+`logical_dataset_sha256` hashes canonical schema/ordered rows independently of
+container bytes; `source_file_sha256` hashes exact input bytes. CSV/string-Parquet
+equivalence can share the logical hash, while container hashes differ. Regenerated
+Parquet with changed serialization remains a different physical input even if its
+logical hash matches. Strict performance comparison requires identical source hashes.
 For artifacts too large for Git, a later explicit release mechanism should retain
 immutable manifest, checksums and release reference in the repository. Such an
 external-artifact transport is not implemented at bootstrap.
@@ -43,6 +48,14 @@ The full campaign runner is intentionally deferred. Once implemented and reviewe
 reproduction will use the archived revisions and execution plan on a controlled
 environment. Detection and score comparisons may span different environments;
 performance claims require explicit reviewed equivalence and identical protocol.
+
+The tracked source benchmark SHA stays null. Resolve a clean existing HEAD before
+execution and bind all success/failure records to that revision; freeze resolves
+and rechecks it. Initial schema/protocol versions remain 1.0 and package 0.1.0.
+Alpha prefers Linux x86_64, Python 3.11.9 and POLARS_MAX_THREADS=4. Its actual host,
+instrumentation validation and public target retrieval remain unresolved; it is
+PLANNED, with no measurements. Parquet writer behavior pins PyArrow 25.0.1;
+Polars is pinned to 1.44.1. These pins do not claim the future Linux host is validated.
 
 Current lightweight verification:
 

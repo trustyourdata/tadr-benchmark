@@ -1,14 +1,25 @@
 # Scenario corpus
 
-The Alpha scenario corpus will be designed in the next pass. No datasets or
-executed scenarios are included at bootstrap. Tiny harness fixtures are defined
-in tests and never registered as Alpha benchmark evidence.
+Phase 1 implements the approved 370-case Alpha corpus as versioned family
+specifications in `families/ALPHA_BENCHMARK_V1.json`. No campaign datasets or
+executed scenarios are included. Tiny software fixtures and small in-memory
+construction recounts are never registered as benchmark evidence.
 
-Future definitions use versioned YAML `ScenarioSpec` records organized into
-`clean`, `schema`, `quality`, `split`, `inference`, `leakage`, `composite` and
-`scale` families as applicable. Declare generator/injector versions, parameters,
-explicit randomness and independent expectations. A concrete scenario fixes
-one format, task and scale. Use new versions for changed content and retain
-historical snapshots in frozen campaigns.
+Each family declares an ID template and finite, explicit axes. Deterministic
+expansion produces strict `ScenarioSpec` objects with task roles, dimensions,
+versioned recipes, physical counts/masks and independent contract labels.
+The campaign's concrete ID inventory is checked against expansion. Freeze retains
+each expanded scenario snapshot and checksum, plus a typed expectations companion.
+Construction uses no RNG: algorithm and seed are explicitly null.
+
+Representations `csv` and `pqstr` share canonical string/null logical rows;
+`pqnative` is the separate native scale arm. Source-format values remain csv/parquet.
+The corpus contains 320 correctness cases, 36 sampling placements and 14 scale
+points. Measurement and lexical-name specificity challenges are excluded from the
+eight primary clean-control registrations; expected INFO Findings remain visible.
+
+Before a first public release/freeze, approved draft semantics can be corrected
+within initial version 1.0. Historical scenario snapshots must remain immutable
+once compatibility obligations begin. See the [Alpha benchmark protocol](../docs/alpha_benchmark_protocol.md).
 
 See [methodology](../docs/methodology.md) and [schema](../docs/result_schema.md).

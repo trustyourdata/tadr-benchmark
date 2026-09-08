@@ -11,7 +11,8 @@ def test_bootstrap_manifest_is_planned_and_not_executable():
     manifests = validate_repository(root)
     alpha = next(item for item in manifests if item.campaign_id == "ALPHA_BENCHMARK_V1")
     assert alpha.status == "planned"
-    assert alpha.scenario_ids == []
+    assert len(alpha.scenario_ids) == 370
+    assert alpha.benchmark_git_commit is None
     assert len(alpha.planned_scope.check_ids) == 11
     with pytest.raises(ValueError, match="not executable"):
         planned_runs(alpha, [])

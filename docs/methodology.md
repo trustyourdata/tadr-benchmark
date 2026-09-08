@@ -45,10 +45,10 @@ absences, unexpected Findings and gate agreement. A miss does not crash the
 harness. Unexpected Findings merit examination; they are not automatically false
 positives unless ground truth explicitly excludes that condition.
 
-Future precision, recall and false-positive-rate analyses must predeclare their
+Precision, recall and false-positive-rate analyses must predeclare their
 units and denominators: scenario, subject, defect instance or check opportunity.
 Report support counts and applicability exclusions. Undefined denominators stay
-undefined, not zero. This foundation reports expectation counts; it does not
+undefined, not zero. Current reporting provides expectation counts; it does not
 silently assign statistical meanings to them. Preserve failures and negative
 controls alongside favorable cases.
 
@@ -80,14 +80,17 @@ agreement, severity agreement on common Findings, confidence delta, readiness
 delta and total/category-risk deltas. Empty Finding sets agree at 1; severity
 agreement without common Findings is undefined.
 
-Later placement studies should include head, middle, tail and positions between
-selected strides. Avoid extrapolating from a few conveniently placed defects to
-all distributions. Full-data references may use chunked execution so long as
-the complete population is analyzed.
+The approved Alpha definitions include head, middle, tail and unselected-stride
+placements at 300k rows. Full-reference and bounded arms use logical planning
+budgets of 4096 and 256 MiB, respectively. Reference mode must actually be full;
+the bounded population must be 200k rows. The unchanged public target cannot
+provide full execution above 500k, so 1M/5M cases have no claimed full reference.
+Missingness, parse and timestamp counters use full scans even in sampled mode;
+duplicate, cardinality, class, entity and leakage statistics can depend on P.
 
 ## Performance, scale and robustness
 
-Choose a useful subset of the 10k/100k/1M/5M pilot candidates. Separate warmups
+The Alpha manifest fixes fourteen selected 10k/100k/1M/5M scale cases. Separate warmups
 from measured runs and preserve every requested record. Configure timeout,
 memory sampling interval, process scope and repetition policy explicitly.
 Measure wall time around target analysis, throughput as input rows/wall seconds,
@@ -105,6 +108,39 @@ Robustness studies may later vary column widths, skew, cardinality, malformed
 input and task/schema mismatch. Define expected infrastructure errors separately
 from valid reports that miss defects. No error is silently converted to a
 successful zero-risk record.
+
+## Alpha definitions and planned execution
+
+Versioned families deterministically expand to 370 concrete specifications, with
+320 correctness cases, 36 sampling placements and 14 scale points. The source
+manifest is PLANNED. Generators, injectors, independent annotations, serializers
+and validation are implemented; the live research runner is deferred. There are
+no measured results. The [Alpha benchmark protocol](alpha_benchmark_protocol.md) records the current
+execution prerequisites and source representation policies.
+
+Labels have three separate layers: physical conditions, pinned-Alpha normative
+expectations, and research challenges. The eight clean task/representation
+registrations define the primary clean-control denominator. Legitimate
+high-cardinality measurements and the lexical-name challenge are assessed
+separately for specificity; an expected INFO Finding is retained as contract
+conformance and never hidden or counted in the primary clean-control FP rate.
+Parser dominance loss, collapsed class support and nonreciprocal target encodings
+can be contract-conformant no-Findings while remaining sensitivity limitations.
+
+Planned precision/recall/FPR use predeclared check/subject opportunities and print
+numerators and denominators. Out-of-frame Findings, applicability guards, and
+undefined denominators are reported separately. Use standard-context repeat zero
+for detection; contexts/repeats and paired formats are correlated observations.
+No population confidence intervals, calibration or universal accuracy claims
+follow from this engineered corpus.
+
+Freeze distinguishes sound adverse target outcomes from broken infrastructure.
+Input rejection, target analysis failure and censored timeout/resource termination
+require independently validated inputs, typed safe codes and adjudication. They
+count toward terminal coverage and completed-report failure rates. Infrastructure
+failure, unknown context or missing monitor evidence blocks a freeze. Misses,
+false positives and canonical disagreement in otherwise valid reports remain
+research outcomes, with original observations preserved.
 
 ## Real-world data, ablations and statistical principles
 

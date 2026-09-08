@@ -52,3 +52,23 @@ def test_result_directory_conventions(tmp_path):
     assert contained(tmp_path, ".work/datasets/fixture.csv").is_relative_to(tmp_path)
     with pytest.raises(ValueError):
         campaign_directory(tmp_path, "../escape")
+
+
+def test_temporary_design_proposal_is_prohibited_even_if_force_added(tmp_path):
+    name = "ALPHA_BENCHMARK_V1_DESIGN_PROPOSAL.md"
+    (tmp_path / name).write_text("Temporary review artifact", encoding="utf-8")
+    assert scan_files(tmp_path, [name]) == [name+": prohibited artifact"]
+
+
+def test_generated_artifacts_ignored_and_intentional_sources_preserved():
+    import subprocess
+    from pathlib import Path
+    root = Path(__file__).parents[1]
+    ignored = [".work/datasets/input.parquet", ".work/runs/run.json", ".work/trace.log",
+               "benchmark.local.toml", "ALPHA_BENCHMARK_V1_DESIGN_PROPOSAL.md"]
+    public = ["results/campaigns/fixture_v1/manifest.json", "campaigns/ALPHA_BENCHMARK_V1.yaml",
+              "scenarios/families/ALPHA_BENCHMARK_V1.json", "tests/fixtures/intentional.csv"]
+    result = subprocess.run(["git", "check-ignore", "--no-index", "-z", "--stdin"], cwd=root,
+                            input=("\0".join(ignored+public)+"\0").encode(), capture_output=True, check=False)
+    assert result.returncode == 0
+    assert {part.decode() for part in result.stdout.split(b"\0") if part} == set(ignored)

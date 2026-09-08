@@ -43,7 +43,7 @@ def scan_files(root: Path, paths: list[str]) -> list[str]:
             continue
         if (set(parts) & forbidden_parts or path.name.startswith((".env", "benchmark.local.", "local_config."))
                 or path.suffix.lower() in forbidden_suffixes
-                or any(word in path.name.lower() for word in ("pasted-text", "review-artifact", "implementation-prompt"))):
+                or any(word in path.name.lower() for word in ("pasted-text", "review-artifact", "implementation-prompt", "design_proposal"))):
             issues.append(f"{relative}: prohibited artifact")
         if not path.is_file():
             continue

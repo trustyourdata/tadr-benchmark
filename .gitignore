@@ -229,6 +229,7 @@ __marimo__/
 .DS_Store
 Thumbs.db
 .work/
+/ALPHA_BENCHMARK_V1_DESIGN_PROPOSAL.md
 artifacts/
 tmp/
 temp/

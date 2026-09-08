@@ -6,7 +6,7 @@ independent ground truth, measurement contracts and public research artifacts.
 TADR Core (`tadr-core`, imported as `tadr`) is the reference implementation under
 evaluation.
 
-**Status: repository foundation. `ALPHA_BENCHMARK_V1` is PLANNED / NOT YET RUN.**
+**Status: Phase 1 infrastructure and scenario definitions. `ALPHA_BENCHMARK_V1` is PLANNED / NOT YET RUN.**
 There are no published benchmark measurements, generated campaign datasets or
 Alpha figures. The [results index](RESULTS.md) records campaign status and will
 link to immutable reports when campaigns have been executed and reviewed.
@@ -21,8 +21,9 @@ those questions with independently specified conditions and retains unfavorable
 outcomes as research evidence.
 
 TADR Core implements profiling, checks, Findings and scoring. This repository
-does not copy its formulas, reproduce its thresholds as evaluation logic or
-infer correctness from its own reports. The adapter calls the installed public
+does not copy its scoring formulas or infer ground truth from target reports.
+Pinned contract boundaries are independently authored experimental expectations,
+separate from physical-condition and research-challenge labels. The adapter calls the installed public
 `tadr.analyze` API and preserves the target's canonical report bytes. Ground
 truth is authored before target execution.
 
@@ -54,12 +55,12 @@ recalibrated implicitly by the benchmark.
 ## Architecture
 
 ```text
-Versioned ScenarioSpec
+Versioned family specifications -> concrete ScenarioSpec
   -> deterministic generator / injector
   -> DatasetArtifact + independent GroundTruth
   -> TargetAdapter
   -> instrumented execution / RunSpec
-  -> strict RunResult
+  -> strict RunResult or typed RunFailure
   -> evaluation / CampaignSummary
   -> tables, figures and REPORT.md
   -> immutable campaign / longitudinal comparison
@@ -67,9 +68,10 @@ Versioned ScenarioSpec
 
 The foundation implements strict models, declarative loaders, target transport,
 environment capture, expectation evaluation, aggregation, comparison eligibility,
-report generation and artifact freezing/verification. Generator, injector and
-instrumented executor interfaces define the next implementation boundary.
-**No Alpha generator corpus or live campaign runner is enabled yet.**
+report generation and artifact freezing/verification. Phase 1 adds selective
+execution groups, terminal outcome accounting, independent companions, 370
+expanded scenarios, deterministic generators/injectors and pinned source writers.
+**The live campaign runner and research execution remain deferred.**
 
 Repository areas:
 
@@ -77,7 +79,7 @@ Repository areas:
 | --- | --- |
 | `src/tadr_benchmark/` | Independent evaluation package |
 | `campaigns/` | Versioned campaign manifests |
-| `scenarios/` | Future declarative scenario corpus |
+| `scenarios/` | Versioned family specifications expanded into concrete scenarios |
 | `tests/` | Small harness fixtures and behavioral tests |
 | `docs/` | Methodology, schemas, versioning and reproducibility |
 | `.work/` | Ignored datasets, runs, logs, temporary figures and staging |
@@ -102,8 +104,11 @@ The current [Alpha manifest](campaigns/ALPHA_BENCHMARK_V1.yaml) describes eleven
 Check Set A checks, clean controls, single defects, composites and boundary
 studies. CSV and Parquet and classification, regression, time-series and analytics
 tasks are planned where applicable. Pilot scale candidates are 10k, 100k, 1M and
-5M rows. These are plans, not allocated runs. The scenario list and execution
-policies remain unset until the corpus and runner design pass.
+5M rows, plus 300k paired sampling and small support cases. The approved finite
+plan contains 320 correctness, 36 sampling and 14 scale scenarios; 578 primary
+analysis calls (13 warmups included) and 72 auxiliary diagnostic calls are planned.
+These are planned invocation counts, not measured results. See the
+[Alpha benchmark protocol](docs/alpha_benchmark_protocol.md).
 
 Once frozen, a campaign and its scenario snapshots are immutable. A new method
 requires a new campaign identity; changing a scenario requires a new version.
@@ -125,7 +130,7 @@ counts are not automatically interpreted as population precision or recall.
 Cross-version comparisons require matching scenario content, data, format, task,
 scale and semantic/measurement protocol. Detection and score comparisons can
 remain eligible across hardware. Runtime/RSS/throughput percentage comparisons
-additionally require explicitly approved equivalent environment classes. An
+additionally require the same exact source-file hash and explicitly approved equivalent environment classes. An
 environment fingerprint alone is not approval. Compare common historical
 scenarios separately from newly supported check families. Sampling comparisons
 have a separate full-reference-versus-`HEAD_STRIDE_V1` contract.
@@ -179,23 +184,26 @@ Inspect the machine-readable contracts with `tadr-benchmark schema RunResult`.
 
 ## Running future campaigns
 
-The next pass implements and reviews the actual scenario corpus and fresh-process
-runner. There is deliberately no `run` command in this bootstrap. After that
-review, select concrete scenarios and variants, pin both repositories, declare
-warmups/repeats/timeouts/RSS interval and determinism contexts, then move the
-manifest to `ready`. `planned_runs` derives a stable complete execution plan.
+The next phase implements and reviews the fresh-process runner. There is no
+`run` command. The source manifest keeps `benchmark_git_commit` null; clean-tree
+resolution records the existing HEAD in execution provenance and the frozen manifest.
+Alpha cannot become `ready` until the Linux x86_64 / Python 3.11.9 host is provisioned,
+instrumentation is validated, and target availability is explicitly resolved.
+`expand_run_plan` validates a finite plan without execution; `planned_runs` rejects PLANNED campaigns.
 All data and working outputs go under `.work/`.
 
 The freeze API accepts completed records, independent scenario specifications,
-environment records and original canonical reports. It requires a clean benchmark
-revision, complete run inventory and explicit publication review; it validates
+environment records, original canonical reports, typed terminal failures and
+required independent/observation companions. It requires a clean benchmark
+revision, complete terminal outcome inventory and explicit publication review; it validates
 and generates artifacts before creating a new frozen directory. It never executes
 the target. Generated figures and tables are functions of the same raw records.
 
 ## Reproducing frozen results
 
 No frozen campaigns exist yet. A future artifact contains `manifest.json`,
-`environment.json`, `run_specs.json`, `runs.jsonl`, `summary.json`, scenario and
+`environment.json`, `run_specs.json`, `runs.jsonl`, `failures.jsonl`, typed label,
+dataset identity, instrumentation and diagnostic companions, `summary.json`, scenario and
 canonical report snapshots, tables, figures, `REPORT.md` and `checksums.sha256`.
 Verify it with `tadr-benchmark verify-frozen results/campaigns/<campaign>` and use
 its exact revisions, dependencies and execution plan with the future runner.
@@ -225,7 +233,7 @@ prevalence, fairness, downstream model quality or production suitability.
 Deterministic sampling can miss adversarially placed defects; sampled RSS can
 miss short-lived peaks. Harness test success is not a scientific benchmark result.
 
-1. Review this foundation, then implement and run `ALPHA_BENCHMARK_V1` explicitly.
+1. Review Phase 1, then implement the runner and authorize `ALPHA_BENCHMARK_V1` execution separately.
 2. Evaluate complete Algorithm v1 in `TADR_BENCHMARK_V1` with an expanded corpus.
 3. Evaluate optimized Algorithm v1 in `TADR_BENCHMARK_V1_FINAL_RESULTS` while
    preserving the common historical subset.
