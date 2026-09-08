@@ -5,6 +5,27 @@ There is no campaign execution in pull-request CI. PLANNED manifests cannot run,
 and the execution API never publishes or freezes results. Alpha still requires
 its approved Linux host, instrumentation validation and target provenance.
 
+## Execution schedule
+
+Canonical RunSpecs remain sorted by stable run ID in persisted plans and ledger
+bindings. The runner traverses a separate deterministic schedule: correctness,
+ordinary sampling reference/bounded pairs, small determinism, sampled determinism,
+regular scale, then 5M scale. Reordering does not change RunSpec or attempt identity.
+
+Correctness and sampling scenarios use scenario-ID order, with the reference arm
+first in each ordinary sampling pair. The two sampled-determinism cases receive
+their bounded arm in the later determinism block. Determinism uses scenario-ID
+order and contexts standard, hash_one, hash_fortytwo, timezone_berlin, decimal_low,
+decimal_high, with repeat zero before repeat one.
+
+Scale cells are ordered by rows, columns, task, representation and stable
+scenario/variant/context identity. Each regular cell runs warmup zero followed
+contiguously by measurements zero, one and two. The 5M cell runs only measurements
+zero and one. Auxiliary diagnostics remain attached to eligible successful sampling
+primaries outside timing. Resume traverses the same schedule, validates existing
+bindings and returns selected outcomes without invoking the target again; it does
+not repeat completed warmups or add measurements.
+
 ## Worker and measurement barriers
 
 The supervisor starts a new interpreter for every primary invocation. Hash seed,

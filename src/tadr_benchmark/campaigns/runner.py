@@ -12,6 +12,7 @@ from ..paths import contained
 from ..serialization import canonical_bytes, sha256
 from ..validation import planned_runs
 from .freeze import resolve_manifest
+from .schedule import execution_schedule
 
 
 def run_campaign(root: Path, manifest: CampaignManifest, scenarios: list[ScenarioSpec], *, local_checkout: Path | None = None):
@@ -22,6 +23,7 @@ def run_campaign(root: Path, manifest: CampaignManifest, scenarios: list[Scenari
     """
     manifest = resolve_manifest(root, manifest)
     specs = planned_runs(manifest, scenarios)
+    schedule = execution_schedule(manifest, scenarios, specs)
     environment = capture_environment()
     if environment.python_version != manifest.python_version:
         raise ValueError("execution Python differs from manifest")
@@ -35,7 +37,7 @@ def run_campaign(root: Path, manifest: CampaignManifest, scenarios: list[Scenari
                "scenarios_sha256": sha256(canonical_bytes([s.model_dump(mode="json") for s in sorted(scenarios, key=lambda s: s.scenario_id)]))}
     by_id = {s.scenario_id: s for s in scenarios}
     with RunLedger(directory / "ledger", specs, binding) as ledger:
-        for spec in specs:
+        for spec in schedule:
             scenario = by_id[spec.scenario_id]
             outcome = execute_run(root, manifest, spec, scenario, environment, ledger, local_checkout=local_checkout)
             if isinstance(outcome, RunFailure) and outcome.failure_kind == "infrastructure":
