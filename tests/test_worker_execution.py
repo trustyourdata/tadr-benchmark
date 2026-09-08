@@ -116,12 +116,28 @@ def test_timeout_terminates_tree_without_success_fields(controlled_worker):
 def test_rss_guardian_terminates_controlled_allocation(controlled_worker):
     directory, source, run, request = controlled_worker
     baseline = invoke_worker(run, request, cwd=directory)
-    source.write_text(json.dumps({"allocation_bytes": 64*1024**2, "sleep": 60}), encoding="utf-8")
+    source.write_text(json.dumps({"child_bytes": 64*1024**2, "sleep": 60}), encoding="utf-8")
     threshold = baseline.instrumentation.baseline_rss_bytes+24*1024**2
     result = invoke_worker(run, request, cwd=directory, rss_limit_bytes=threshold)
     assert result.failure_kind == "resource_abort"
     assert result.runtime_ns is None and result.original_report is None
     assert result.policy_limit == threshold
+    assert not psutil.pid_exists(int(source.with_suffix(".child").read_text()))
+
+
+def test_cleanup_failure_is_safe_infrastructure_outcome(controlled_worker, monkeypatch):
+    from tadr_benchmark.execution.process_tree import ProcessTree, ProcessCleanupError
+    directory, source, run, request = controlled_worker
+    original_close = ProcessTree.close
+    def failed_verification(tree):
+        original_close(tree)
+        raise ProcessCleanupError("worker session termination barrier failed")
+    monkeypatch.setattr(ProcessTree, "close", failed_verification)
+    result = invoke_worker(run, request, cwd=directory)
+    assert (result.failure_kind, result.stage, result.error_code) == ("infrastructure", "monitor", "instrumentation")
+    assert result.original_report is None and result.runtime_ns is None
+    assert result.instrumentation.terminal_state == "failure"
+    assert result.exception_class is None
 
 
 def test_safe_target_failure_never_exposes_message(controlled_worker):

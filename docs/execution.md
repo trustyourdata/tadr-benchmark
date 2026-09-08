@@ -28,6 +28,17 @@ not repeat completed warmups or add measurements.
 
 ## Worker and measurement barriers
 
+Linux cleanup retains the dedicated session identity established at worker
+creation. It signals the session's process groups and waits for group disappearance,
+including when the direct worker has already exited. The existing two-second
+graceful and five-second forced cleanup waits bound this termination barrier;
+elapsed time alone never establishes completion. Cleanup is idempotent after
+success, rejects an observed reused leader identity, and reports an unverifiable
+or incomplete barrier as an infrastructure instrumentation failure. Internal
+session/process identifiers never enter public observations. Windows retains its
+Job Object and descendant cleanup path. These cleanup waits do not change the
+analysis timeout, RSS guardian or measurement brackets.
+
 The supervisor starts a new interpreter for every primary invocation. Hash seed,
 timezone and four Polars threads are supplied at process creation; timezone and
 Decimal context are applied and verified before importing the public `tadr` API.
