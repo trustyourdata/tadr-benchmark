@@ -1,0 +1,30 @@
+name: CI
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  foundation:
+    strategy:
+      matrix:
+        python: ['3.11', '3.12']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -e '.[test]'
+      - run: python -m pytest --tb=short
+      - run: python -m pip check
+      - run: git diff --check
+      - run: python -m tadr_benchmark.cli validate
+      - run: python -m tadr_benchmark.cli results-index --check
+      - name: Preserve frozen history
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_REVISION: ${{ github.event.pull_request.base.sha }}
+        run: python -m tadr_benchmark.cli verify-history "$BASE_REVISION"
