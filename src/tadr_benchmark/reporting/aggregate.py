@@ -1,0 +1,41 @@
+from collections import defaultdict
+from statistics import median
+
+from ..models import CampaignSummary, RunResult, SummaryGroup
+from ..serialization import canonical_bytes, sha256
+
+
+def run_bytes(runs: list[RunResult]) -> bytes:
+    if len({run.run_id for run in runs}) != len(runs):
+        raise ValueError("duplicate run IDs")
+    return b"".join(canonical_bytes(run) for run in sorted(runs, key=lambda item: item.run_id))
+
+
+def aggregate(campaign_id: str, runs: list[RunResult]) -> CampaignSummary:
+    groups = defaultdict(list)
+    for run in runs:
+        if run.campaign_id != campaign_id:
+            raise ValueError("mixed campaigns")
+        if run.phase == "measurement":
+            groups[(run.scenario_id, run.scenario_version, run.analysis_variant, run.environment_id)].append(run)
+    if not groups:
+        raise ValueError("no measured runs to summarize")
+    summaries = []
+    for (scenario, version, variant, environment), members in sorted(groups.items()):
+        times = [item.runtime_seconds for item in members]
+        center = median(times)
+        summaries.append(SummaryGroup(
+            scenario_id=scenario, scenario_version=version, analysis_variant=variant,
+            environment_id=environment, measured_runs=len(members),
+            runtime_median_seconds=float(center), runtime_min_seconds=min(times),
+            runtime_max_seconds=max(times), runtime_mad_seconds=float(median(abs(t-center) for t in times)),
+            throughput_median_rows_per_second=float(median(item.throughput_rows_per_second for item in members)),
+            peak_rss_median_bytes=float(median(item.peak_rss_bytes for item in members)),
+            readiness_min=min(item.readiness_score for item in members),
+            readiness_max=max(item.readiness_score for item in members),
+            matched_expectations=sum(len(item.detection_outcome.matched_expectations) for item in members),
+            missed_expectations=sum(len(item.detection_outcome.missed_expectations) for item in members),
+            absent_violations=sum(len(item.detection_outcome.violated_absent_expectations) for item in members),
+            unexpected_findings=sum(len(item.detection_outcome.unexpected_finding_ids) for item in members),
+            deterministic=len({item.canonical_report_sha256 for item in members}) == 1))
+    return CampaignSummary(campaign_id=campaign_id, run_data_sha256=sha256(run_bytes(runs)), groups=summaries)

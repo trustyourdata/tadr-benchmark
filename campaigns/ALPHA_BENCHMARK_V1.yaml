@@ -1,0 +1,48 @@
+campaign_id: ALPHA_BENCHMARK_V1
+status: planned
+benchmark_protocol_version: '1.0'
+scenario_set_version: '1.0'
+result_schema_version: '1.0'
+target_name: tadr-core
+target_package_version: '0.1.0'
+target_git_commit: '136664f41597e1878e91b9b7cf0699b94f4122c1'
+target_repository_url_or_null: null
+target_algorithm_version: '1.0'
+target_threshold_profile: MVP_V1
+target_bundle_protocol: '1.0'
+target_baseline_revision: '1.0.12'
+python_version: null
+benchmark_package_version: '0.1.0'
+benchmark_git_commit: null
+reproducibility_status: unverified
+formats: [csv, parquet]
+task_types: [classification, regression, time_series, analytics]
+scale_matrix: [10000, 100000, 1000000, 5000000]
+repeat_policy: null
+instrumentation_policy: null
+scenario_ids: []
+determinism_cases: []
+analysis_variants: []
+planned_scope:
+  check_ids:
+    - schema.parse_failures
+    - schema.datetime_unparseable
+    - schema.id_like_high_cardinality
+    - quality.high_missingness
+    - quality.duplicates
+    - quality.class_imbalance
+    - split.time_series_requires_time_split
+    - split.group_split_recommended
+    - split.group_leakage_risk
+    - inference.missing_at_inference
+    - leakage.target_direct
+  scenario_families: [clean, schema, quality, split, inference, leakage, composite, scale]
+  studies: [detection, negative_controls, threshold_boundaries, scores, hard_gates,
+            determinism, runtime, throughput, peak_rss, bounded_sampling]
+  notes: >-
+    PLANNED / NOT YET RUN. Core Alpha Check Set A only; fixed MVP_V1 thresholds.
+    The revision is an observed candidate, not evidence of an executed campaign
+    or a publicly retrievable target. Public availability is unverified.
+    Scenario definitions, selected scale/task/format combinations, repetition
+    counts, instrumentation and determinism contexts require the next design pass.
+    The scale matrix describes pilot scope and does not request a Cartesian product.
