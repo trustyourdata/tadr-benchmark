@@ -69,6 +69,7 @@ def test_planned_alpha_runner_cannot_invoke_target(monkeypatch):
     from tadr_benchmark.campaigns.runner import run_campaign
     root = Path(__file__).parents[1]
     manifest = load_campaign(root / "campaigns" / "ALPHA_BENCHMARK_V1.yaml")
+    manifest = manifest.model_copy(update={"status": "planned"})
     def forbidden(*args, **kwargs):
         raise AssertionError("PLANNED campaign reached target execution")
     monkeypatch.setattr("tadr_benchmark.campaigns.runner.execute_run", forbidden)

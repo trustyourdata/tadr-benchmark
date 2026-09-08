@@ -17,18 +17,27 @@ def alpha():
     return load_campaign(Path(__file__).parents[1] / "campaigns/ALPHA_BENCHMARK_V1.yaml")
 
 
-def test_planned_alpha_has_public_identity_and_unresolved_artifact(alpha):
-    assert alpha.status == "planned"
+def test_ready_alpha_has_verified_public_identity(alpha):
+    assert alpha.status == "ready"
     assert {k: getattr(alpha, k) for k in TargetMetadata.model_fields} == {
         "target_name": "tadr-core", "target_package_version": "0.1.0",
         "target_source_distribution": "proprietary", "target_repository_url_or_null": None,
-        "target_installation_artifact_sha256": None, "target_algorithm_version": "1.0",
+        "target_installation_artifact_sha256": "a37ec8d336d16dbe4b7a7448071808daaf5e3e0ab03afe3bb7de0ce6882bc31d",
+        "target_algorithm_version": "1.0",
         "target_threshold_profile": "MVP_V1", "target_bundle_protocol": "1.0", "target_baseline_revision": "1.0.12"}
-    assert not alpha.execution_readiness.target_artifact_verified
-    assert not alpha.execution_readiness.target_metadata_verified
-    assert not alpha.execution_readiness.host_provisioned
-    assert not alpha.execution_readiness.instrumentation_validated
+    assert alpha.execution_readiness.target_artifact_verified
+    assert alpha.execution_readiness.target_metadata_verified
+    assert alpha.execution_readiness.host_provisioned
+    assert alpha.execution_readiness.instrumentation_validated
     assert alpha.benchmark_git_commit is None
+
+
+def test_planned_metadata_can_still_leave_artifact_unresolved(alpha):
+    planned = CampaignManifest.model_validate({**alpha.model_dump(), "status": "planned",
+        "target_installation_artifact_sha256": None, "execution_readiness": {
+            **alpha.execution_readiness.model_dump(), "target_artifact_verified": False,
+            "target_metadata_verified": False, "host_provisioned": False, "instrumentation_validated": False}})
+    assert planned.target_installation_artifact_sha256 is None
 
 
 @pytest.mark.parametrize("status", ["ready", "frozen"])
@@ -77,15 +86,21 @@ def test_artifact_fingerprint_rejects_non_sha256_values(alpha, value):
         CampaignManifest.model_validate({**alpha.model_dump(), "target_installation_artifact_sha256": value})
 
 
-def test_report_and_registry_distinguish_public_method_from_proprietary_artifact(tmp_path, alpha, campaign, completed):
+@pytest.mark.parametrize("status", ["planned", "ready"])
+def test_report_and_registry_distinguish_public_method_from_proprietary_artifact(tmp_path, alpha, campaign, completed, status):
     report = campaign_report(campaign, aggregate(campaign.campaign_id, completed[0]))
     assert "TADR Core implementation is proprietary" in report
     assert "cannot rebuild the evaluated implementation from public source" in report
     assert campaign.target_installation_artifact_sha256 in report
     assert "neither the proprietary artifact nor its source code" in report
+    if status == "planned":
+        alpha = CampaignManifest.model_validate({**alpha.model_dump(), "status": status,
+                                                "target_installation_artifact_sha256": None})
     index = results_index(tmp_path, [alpha])
-    assert "Not run | Proprietary target; artifact pending | Not available" in index
-    assert "PLANNED / NOT YET RUN" in index
+    fingerprint = "artifact fingerprinted" if status == "ready" else "artifact pending"
+    assert f"Not run | Proprietary target; {fingerprint} | Not available" in index
+    assert f"{status.upper()} / NOT YET RUN" in index
+    assert f"0.1.0 ({status})" in index
     for name, text in [("REPORT.md", report), ("RESULTS.md", index), ("manifest.json", alpha.model_dump_json())]:
         (tmp_path / name).write_text(text, encoding="utf-8")
     assert scan_files(tmp_path, ["REPORT.md", "RESULTS.md", "manifest.json"]) == []

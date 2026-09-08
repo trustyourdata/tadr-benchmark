@@ -112,11 +112,14 @@ def results_index(root: Path, manifests: list[CampaignManifest]) -> str:
         if manifest.campaign_id not in frozen_ids:
             provenance = ("Proprietary target; artifact fingerprinted" if manifest.target_installation_artifact_sha256
                           else "Proprietary target; artifact pending")
-            rows.append(f"| {manifest.campaign_id} | {manifest.target_package_version} (planned) | "
-                        f"{manifest.target_algorithm_version} | planned scope only | Not run | {provenance} | Not available |")
+            scope = "approved scope; not run" if manifest.status == "ready" else "planned scope only"
+            rows.append(f"| {manifest.campaign_id} | {manifest.target_package_version} ({manifest.status}) | "
+                        f"{manifest.target_algorithm_version} | {scope} | Not run | {provenance} | Not available |")
     rows.extend(["", "## Core Alpha — ALPHA_BENCHMARK_V1", ""])
     if "ALPHA_BENCHMARK_V1" not in frozen_ids:
-        rows.extend(["**PLANNED / NOT YET RUN.** No benchmark measurements or figures have been published.", "",
+        alpha = next((m for m in manifests if m.campaign_id == "ALPHA_BENCHMARK_V1"), None)
+        state = alpha.status.upper() if alpha else "PLANNED"
+        rows.extend([f"**{state} / NOT YET RUN.** No benchmark measurements or figures have been published.", "",
                      "The planned scope covers Check Set A, clean controls, boundary behavior, scores, "
                      "hard gates, determinism, bounded sampling, runtime, throughput and peak RSS.", ""])
     else:

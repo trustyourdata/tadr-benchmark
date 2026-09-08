@@ -1,13 +1,13 @@
 {
   "campaign_id": "ALPHA_BENCHMARK_V1",
-  "status": "planned",
+  "status": "ready",
   "benchmark_protocol_version": "1.0",
   "scenario_set_version": "1.0",
   "result_schema_version": "1.0",
   "target_name": "tadr-core",
   "target_package_version": "0.1.0",
   "target_repository_url_or_null": null,
-  "target_installation_artifact_sha256": null,
+  "target_installation_artifact_sha256": "a37ec8d336d16dbe4b7a7448071808daaf5e3e0ab03afe3bb7de0ce6882bc31d",
   "target_algorithm_version": "1.0",
   "target_threshold_profile": "MVP_V1",
   "target_bundle_protocol": "1.0",
@@ -789,7 +789,7 @@
       "peak_rss",
       "limitations"
     ],
-    "notes": "PLANNED / NOT YET RUN. Exactly 370 scenarios, 578 primary calls including 13 warmups and 72 auxiliary diagnostic calls are planned. The evaluated TADR Core implementation is proprietary; its source and installation artifact are not distributed by this repository. READY requires an available fingerprinted artifact and verified installed target metadata; no public source rebuild is claimed. The execution environment remains unvalidated. Source benchmark revision and installation-artifact fingerprint remain null until execution preparation."
+    "notes": "READY / NOT YET RUN. The approved design contains 370 scenarios, 578 primary RunSpecs including 13 warmups and 565 measured primary calls, and 72 nominal auxiliary diagnostics. The proprietary target installation artifact and installed metadata are verified. The approved execution environment is Ubuntu 24.04 under WSL2, Linux x86_64, Python 3.11.9, POLARS_MAX_THREADS=4, with WSL-native ext4 scientific storage and validated instrumentation. The proprietary artifact and source are not distributed by this repository; no public source rebuild is claimed. Source benchmark revision remains null; execution resolves the final clean committed HEAD into runtime/frozen provenance. Scientific-methodology changes after READY require explicit new review."
   },
   "frozen_date": null,
   "execution_readiness": {
@@ -797,10 +797,10 @@
     "architecture": "x86_64",
     "python_version": "3.11.9",
     "polars_max_threads": 4,
-    "host_provisioned": false,
-    "instrumentation_validated": false,
-    "target_artifact_verified": false,
-    "target_metadata_verified": false
+    "host_provisioned": true,
+    "instrumentation_validated": true,
+    "target_artifact_verified": true,
+    "target_metadata_verified": true
   },
   "target_source_distribution": "proprietary"
 }

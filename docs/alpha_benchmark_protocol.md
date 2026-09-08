@@ -1,6 +1,9 @@
 # Alpha benchmark protocol
 
-**ALPHA_BENCHMARK_V1: PLANNED / NOT YET RUN. No benchmark measurements exist.**
+**ALPHA_BENCHMARK_V1: READY / NOT YET RUN. No benchmark measurements exist.**
+
+The scientific design is fixed for this READY campaign. Scientific-methodology
+changes require explicit new review.
 
 This document specifies the Alpha campaign inventory, source representations and
 execution protocol. Scenario definitions and supporting infrastructure are
@@ -128,7 +131,7 @@ The approved Core package/algorithm/profile/bundle/baseline metadata remain fixe
 The implementation is proprietary, with no public source URL or source-rebuild
 claim. READY requires an available fingerprinted installation artifact and verified
 installed target metadata, together with a validated scientific execution host.
-The artifact fingerprint remains null while PLANNED. See the
+The manifest records the verified artifact fingerprint and execution readiness. See the
 [reproducibility boundary](reproducibility.md).
 
 Execution and publication require review before measured tables or figures are

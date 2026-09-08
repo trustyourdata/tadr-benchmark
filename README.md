@@ -6,7 +6,7 @@ independent ground truth, measurement contracts and public research artifacts.
 TADR Core (`tadr-core`, imported as `tadr`) is the reference implementation under
 evaluation.
 
-**Status: Experimental framework. `ALPHA_BENCHMARK_V1` is PLANNED / NOT YET RUN.**
+**Status: Experimental framework. `ALPHA_BENCHMARK_V1` is READY / NOT YET RUN.**
 There are no published benchmark measurements, generated campaign datasets or
 Alpha figures. The [results index](RESULTS.md) records campaign status and will
 link to immutable reports when campaigns have been executed and reviewed.
@@ -204,10 +204,12 @@ It covers two 10k inputs, one 300k full/bounded pair and 100k inputs with 20 and
 The explicit `campaigns.runner.run_campaign` API uses fresh workers and a verified
 resume ledger. There is no `run` CLI command. The source manifest keeps `benchmark_git_commit` null; clean-tree
 resolution records the existing HEAD in execution provenance and the frozen manifest.
-Alpha cannot become `ready` until the Linux x86_64 / Python 3.11.9 host is provisioned
-and instrumentation is validated. READY also requires an available, fingerprinted
-installation artifact and verified target metadata. Proprietary source distribution
-does not block READY; an unresolved executable artifact does.
+Alpha is READY / NOT YET RUN for the validated Ubuntu 24.04 WSL2 execution
+environment: Linux x86_64, Python 3.11.9, POLARS_MAX_THREADS=4 and WSL-native
+ext4 scientific storage. The manifest records verified instrumentation, target
+metadata and the exact private installation-artifact SHA-256. Scientific-methodology
+changes after READY require explicit new review. Execution still resolves the
+final clean committed benchmark HEAD; the tracked source SHA remains null.
 `expand_run_plan` validates a finite plan without execution; `planned_runs` rejects PLANNED campaigns.
 All data and working outputs go under `.work/`.
 

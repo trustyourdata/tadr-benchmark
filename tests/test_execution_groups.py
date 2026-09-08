@@ -101,7 +101,7 @@ def test_alpha_cannot_be_ready_on_unprovisioned_host():
     campaign = load_campaign(ROOT / "campaigns/ALPHA_BENCHMARK_V1.yaml")
     with pytest.raises(ValidationError, match="provisioned"):
         CampaignManifest.model_validate({**campaign.model_dump(), "status": "ready",
-                                         "target_installation_artifact_sha256": "a" * 64})
+            "execution_readiness": {**campaign.execution_readiness.model_dump(), "host_provisioned": False}})
 
 
 def test_initial_versions_reject_unapproved_bumps(campaign):

@@ -67,8 +67,8 @@ verification. Keep the private revision-to-build record outside public artifacts
 A missing artifact, unresolved/mismatched fingerprint, unverified metadata or
 unvalidated execution environment blocks scientific execution. Proprietary source
 distribution limits source-level reproduction claims; it does not block READY.
-No exact Alpha execution artifact has been selected here, so its fingerprint and
-verification flags remain unresolved and its status remains PLANNED.
+Alpha's exact execution artifact and installed metadata are verified, and the
+manifest records its fingerprint and readiness flags. Alpha is READY / NOT YET RUN.
 
 Frozen artifacts include exact canonical reports and hashes, canonical scenario
 snapshots, all requested run records including warmups, environment inventory,
@@ -102,10 +102,12 @@ performance claims require explicit reviewed equivalence and identical protocol.
 The tracked source benchmark SHA stays null. Resolve a clean existing HEAD before
 execution and bind all success/failure records to that revision; freeze resolves
 and rechecks it. Initial schema/protocol versions remain 1.0 and package 0.1.0.
-Alpha prefers Linux x86_64, Python 3.11.9 and POLARS_MAX_THREADS=4. Its actual host
-and instrumentation validation remain unresolved; it is PLANNED, with no
-measurements. Parquet writer behavior pins PyArrow 25.0.1;
-Polars is pinned to 1.44.1. These pins do not claim the future Linux host is validated.
+Alpha's validated execution environment is Ubuntu 24.04 under WSL2, Linux x86_64,
+Python 3.11.9 and POLARS_MAX_THREADS=4, with WSL-native ext4 scientific storage.
+Its host and instrumentation gates are satisfied; it is READY / NOT YET RUN,
+with no measurements. WSL2 performance is environment-specific; equivalence to
+native Linux is not claimed. Parquet writer behavior pins PyArrow 25.0.1;
+Polars is pinned to 1.44.1.
 
 Current lightweight verification:
 
