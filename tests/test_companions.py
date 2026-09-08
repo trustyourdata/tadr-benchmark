@@ -5,6 +5,7 @@ from tadr_benchmark.campaigns.companions import validate_companions
 from tadr_benchmark.companions import (DatasetIdentity, InstrumentationRecord,
                                       ScenarioExpectations)
 from tadr_benchmark.serialization import canonical_bytes, sha256
+from tadr_benchmark.execution.attempts import make_attempt
 
 
 @pytest.fixture
@@ -30,7 +31,8 @@ def test_typed_companions_freeze_round_trip(campaign, scenario, completed, envir
     monkeypatch.setattr(publication, "require_clean_revision", lambda *args: "b"*40)
     monkeypatch.setattr(publication, "repository_issues", lambda *args, **kwargs: [])
     directory = publication.freeze(tmp_path, campaign, [scenario], completed[0],
-        {environment.environment_id: environment}, completed[1], "2026-01-01", public_reviewed=True, **companions)
+        {environment.environment_id: environment}, completed[1], "2026-01-01", public_reviewed=True,
+        attempts=[make_attempt(r, instrumentation=m) for r, m in zip(completed[0], companions["instrumentation"])], **companions)
     publication.verify_frozen(directory)
     for name in ("expectations.json", "dataset_manifest.json", "instrumentation.jsonl", "failures.jsonl"):
         assert name in (directory / "checksums.sha256").read_text()

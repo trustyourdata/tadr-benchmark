@@ -11,11 +11,14 @@ from ..companions import (DatasetIdentity, DiagnosticRecord, InstrumentationReco
 from .companions import validate_companions
 from ..paths import campaign_directory, contained
 from ..reporting.aggregate import aggregate, run_bytes
-from ..reporting.figures import write_runtime_figure
 from ..reporting.markdown import campaign_report
 from ..reporting.tables import summary_csv
+from ..reporting.queries import ReportInputs, TABLE_COLUMNS, csv_bytes, table_rows
+from ..reporting.plots import build_figures
+from ..reporting.protocol import protocol_bytes
 from ..safety import repository_issues, scan_files
 from ..serialization import canonical_bytes, sha256
+from ..execution.attempts import AttemptRecord, attempt_bytes, validate_attempts
 from ..validation import planned_runs, validate_completed, validate_historical_scenarios
 
 
@@ -69,9 +72,21 @@ def validate_reports(runs: list[RunResult], reports: dict[str, bytes]) -> None:
             raise ValueError("result gates or remediations differ from report")
 
 
+def validate_observation_bindings(attempts, instrumentation, diagnostics, reports):
+    monitors = {i.run_id: i for i in instrumentation}
+    for attempt in attempts:
+        if attempt.selected_as_final_outcome and monitors and attempt.instrumentation != monitors.get(attempt.run_id):
+            raise ValueError("selected attempt instrumentation differs from authoritative monitor")
+    for diagnostic in diagnostics:
+        profile = json.loads(reports[diagnostic.primary_run_id])["dataset_profile"]
+        if diagnostic.shared_profile_sha256 != sha256(canonical_bytes(profile)):
+            raise ValueError("diagnostic shared profile hash differs from primary report")
+
+
 def freeze(root: Path, manifest: CampaignManifest, scenarios: list[ScenarioSpec],
            runs: list[RunResult], environments: dict[str, EnvironmentInfo],
            reports: dict[str, bytes], frozen_date: str, *, public_reviewed: bool,
+           attempts: list[AttemptRecord],
            failures: list[RunFailure] | None = None,
            expectations: list[ScenarioExpectations] | None = None,
            datasets: list[DatasetIdentity] | None = None,
@@ -93,8 +108,12 @@ def freeze(root: Path, manifest: CampaignManifest, scenarios: list[ScenarioSpec]
     validate_companions(manifest, scenarios, runs, failures, expectations, datasets, instrumentation, diagnostics)
     validate_historical_scenarios(root, scenarios)
     validate_reports(runs, reports)
-    summary = aggregate(manifest.campaign_id, runs, failures)
+    validate_attempts(planned_runs(manifest, scenarios), attempts, runs, failures)
+    validate_observation_bindings(attempts, instrumentation, diagnostics, reports)
+    summary = aggregate(manifest.campaign_id, runs, failures, attempts)
     frozen = CampaignManifest.model_validate({**manifest.model_dump(), "status": "frozen", "frozen_date": frozen_date})
+    derived_tables = table_rows(ReportInputs(frozen, scenarios, runs, failures, reports, attempts, expectations, diagnostics))
+    figures = build_figures(derived_tables)
     work = contained(root, ".work/freeze")
     work.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(dir=work) as temporary:
@@ -106,12 +125,16 @@ def freeze(root: Path, manifest: CampaignManifest, scenarios: list[ScenarioSpec]
             "summary.json": canonical_bytes(summary),
             "runs.jsonl": run_bytes(runs),
             "failures.jsonl": run_bytes(failures),
+            "attempts.jsonl": attempt_bytes(attempts),
             "expectations.json": canonical_bytes([e.model_dump(mode="json") for e in sorted(expectations, key=lambda e: e.scenario_id)]),
             "dataset_manifest.json": canonical_bytes([d.model_dump(mode="json") for d in sorted(datasets, key=lambda d: d.scenario_id)]),
             "instrumentation.jsonl": b"".join(canonical_bytes(i) for i in sorted(instrumentation, key=lambda i: i.run_id)),
             "run_specs.json": canonical_bytes([run.model_dump(mode="json") for run in planned_runs(manifest, scenarios)]),
             "tables/summary.csv": summary_csv(summary).encode("utf-8"),
-            "REPORT.md": campaign_report(frozen, summary).encode("utf-8"),
+            **{f"tables/{name}": csv_bytes(TABLE_COLUMNS[name], data) for name, data in derived_tables.items()},
+            **{f"figures/{name}": data for name, data in figures.items()},
+            "protocol.md": protocol_bytes(frozen),
+            "REPORT.md": campaign_report(frozen, summary, tables=derived_tables, figures=figures).encode("utf-8"),
             **{f"scenarios/{scenario.scenario_id}.json": canonical_bytes(scenario) for scenario in scenarios},
             **{f"reports/{run_id}.json": data for run_id, data in reports.items()},
             **{f"diagnostics/{d.primary_run_id}.json": canonical_bytes(d) for d in diagnostics},
@@ -120,9 +143,6 @@ def freeze(root: Path, manifest: CampaignManifest, scenarios: list[ScenarioSpec]
             path = contained(stage, relative)
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(data)
-        if summary.groups:
-            (stage / "figures").mkdir()
-            write_runtime_figure(summary, stage / "figures" / "runtime.svg")
         files = sorted(path.relative_to(stage).as_posix() for path in stage.rglob("*") if path.is_file())
         if scan_files(stage, files):
             raise ValueError("generated artifacts failed public-safety scan")
@@ -165,6 +185,7 @@ def verify_frozen(directory: Path, *, check_directory_name: bool = True) -> tupl
                  for path in sorted((directory / "scenarios").glob("*.json"))]
     runs = [RunResult.model_validate_json(line) for line in (directory / "runs.jsonl").read_bytes().splitlines()]
     failures = [RunFailure.model_validate_json(line) for line in (directory / "failures.jsonl").read_bytes().splitlines()]
+    attempts = [AttemptRecord.model_validate_json(line) for line in (directory / "attempts.jsonl").read_bytes().splitlines()]
     expectations = [ScenarioExpectations.model_validate_json(json.dumps(item)) for item in
                     json.loads((directory / "expectations.json").read_bytes())]
     datasets = [DatasetIdentity.model_validate_json(json.dumps(item)) for item in
@@ -176,17 +197,34 @@ def verify_frozen(directory: Path, *, check_directory_name: bool = True) -> tupl
     environments = {key: EnvironmentInfo.model_validate_json(json.dumps(value)) for key, value in
                     json.loads((directory / "environment.json").read_bytes()).items()}
     validate_completed(manifest, scenarios, runs, environments, failures)
+    validate_attempts(planned_runs(manifest, scenarios), attempts, runs, failures)
     validate_companions(manifest, scenarios, runs, failures, expectations, datasets, instrumentation, diagnostics)
     if (directory / "run_specs.json").read_bytes() != canonical_bytes(
             [run.model_dump(mode="json") for run in planned_runs(manifest, scenarios)]):
         raise ValueError("frozen execution plan mismatch")
-    validate_reports(runs, {path.stem: path.read_bytes() for path in (directory / "reports").glob("*.json")})
+    reports = {path.stem: path.read_bytes() for path in (directory / "reports").glob("*.json")}
+    validate_reports(runs, reports)
+    validate_observation_bindings(attempts, instrumentation, diagnostics, reports)
     summary = CampaignSummary.model_validate_json((directory / "summary.json").read_bytes())
-    if summary != aggregate(manifest.campaign_id, runs, failures):
+    if summary != aggregate(manifest.campaign_id, runs, failures, attempts):
         raise ValueError("frozen summary does not derive from run records")
     if (directory / "tables" / "summary.csv").read_text(encoding="utf-8") != summary_csv(summary):
         raise ValueError("frozen table is stale")
-    if (directory / "REPORT.md").read_text(encoding="utf-8") != campaign_report(manifest, summary):
+    derived_tables = table_rows(ReportInputs(manifest, scenarios, runs, failures, reports, attempts, expectations, diagnostics))
+    figures = build_figures(derived_tables)
+    if set(p.name for p in (directory / "tables").iterdir()) != set(derived_tables) | {"summary.csv"}:
+        raise ValueError("frozen table inventory mismatch")
+    if set(p.name for p in (directory / "figures").glob("*")) != set(figures):
+        raise ValueError("frozen figure inventory mismatch")
+    for name, data in derived_tables.items():
+        if (directory / "tables" / name).read_bytes() != csv_bytes(TABLE_COLUMNS[name], data):
+            raise ValueError("frozen derived table is stale")
+    for name, data in figures.items():
+        if (directory / "figures" / name).read_bytes() != data:
+            raise ValueError("frozen derived figure is stale")
+    if (directory / "protocol.md").read_bytes() != protocol_bytes(manifest):
+        raise ValueError("frozen protocol differs from declared measurement semantics")
+    if (directory / "REPORT.md").read_text(encoding="utf-8") != campaign_report(manifest, summary, tables=derived_tables, figures=figures):
         raise ValueError("frozen report is stale")
     return manifest, summary
 

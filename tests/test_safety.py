@@ -7,6 +7,15 @@ from tadr_benchmark.paths import campaign_directory, contained, safe_relative
 from tadr_benchmark.safety import scan_files, text_issues
 
 
+@pytest.mark.parametrize("key", ["pid", "command_line", "hostname", "username", "environ", "env",
+                                  "traceback", "exception_message", "stdout", "local_checkout"])
+def test_public_observation_json_rejects_private_diagnostic_keys(tmp_path, key):
+    import json
+    name = "attempts.jsonl"
+    (tmp_path / name).write_text(json.dumps({"nested": [{key: "fixture"}]})+"\n", encoding="utf-8")
+    assert scan_files(tmp_path, [name]) == [name+": forbidden-public-diagnostic-field"]
+
+
 @pytest.mark.parametrize("value", ["C:" + "/" + "Users/example/data", "/" + "home/example/data",
                                   "ghp_" + "a" * 30, "password=" + "a" * 20,
                                   ".".join(["192", "168", "1", "2"]),

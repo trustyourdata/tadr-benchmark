@@ -75,11 +75,11 @@ def completed(campaign, scenario, environment):
 
 @pytest.fixture(autouse=True)
 def prohibit_live_target_import(monkeypatch):
-    """Phase 1 tests may mock adapter transport but must never load the target."""
+    """Software tests use controlled public fixtures, never the installed target."""
     import builtins
     original = builtins.__import__
     def guarded(name, *args, **kwargs):
         if name == "tadr" or name.startswith("tadr."):
-            raise AssertionError("Live target imports are forbidden in Phase 1 software tests")
+            raise AssertionError("Live target imports are forbidden in software tests")
         return original(name, *args, **kwargs)
     monkeypatch.setattr(builtins, "__import__", guarded)

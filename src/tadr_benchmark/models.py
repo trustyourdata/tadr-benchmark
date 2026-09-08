@@ -410,6 +410,10 @@ class SummaryGroup(Contract):
     absent_violations: NonnegativeInt
     unexpected_findings: NonnegativeInt
     deterministic: bool
+    determinism_case_id: Identifier = "standard"
+    runtime_values_seconds: list[float] = []
+    peak_rss_values_bytes: list[NonnegativeInt] = []
+    weak_evidence: bool = False
 
 
 class CampaignSummary(Contract):
@@ -420,6 +424,10 @@ class CampaignSummary(Contract):
     successful_runs: NonnegativeInt = 0
     adverse_target_outcomes: NonnegativeInt = 0
     failures_sha256: Digest | None = None
+    attempts_sha256: Digest | None = None
+    total_attempts: NonnegativeInt = 0
+    infrastructure_retries: NonnegativeInt = 0
+    resolved_infrastructure_failures: NonnegativeInt = 0
 
 
 class ComparisonResult(Contract):
@@ -450,3 +458,9 @@ class SamplingComparison(Contract):
     report_confidence_delta: float
     total_risk_delta: float
     category_risk_deltas: dict[Identifier, float]
+    missed_finding_ids: list[str] = []
+    added_finding_ids: list[str] = []
+    added_hard_gates: list[str] = []
+    removed_hard_gates: list[str] = []
+    primitive_deltas: dict[str, float | None] = {}
+    primitive_unavailable_reasons: dict[str, str] = {}

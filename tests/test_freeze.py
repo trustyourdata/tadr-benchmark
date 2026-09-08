@@ -5,6 +5,7 @@ import pytest
 from tadr_benchmark.campaigns import freeze as publication
 from tadr_benchmark.models import RunResult
 from tadr_benchmark.serialization import sha256
+from tadr_benchmark.execution.attempts import make_attempt
 
 
 @pytest.fixture
@@ -15,7 +16,7 @@ def freeze_fixture(tmp_path, monkeypatch, campaign, scenario, completed, environ
     runs, reports = completed
     return dict(root=tmp_path, manifest=campaign, scenarios=[scenario], runs=runs,
                 environments={environment.environment_id: environment}, reports=reports,
-                frozen_date="2026-01-01", public_reviewed=True)
+                frozen_date="2026-01-01", public_reviewed=True, attempts=[make_attempt(r) for r in runs])
 
 
 def test_freeze_round_trip_and_no_overwrite(freeze_fixture):
@@ -23,8 +24,24 @@ def test_freeze_round_trip_and_no_overwrite(freeze_fixture):
     manifest, summary = publication.verify_frozen(destination)
     assert manifest.status == "frozen"
     assert summary.groups[0].measured_runs == 2
+    assert summary.total_attempts == 3 and summary.infrastructure_retries == 0
+    checksums = (destination / "checksums.sha256").read_text()
+    assert "attempts.jsonl" in checksums and "protocol.md" in checksums
+    assert len(list((destination / "tables").glob("*.csv"))) == 16
     with pytest.raises(ValueError, match="already exists"):
         publication.freeze(**freeze_fixture)
+
+
+def test_rechecksummed_stale_derived_table_is_rejected(freeze_fixture):
+    destination = publication.freeze(**freeze_fixture)
+    table = destination / "tables" / "identity.csv"
+    table.write_bytes(table.read_bytes()+b"stale\n")
+    inventory = sorted(p.relative_to(destination).as_posix() for p in destination.rglob("*")
+                       if p.is_file() and p.name != "checksums.sha256")
+    (destination / "checksums.sha256").write_text("".join(
+        sha256((destination / name).read_bytes())+"  "+name+"\n" for name in inventory), encoding="utf-8")
+    with pytest.raises(ValueError, match="derived table is stale"):
+        publication.verify_frozen(destination)
 
 
 @pytest.mark.parametrize("failure", ["unreviewed", "missing_run", "missing_truth", "wrong_report", "unsafe_report", "wrong_environment"])

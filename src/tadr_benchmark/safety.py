@@ -1,6 +1,7 @@
 """Conservative public-text checks; diagnostics never echo matched content."""
 
 import re
+import json
 import subprocess
 from pathlib import Path
 
@@ -18,11 +19,32 @@ RULES = {
     "access-token": re.compile(r"\b(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|AKIA[A-Z0-9]{16}|sk-[A-Za-z0-9_-]{20,})\b"),
     "assigned-secret": re.compile(r"(?i)(?:api[_-]?key|access[_-]?token|password|client[_-]?secret)\s*[=:]\s*[\"']?[A-Za-z0-9_+/=-]{12,}"),
     "private-strategy": re.compile(r"(?i)\b(?:N" + r"IW|immigration\s+strategy|petition\s+strategy|customer\s+pipeline|fundraising\s+strategy)\b"),
+    "raw-traceback": re.compile(r"Traceback \(most recent call last\)"),
 }
 
 
 def text_issues(text: str) -> list[str]:
     return sorted(name for name, pattern in RULES.items() if pattern.search(text))
+
+
+def structured_issues(value) -> list[str]:
+    """Public JSON has typed observations, never process/environment dumps."""
+    forbidden = {"pid", "ppid", "pids", "process_id", "process_ids", "command_line", "commandline", "cmdline", "argv",
+                 "hostname", "host_name", "username", "user_name", "environment_dump", "environ", "env",
+                 "traceback", "stacktrace", "exception_message", "error_message", "raw_exception",
+                 "stdout", "stderr", "cwd", "home_directory", "local_checkout", "checkout_path"}
+    issues = set()
+    def visit(node):
+        if isinstance(node, dict):
+            for key, child in node.items():
+                if key.lower() in forbidden:
+                    issues.add("forbidden-public-diagnostic-field")
+                visit(child)
+        elif isinstance(node, list):
+            for child in node:
+                visit(child)
+    visit(value)
+    return sorted(issues)
 
 
 def scan_files(root: Path, paths: list[str]) -> list[str]:
@@ -59,6 +81,13 @@ def scan_files(root: Path, paths: list[str]) -> list[str]:
             continue
         for issue in text_issues(relative + "\n" + content):
             issues.append(f"{relative}: {issue}")
+        if path.suffix in {".json", ".jsonl"}:
+            try:
+                values = [json.loads(line) for line in content.splitlines() if line.strip()] if path.suffix == ".jsonl" else [json.loads(content)]
+                for issue in sorted({issue for value in values for issue in structured_issues(value)}):
+                    issues.append(f"{relative}: {issue}")
+            except ValueError:
+                issues.append(f"{relative}: invalid public JSON")
     return issues
 
 

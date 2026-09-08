@@ -5,6 +5,7 @@ from tadr_benchmark.campaigns import freeze as publication
 from tadr_benchmark.companions import DiagnosticValue, RunFailure
 from tadr_benchmark.models import RunResult
 from tadr_benchmark.validation import account_outcomes, planned_runs, validate_completed
+from tadr_benchmark.execution.attempts import make_attempt
 
 
 def failure(run, **changes):
@@ -53,7 +54,8 @@ def test_all_adverse_outcomes_can_freeze_honestly(campaign, scenario, completed,
     monkeypatch.setattr(publication, "require_clean_revision", lambda *args: "b"*40)
     monkeypatch.setattr(publication, "repository_issues", lambda *args, **kwargs: [])
     path = publication.freeze(tmp_path, campaign, [scenario], [], {environment.environment_id: environment},
-        {}, "2026-01-01", public_reviewed=True, failures=[failure(r) for r in completed[0]])
+        {}, "2026-01-01", public_reviewed=True, failures=[failure(r) for r in completed[0]],
+        attempts=[make_attempt(failure(r)) for r in completed[0]])
     _, summary = publication.verify_frozen(path)
     assert summary.groups == []
     assert summary.successful_runs == 0 and summary.adverse_target_outcomes == 3
@@ -76,3 +78,22 @@ def test_diagnostic_missing_value_requires_explicit_reason():
                    {"value": 0.0, "unavailable_reason": "not_exposed"}):
         with pytest.raises(ValidationError):
             DiagnosticValue(**values)
+
+
+def test_performance_aggregation_excludes_warmups_and_preserves_raw_values(completed):
+    from tadr_benchmark.reporting.aggregate import aggregate
+    base = completed[0][0]
+    def run(i, seconds, rows=10):
+        return RunResult.model_validate({**base.model_dump(), "run_id": f"fixture.repeat{i}", "repeat_index": i,
+            "phase": "measurement", "runtime_seconds": float(seconds), "row_count": rows,
+            "throughput_rows_per_second": rows/seconds})
+    measured = [run(i, t) for i, t in enumerate([1, 2, 6])]
+    summary = aggregate(base.campaign_id, [base, *measured], attempts=[make_attempt(r) for r in [base, *measured]])
+    group = summary.groups[0]
+    assert (group.measured_runs, group.runtime_median_seconds, group.runtime_mad_seconds) == (3, 2, 1)
+    assert group.runtime_values_seconds == [1, 2, 6]
+    assert (group.runtime_min_seconds, group.runtime_max_seconds) == (1, 6)
+    with pytest.raises(ValueError, match="nonsequential"):
+        aggregate(base.campaign_id, measured, attempts=[make_attempt(r) for r in [*measured, measured[0]]])
+    weak = aggregate(base.campaign_id, [run(0, 2, 5000000), run(1, 8, 5000000)]).groups[0]
+    assert weak.weak_evidence and weak.runtime_values_seconds == [2, 8] and weak.runtime_median_seconds == 5

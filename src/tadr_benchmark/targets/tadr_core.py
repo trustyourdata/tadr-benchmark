@@ -4,11 +4,24 @@ import importlib
 import json
 import subprocess
 import tomllib
+from dataclasses import dataclass
 from importlib.metadata import distribution
 from pathlib import Path
 
 from ..models import TargetMetadata
 from .base import TargetReport
+
+
+@dataclass(frozen=True)
+class PreparedAnalysis:
+    public_api: object
+    dataset_path: Path
+    intent: object
+    constraints: object
+
+    def invoke(self):
+        """Exactly the public call; preparation and canonical encoding are outside."""
+        return self.public_api.analyze(data=self.dataset_path, task=self.intent, constraints=self.constraints)
 
 
 class TadrCoreAdapter:
@@ -48,19 +61,31 @@ class TadrCoreAdapter:
                 raise ValueError("target checkout must be clean")
         else:
             direct = json.loads(installed.read_text("direct_url.json") or "{}")
-            revision = direct.get("vcs_info", {}).get("commit_id")
+            vcs = direct.get("vcs_info", {})
+            revision = vcs.get("commit_id") if vcs.get("vcs") == "git" else None
         if revision != self.expected.target_git_commit:
             raise ValueError("installed target Git revision is absent or differs from pin")
+        if self.local_checkout is None:
+            module = importlib.import_module("tadr")
+            if not Path(module.__file__).resolve().is_relative_to(Path(installed.locate_file("")).resolve()):
+                raise ValueError("imported target shadows the verified installed distribution")
         # Algorithm/profile/bundle/baseline are reviewed provenance for this exact
         # revision, not inferred by importing target implementation constants.
         return self.expected
 
     def analyze(self, dataset_path: Path, task: dict,
                 constraints: dict | None = None) -> TargetReport:
-        self.metadata()
-        tadr = importlib.import_module("tadr")
-        intent = tadr.TaskIntent.model_validate(task)
-        limits = None if constraints is None else tadr.DeploymentConstraints.model_validate(constraints)
-        report = tadr.analyze(data=dataset_path, task=intent, constraints=limits)
+        prepared = self.prepare(dataset_path, task, constraints)
+        report = prepared.invoke()
         original = report.canonical_bytes()
         return TargetReport(canonical_bytes=original, data=json.loads(original))
+
+    def prepare(self, dataset_path: Path, task: dict,
+                constraints: dict | None = None) -> PreparedAnalysis:
+        self.metadata()
+        tadr = importlib.import_module("tadr")
+        if getattr(tadr, "__version__", self.expected.target_package_version) != self.expected.target_package_version:
+            raise ValueError("public package version differs from target pin")
+        intent = tadr.TaskIntent.model_validate(task)
+        limits = None if constraints is None else tadr.DeploymentConstraints.model_validate(constraints)
+        return PreparedAnalysis(tadr, dataset_path, intent, limits)

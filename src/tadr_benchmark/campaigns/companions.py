@@ -65,6 +65,11 @@ def validate_companions(manifest: CampaignManifest, scenarios: list[ScenarioSpec
                             and monitor.maximum_sample_gap_seconds is not None
                             and monitor.unavailable_reason is None):
             raise ValueError("successful timing requires complete instrumentation")
+        if manifest.campaign_id == "ALPHA_BENCHMARK_V1" and (
+                monitor.effective_context != run.determinism_context or monitor.timezone_verification_method != "tzset"
+                or monitor.requested_interval_seconds != 0.01 or monitor.rss_abort_limit_bytes != 8*1024**3
+                or monitor.monitor_completeness != "complete" or monitor.descendant_discovery_failed):
+            raise ValueError("Alpha instrumentation protocol acknowledgement is incomplete")
     # Failed primary analysis has a terminal failure instead of invented bundle
     # diagnostics. Every successful standard repeat-0 sampling arm needs a companion.
     primaries = {r.run_id: r for r in runs if r.scenario_id.startswith("sampling.") and
@@ -72,11 +77,14 @@ def validate_companions(manifest: CampaignManifest, scenarios: list[ScenarioSpec
     inventory(diagnostics, "primary_run_id", primaries)
     for diagnostic in diagnostics:
         run = primaries[diagnostic.primary_run_id]
+        if diagnostic.primary_report_sha256 != run.canonical_report_sha256:
+            raise ValueError("diagnostic primary report hash differs")
         for field in (*TargetMetadata.model_fields, "scenario_id", "scenario_sha256", "benchmark_git_commit",
                       "logical_dataset_sha256", "source_file_sha256", "environment_id", "analysis_variant",
                       "determinism_case_id", "determinism_context", "constraints", "analysis_mode", "sample_ratio"):
             if getattr(diagnostic, field) != getattr(run, field):
                 raise ValueError("diagnostic provenance differs from primary run: "+field)
-        expected_mode, expected_ratio = ("full", 1.0) if run.analysis_variant == "full_reference" else ("sampled", 2/3)
-        if diagnostic.analysis_mode != expected_mode or abs(diagnostic.sample_ratio-expected_ratio) > 1e-6:
+        # sample_ratio is the observed canonical report value (four decimals).
+        expected_mode, expected_ratio = ("full", 1.0) if run.analysis_variant == "full_reference" else ("sampled", 0.6667)
+        if diagnostic.analysis_mode != expected_mode or diagnostic.sample_ratio != expected_ratio:
             raise ValueError("sampling analysis mode/ratio violates protocol")

@@ -286,6 +286,14 @@ class InstrumentationRecord(Contract):
     terminal_state: Literal["success", "failure"]
     rss_abort_limit_bytes: PositiveInt | None
     unavailable_reason: Literal["not_supported", "monitor_failed", "no_samples"] | None = None
+    requested_interval_seconds: Annotated[float, Field(gt=0)] = 0.01
+    startup_ready_seconds: Annotated[float, Field(ge=0)] | None = None
+    monitor_completeness: Literal["complete", "incomplete", "no_samples"] = "complete"
+    descendant_discovery_failed: bool = False
+    vanished_process_count: NonnegativeInt = 0
+    incremental_peak_rss_bytes: NonnegativeInt | None = None
+    effective_context: DeterminismCase | None = None
+    timezone_verification_method: Literal["tzset", "startup_environment"] | None = None
 
 
 class DiagnosticValue(Contract):
@@ -302,6 +310,8 @@ class DiagnosticValue(Contract):
 class DiagnosticRecord(TargetMetadata):
     diagnostic_version: Literal["1.0"] = "1.0"
     primary_run_id: Identifier
+    primary_report_sha256: Digest
+    shared_profile_sha256: Digest
     scenario_id: Identifier
     scenario_sha256: Digest
     benchmark_git_commit: Commit

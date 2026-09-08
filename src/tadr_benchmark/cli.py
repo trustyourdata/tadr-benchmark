@@ -12,16 +12,20 @@ from .reporting.markdown import results_index
 from .safety import repository_issues
 from .serialization import canonical_bytes
 from .validation import validate_repository
+from .execution.attempts import AttemptRecord
+from .evaluation.metrics import DetectionMetrics, ReportCoverage
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="TADR Benchmark foundation (no campaign execution enabled)")
+    parser = argparse.ArgumentParser(description="TADR Benchmark validation and explicit software preflight")
     parser.add_argument("--root", type=Path, default=Path.cwd())
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("validate", help="validate campaigns, scenarios and any frozen artifacts")
     safety = sub.add_parser("safety", help="scan public repository files")
     safety.add_argument("--include-untracked", action="store_true")
     sub.add_parser("environment", help="print sanitized allowlisted metadata")
+    preflight = sub.add_parser("preflight", help="execute only the fixed six-case NON-RESEARCH software/protocol preflight under .work")
+    preflight.add_argument("--resume", action="store_true", help="continue after repaired diagnostic infrastructure; retain original primary calls")
     results = sub.add_parser("results-index", help="deterministically update RESULTS.md")
     results.add_argument("--check", action="store_true")
     frozen = sub.add_parser("verify-frozen", help="verify a frozen campaign directory")
@@ -29,8 +33,8 @@ def main(argv: list[str] | None = None) -> int:
     history = sub.add_parser("verify-history", help="reject edits to historical frozen campaigns")
     history.add_argument("base_ref")
     schema = sub.add_parser("schema", help="print a versioned JSON schema")
-    models = {model.__name__: model for model in (CampaignManifest, ScenarioSpec, RunSpec, RunResult,
-                                                 EnvironmentInfo, TargetMetadata, RunFailure, OutcomeAccounting,
+    models = {model.__name__: model for model in (CampaignManifest, ScenarioSpec, RunSpec, RunResult, DetectionMetrics, ReportCoverage,
+                                                 EnvironmentInfo, TargetMetadata, RunFailure, OutcomeAccounting, AttemptRecord,
                                                  ScenarioExpectations, PhysicalLedger, DatasetIdentity, WriterPolicy,
                                                  InstrumentationRecord, DiagnosticRecord, FamilyDefinition, FamilyInventory)}
     schema.add_argument("model", choices=sorted(models))
@@ -47,6 +51,11 @@ def main(argv: list[str] | None = None) -> int:
             print("Public-safety scan passed.")
         elif args.command == "environment":
             print(canonical_bytes(capture_environment()).decode(), end="")
+        elif args.command == "preflight":
+            from .execution.preflight import run_preflight
+            receipt = run_preflight(args.root.resolve(), resume=args.resume)
+            print(json.dumps({"preflight_status": receipt["status"], "research": False}))
+            return 0 if receipt["status"] == "passed" else 1
         elif args.command == "results-index":
             expected = results_index(args.root, validate_repository(args.root))
             destination = args.root / "RESULTS.md"

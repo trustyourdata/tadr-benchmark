@@ -12,11 +12,11 @@ def test_adapter_preserves_target_bytes_and_public_call(monkeypatch, campaign, t
     data = b'{"readiness_score":17,"findings":[]} '
     calls = []
     public_model = SimpleNamespace(model_validate=lambda value: value)
-    module = SimpleNamespace(TaskIntent=public_model, DeploymentConstraints=public_model,
+    module = SimpleNamespace(__file__=str(tmp_path / "tadr.py"), TaskIntent=public_model, DeploymentConstraints=public_model,
                              analyze=lambda **kwargs: calls.append(kwargs) or SimpleNamespace(canonical_bytes=lambda: data))
     monkeypatch.setattr(tadr_core.importlib, "import_module", lambda name: module)
-    dist = SimpleNamespace(version=target.target_package_version,
-                           read_text=lambda name: json.dumps({"vcs_info": {"commit_id": target.target_git_commit}}))
+    dist = SimpleNamespace(version=target.target_package_version, locate_file=lambda name: tmp_path / name,
+                           read_text=lambda name: json.dumps({"vcs_info": {"vcs": "git", "commit_id": target.target_git_commit}}))
     monkeypatch.setattr(tadr_core, "distribution", lambda name: dist)
     adapter = tadr_core.TadrCoreAdapter(target)
     report = adapter.analyze(tmp_path / "fixture.csv", {"task_type": "analytics"})
@@ -26,6 +26,9 @@ def test_adapter_preserves_target_bytes_and_public_call(monkeypatch, campaign, t
     module.analyze = lambda **kwargs: (_ for _ in ()).throw(RuntimeError("target failure"))
     with pytest.raises(RuntimeError, match="target failure"):
         adapter.analyze(tmp_path / "fixture.csv", {"task_type": "analytics"})
+    module.__file__ = str(tmp_path.parent / "shadow" / "tadr.py")
+    with pytest.raises(ValueError, match="shadows"):
+        adapter.metadata()
 
 
 def test_adapter_rejects_unverifiable_installation(monkeypatch, campaign):
