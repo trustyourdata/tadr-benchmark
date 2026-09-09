@@ -1,7 +1,13 @@
 # Alpha opportunity mapping
 
-The mapping is derived from versioned recipes and independent expectations before
-reading target reports. It appears in the generated scenario matrix, including
+The original preregistered mapping was derived from versioned recipes and
+independent expectations before reading target reports. Alpha's approved normative
+adjudication is a separate post-execution layer; it was not preregistered and did
+not change physical truth. The [methodology](methodology.md) explains the distinction,
+and the [frozen report](../results/campaigns/alpha_benchmark_v1/REPORT.md) retains both
+result layers.
+
+The original mapping appears in the generated scenario matrix, including
 scenario, subject, track, physical defect identity, positivity and mapped detectors.
 The evaluator rejects duplicate physical identities. It never constructs negative
 subjects from observed Findings.

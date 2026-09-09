@@ -122,9 +122,9 @@ successful zero-risk record.
 
 Versioned families deterministically expand to 370 concrete specifications, with
 320 correctness cases, 36 sampling placements and 14 scale points. The source
-manifest retains the historical READY launch declaration. Scientific execution
-and approved normative adjudication are complete; publication awaits final freeze
-authorization. The [Alpha benchmark protocol](alpha_benchmark_protocol.md) records
+manifest retains the historical READY launch declaration. The
+[frozen report](../results/campaigns/alpha_benchmark_v1/REPORT.md) presents the
+completed evidence and annotation history. The [Alpha benchmark protocol](alpha_benchmark_protocol.md) records
 the fixed execution and source representation policies.
 
 Original physical/design labels remain unchanged historical evidence. The approved
