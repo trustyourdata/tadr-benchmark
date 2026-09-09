@@ -1,0 +1,8419 @@
+{
+  "readiness_score": 100,
+  "report_confidence": 87,
+  "total_risk": 0.00,
+  "category_risks": {
+    "schema": 0.00,
+    "quality": 0.00,
+    "leakage": 0.00,
+    "split": 0.00,
+    "inference_mismatch": 0.00,
+    "bias_signals": 0.00
+  },
+  "score_breakdown": {
+    "total_penalty": 0.00,
+    "penalty_by_category": {
+      "schema": 0.00,
+      "quality": 0.00,
+      "leakage": 0.00,
+      "split": 0.00,
+      "inference_mismatch": 0.00,
+      "bias_signals": 0.00
+    },
+    "counts_by_severity": {
+      "info": 0,
+      "low": 0,
+      "medium": 0,
+      "high": 0,
+      "critical": 0
+    },
+    "top_category": null,
+    "caps_applied": []
+  },
+  "analysis_stats": {
+    "row_count": 1000000,
+    "col_count": 100,
+    "sample_ratio": 0.2000,
+    "parse_failure_rate": 0.0000,
+    "analysis_mode": "sampled"
+  },
+  "dataset_profile": {
+    "columns": [
+      {
+        "name": "coord_a",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 1000,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "0"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "int",
+              "1"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "int",
+              "10"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "int",
+              "100"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "int",
+              "101"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "int",
+              "102"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "int",
+              "103"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "int",
+              "104"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "int",
+              "105"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "int",
+              "106"
+            ],
+            "count": 200
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 499.5,
+          "p95": 949.05,
+          "max": 999
+        },
+        "string_stats": null
+      },
+      {
+        "name": "coord_b",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 1000,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "0"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "int",
+              "1"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "int",
+              "10"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "int",
+              "11"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "int",
+              "12"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "int",
+              "13"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "int",
+              "14"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "int",
+              "15"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "int",
+              "16"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "int",
+              "17"
+            ],
+            "count": 1000
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 366,
+          "p95": 936,
+          "max": 999
+        },
+        "string_stats": null
+      },
+      {
+        "name": "coord_c",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 1,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "0"
+            ],
+            "count": 200000
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 0,
+          "p95": 0,
+          "max": 0
+        },
+        "string_stats": null
+      },
+      {
+        "name": "signal_x",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 17,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "1000"
+            ],
+            "count": 11766
+          },
+          {
+            "value": [
+              "int",
+              "1002"
+            ],
+            "count": 11766
+          },
+          {
+            "value": [
+              "int",
+              "1001"
+            ],
+            "count": 11765
+          },
+          {
+            "value": [
+              "int",
+              "1003"
+            ],
+            "count": 11765
+          },
+          {
+            "value": [
+              "int",
+              "1005"
+            ],
+            "count": 11765
+          },
+          {
+            "value": [
+              "int",
+              "1007"
+            ],
+            "count": 11765
+          },
+          {
+            "value": [
+              "int",
+              "1009"
+            ],
+            "count": 11765
+          },
+          {
+            "value": [
+              "int",
+              "1011"
+            ],
+            "count": 11765
+          },
+          {
+            "value": [
+              "int",
+              "1013"
+            ],
+            "count": 11765
+          },
+          {
+            "value": [
+              "int",
+              "1015"
+            ],
+            "count": 11765
+          }
+        ],
+        "numeric_stats": {
+          "min": 1000,
+          "p50": 1008,
+          "p95": 1016,
+          "max": 1016
+        },
+        "string_stats": null
+      },
+      {
+        "name": "signal_z",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 19,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "2001"
+            ],
+            "count": 11458
+          },
+          {
+            "value": [
+              "int",
+              "2002"
+            ],
+            "count": 11458
+          },
+          {
+            "value": [
+              "int",
+              "2004"
+            ],
+            "count": 11458
+          },
+          {
+            "value": [
+              "int",
+              "2005"
+            ],
+            "count": 11458
+          },
+          {
+            "value": [
+              "int",
+              "2006"
+            ],
+            "count": 11458
+          },
+          {
+            "value": [
+              "int",
+              "2008"
+            ],
+            "count": 11458
+          },
+          {
+            "value": [
+              "int",
+              "2009"
+            ],
+            "count": 11458
+          },
+          {
+            "value": [
+              "int",
+              "2011"
+            ],
+            "count": 11458
+          },
+          {
+            "value": [
+              "int",
+              "2012"
+            ],
+            "count": 11458
+          },
+          {
+            "value": [
+              "int",
+              "2014"
+            ],
+            "count": 11458
+          }
+        ],
+        "numeric_stats": {
+          "min": 2000,
+          "p50": 2009,
+          "p95": 2018,
+          "max": 2018
+        },
+        "string_stats": null
+      },
+      {
+        "name": "flag",
+        "inferred_type": "bool",
+        "missing_rate": 0.0000,
+        "nunique": 2,
+        "top_values": [
+          {
+            "value": [
+              "bool",
+              false
+            ],
+            "count": 100000
+          },
+          {
+            "value": [
+              "bool",
+              true
+            ],
+            "count": 100000
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": null
+      },
+      {
+        "name": "segment",
+        "inferred_type": "categorical",
+        "missing_rate": 0.0000,
+        "nunique": 13,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "g0"
+            ],
+            "count": 15388
+          },
+          {
+            "value": [
+              "string",
+              "g1"
+            ],
+            "count": 15388
+          },
+          {
+            "value": [
+              "string",
+              "g2"
+            ],
+            "count": 15388
+          },
+          {
+            "value": [
+              "string",
+              "g3"
+            ],
+            "count": 15388
+          },
+          {
+            "value": [
+              "string",
+              "g5"
+            ],
+            "count": 15388
+          },
+          {
+            "value": [
+              "string",
+              "g4"
+            ],
+            "count": 15387
+          },
+          {
+            "value": [
+              "string",
+              "g10"
+            ],
+            "count": 15382
+          },
+          {
+            "value": [
+              "string",
+              "g12"
+            ],
+            "count": 15382
+          },
+          {
+            "value": [
+              "string",
+              "g6"
+            ],
+            "count": 15382
+          },
+          {
+            "value": [
+              "string",
+              "g7"
+            ],
+            "count": 15382
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 2.230769,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "event_time",
+        "inferred_type": "datetime",
+        "missing_rate": 0.0000,
+        "nunique": 28,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "2020-01-05"
+            ],
+            "count": 7144
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-18"
+            ],
+            "count": 7144
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-01"
+            ],
+            "count": 7143
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-02"
+            ],
+            "count": 7143
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-03"
+            ],
+            "count": 7143
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-04"
+            ],
+            "count": 7143
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-06"
+            ],
+            "count": 7143
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-07"
+            ],
+            "count": 7143
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-08"
+            ],
+            "count": 7143
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-09"
+            ],
+            "count": 7143
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 10,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "aux_000",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "4041"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4047"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4003"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4009"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4022"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4028"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4030"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4035"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4036"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4043"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 4000,
+          "p50": 4048,
+          "p95": 4092,
+          "max": 4096
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_001",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "4105"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4120"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4126"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4130"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4133"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4136"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4139"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4141"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4145"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4160"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 4100,
+          "p50": 4148,
+          "p95": 4192,
+          "max": 4196
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_002",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "4218"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4285"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4201"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4207"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4213"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4216"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4230"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4233"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4236"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4239"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 4200,
+          "p50": 4248,
+          "p95": 4292,
+          "max": 4296
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_003",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "4301"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "4346"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "4359"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "4304"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "4314"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "4317"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "4330"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "4343"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "4372"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "4385"
+            ],
+            "count": 2067
+          }
+        ],
+        "numeric_stats": {
+          "min": 4300,
+          "p50": 4348,
+          "p95": 4392,
+          "max": 4396
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_004",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "4407"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4424"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4436"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4441"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4458"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4481"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4401"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4402"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4404"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4418"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 4400,
+          "p50": 4448,
+          "p95": 4492,
+          "max": 4496
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_005",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "4507"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4510"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4549"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4565"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4569"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4571"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4585"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4589"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4503"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4509"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 4500,
+          "p50": 4548,
+          "p95": 4592,
+          "max": 4596
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_006",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "4677"
+            ],
+            "count": 2080
+          },
+          {
+            "value": [
+              "int",
+              "4605"
+            ],
+            "count": 2079
+          },
+          {
+            "value": [
+              "int",
+              "4630"
+            ],
+            "count": 2079
+          },
+          {
+            "value": [
+              "int",
+              "4652"
+            ],
+            "count": 2079
+          },
+          {
+            "value": [
+              "int",
+              "4655"
+            ],
+            "count": 2079
+          },
+          {
+            "value": [
+              "int",
+              "4658"
+            ],
+            "count": 2079
+          },
+          {
+            "value": [
+              "int",
+              "4680"
+            ],
+            "count": 2079
+          },
+          {
+            "value": [
+              "int",
+              "4608"
+            ],
+            "count": 2078
+          },
+          {
+            "value": [
+              "int",
+              "4633"
+            ],
+            "count": 2078
+          },
+          {
+            "value": [
+              "int",
+              "4683"
+            ],
+            "count": 2078
+          }
+        ],
+        "numeric_stats": {
+          "min": 4600,
+          "p50": 4648,
+          "p95": 4692,
+          "max": 4696
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_007",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "4703"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4733"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4752"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4762"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4768"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4781"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4784"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4792"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4708"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4709"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 4700,
+          "p50": 4748,
+          "p95": 4792,
+          "max": 4796
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_008",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "4814"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "4816"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "4818"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "4847"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "4850"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "4877"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "4879"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "4881"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "4882"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "4812"
+            ],
+            "count": 2065
+          }
+        ],
+        "numeric_stats": {
+          "min": 4800,
+          "p50": 4848,
+          "p95": 4892,
+          "max": 4896
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_009",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "4952"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "4905"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4909"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4946"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4977"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4992"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4996"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4902"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4912"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4914"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 4900,
+          "p50": 4948,
+          "p95": 4992,
+          "max": 4996
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_010",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "5039"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "5088"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "5002"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "5028"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "5054"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "5058"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "5069"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "5073"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "5017"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "5043"
+            ],
+            "count": 2067
+          }
+        ],
+        "numeric_stats": {
+          "min": 5000,
+          "p50": 5048,
+          "p95": 5092,
+          "max": 5096
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_011",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "5141"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "5100"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5103"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5108"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5112"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5148"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5154"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5171"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5190"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5192"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 5100,
+          "p50": 5148,
+          "p95": 5192,
+          "max": 5196
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_012",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "5233"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "5204"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5208"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5214"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5252"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5258"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5267"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5282"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5286"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5292"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 5200,
+          "p50": 5248,
+          "p95": 5292,
+          "max": 5296
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_013",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "5310"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "5331"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "5352"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "5363"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "5369"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "5375"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "5312"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5316"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5325"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5333"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 5300,
+          "p50": 5348,
+          "p95": 5392,
+          "max": 5396
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_014",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "5410"
+            ],
+            "count": 2071
+          },
+          {
+            "value": [
+              "int",
+              "5488"
+            ],
+            "count": 2071
+          },
+          {
+            "value": [
+              "int",
+              "5412"
+            ],
+            "count": 2070
+          },
+          {
+            "value": [
+              "int",
+              "5429"
+            ],
+            "count": 2070
+          },
+          {
+            "value": [
+              "int",
+              "5431"
+            ],
+            "count": 2070
+          },
+          {
+            "value": [
+              "int",
+              "5448"
+            ],
+            "count": 2070
+          },
+          {
+            "value": [
+              "int",
+              "5450"
+            ],
+            "count": 2070
+          },
+          {
+            "value": [
+              "int",
+              "5467"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "5469"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "5471"
+            ],
+            "count": 2069
+          }
+        ],
+        "numeric_stats": {
+          "min": 5400,
+          "p50": 5448,
+          "p95": 5492,
+          "max": 5496
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_015",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "5568"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "5528"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "5549"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "5589"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "5564"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "5507"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "5513"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "5532"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "5553"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "5587"
+            ],
+            "count": 2066
+          }
+        ],
+        "numeric_stats": {
+          "min": 5500,
+          "p50": 5548,
+          "p95": 5592,
+          "max": 5596
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_016",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "5630"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "5666"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "5685"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "5607"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5609"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5611"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5634"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5647"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5679"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5687"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 5600,
+          "p50": 5648,
+          "p95": 5692,
+          "max": 5696
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_017",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "5703"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "5728"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "5772"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "5785"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "5701"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "5716"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "5729"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "5745"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "5756"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "5759"
+            ],
+            "count": 2066
+          }
+        ],
+        "numeric_stats": {
+          "min": 5700,
+          "p50": 5748,
+          "p95": 5792,
+          "max": 5796
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_018",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "5818"
+            ],
+            "count": 2070
+          },
+          {
+            "value": [
+              "int",
+              "5845"
+            ],
+            "count": 2070
+          },
+          {
+            "value": [
+              "int",
+              "5864"
+            ],
+            "count": 2070
+          },
+          {
+            "value": [
+              "int",
+              "5866"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "5869"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "5891"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "5893"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "5820"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "5821"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "5840"
+            ],
+            "count": 2068
+          }
+        ],
+        "numeric_stats": {
+          "min": 5800,
+          "p50": 5848,
+          "p95": 5892,
+          "max": 5896
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_019",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "5900"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "5977"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "5915"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "5920"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "5935"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "5955"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "5957"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "5960"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "5903"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5922"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 5900,
+          "p50": 5948,
+          "p95": 5992,
+          "max": 5996
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_020",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "6077"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "6003"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6052"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6055"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6058"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6064"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6071"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6074"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6093"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6006"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 6000,
+          "p50": 6048,
+          "p95": 6092,
+          "max": 6096
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_021",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "6104"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6128"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6137"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6149"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6158"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6105"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "6107"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "6116"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "6120"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "6126"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 6100,
+          "p50": 6148,
+          "p95": 6192,
+          "max": 6196
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_022",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "6226"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "6218"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "6253"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "6261"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "6277"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "6285"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "6288"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "6296"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "6202"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "6207"
+            ],
+            "count": 2067
+          }
+        ],
+        "numeric_stats": {
+          "min": 6200,
+          "p50": 6248,
+          "p95": 6292,
+          "max": 6296
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_023",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "6362"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "6306"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6358"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6371"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6374"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6302"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "6303"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "6309"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "6314"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "6315"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 6300,
+          "p50": 6348,
+          "p95": 6392,
+          "max": 6396
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_024",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "6401"
+            ],
+            "count": 2117
+          },
+          {
+            "value": [
+              "int",
+              "6403"
+            ],
+            "count": 2117
+          },
+          {
+            "value": [
+              "int",
+              "6439"
+            ],
+            "count": 2117
+          },
+          {
+            "value": [
+              "int",
+              "6441"
+            ],
+            "count": 2117
+          },
+          {
+            "value": [
+              "int",
+              "6479"
+            ],
+            "count": 2117
+          },
+          {
+            "value": [
+              "int",
+              "6481"
+            ],
+            "count": 2117
+          },
+          {
+            "value": [
+              "int",
+              "6496"
+            ],
+            "count": 2117
+          },
+          {
+            "value": [
+              "int",
+              "6400"
+            ],
+            "count": 2116
+          },
+          {
+            "value": [
+              "int",
+              "6402"
+            ],
+            "count": 2116
+          },
+          {
+            "value": [
+              "int",
+              "6418"
+            ],
+            "count": 2116
+          }
+        ],
+        "numeric_stats": {
+          "min": 6400,
+          "p50": 6448,
+          "p95": 6492,
+          "max": 6496
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_025",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "6590"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "6579"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "6585"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "6509"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6575"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6581"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6582"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6584"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6586"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6587"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 6500,
+          "p50": 6548,
+          "p95": 6592,
+          "max": 6596
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_026",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "6649"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "6665"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "6692"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "6603"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "6611"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "6614"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "6622"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "6630"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "6633"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "6641"
+            ],
+            "count": 2068
+          }
+        ],
+        "numeric_stats": {
+          "min": 6600,
+          "p50": 6648,
+          "p95": 6692,
+          "max": 6696
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_027",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "6703"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "6715"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "6754"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "6718"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6725"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6727"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6730"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6747"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6766"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "6769"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 6700,
+          "p50": 6748,
+          "p95": 6792,
+          "max": 6796
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_028",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "6862"
+            ],
+            "count": 2070
+          },
+          {
+            "value": [
+              "int",
+              "6878"
+            ],
+            "count": 2070
+          },
+          {
+            "value": [
+              "int",
+              "6894"
+            ],
+            "count": 2070
+          },
+          {
+            "value": [
+              "int",
+              "6812"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "6828"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "6829"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "6846"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "6847"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "6863"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "6879"
+            ],
+            "count": 2069
+          }
+        ],
+        "numeric_stats": {
+          "min": 6800,
+          "p50": 6848,
+          "p95": 6892,
+          "max": 6896
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_029",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "6920"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "6946"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "6903"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "6923"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "6926"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "6937"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "6943"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "6963"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "6966"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "6977"
+            ],
+            "count": 2066
+          }
+        ],
+        "numeric_stats": {
+          "min": 6900,
+          "p50": 6948,
+          "p95": 6992,
+          "max": 6996
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_030",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "7003"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "7014"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "7022"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "7033"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "7092"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "7000"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7006"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7008"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7019"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7027"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 7000,
+          "p50": 7048,
+          "p95": 7092,
+          "max": 7096
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_031",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "7158"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "7130"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "7133"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "7186"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "7196"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "7102"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "7127"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "7168"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "7171"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "7112"
+            ],
+            "count": 2065
+          }
+        ],
+        "numeric_stats": {
+          "min": 7100,
+          "p50": 7148,
+          "p95": 7192,
+          "max": 7196
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_032",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "7212"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7231"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7233"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7235"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7239"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7244"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7265"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7267"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7271"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7290"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 7200,
+          "p50": 7248,
+          "p95": 7292,
+          "max": 7296
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_033",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "7331"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "7365"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "7367"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "7388"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "7304"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "7306"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "7318"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "7329"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "7352"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "7354"
+            ],
+            "count": 2066
+          }
+        ],
+        "numeric_stats": {
+          "min": 7300,
+          "p50": 7348,
+          "p95": 7392,
+          "max": 7396
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_034",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "7411"
+            ],
+            "count": 2074
+          },
+          {
+            "value": [
+              "int",
+              "7449"
+            ],
+            "count": 2074
+          },
+          {
+            "value": [
+              "int",
+              "7430"
+            ],
+            "count": 2073
+          },
+          {
+            "value": [
+              "int",
+              "7468"
+            ],
+            "count": 2073
+          },
+          {
+            "value": [
+              "int",
+              "7489"
+            ],
+            "count": 2073
+          },
+          {
+            "value": [
+              "int",
+              "7409"
+            ],
+            "count": 2072
+          },
+          {
+            "value": [
+              "int",
+              "7428"
+            ],
+            "count": 2072
+          },
+          {
+            "value": [
+              "int",
+              "7487"
+            ],
+            "count": 2072
+          },
+          {
+            "value": [
+              "int",
+              "7451"
+            ],
+            "count": 2071
+          },
+          {
+            "value": [
+              "int",
+              "7432"
+            ],
+            "count": 2070
+          }
+        ],
+        "numeric_stats": {
+          "min": 7400,
+          "p50": 7448,
+          "p95": 7492,
+          "max": 7496
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_035",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "7530"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "7509"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "7547"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "7568"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "7574"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "7583"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "7503"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "7521"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "7587"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "7507"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 7500,
+          "p50": 7548,
+          "p95": 7592,
+          "max": 7596
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_036",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "7609"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "7628"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "7630"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7632"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7647"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7649"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7660"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7666"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7679"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7687"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 7600,
+          "p50": 7648,
+          "p95": 7692,
+          "max": 7696
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_037",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "7707"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7726"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7730"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7736"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7743"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7745"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7766"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7785"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7788"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7701"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 7700,
+          "p50": 7748,
+          "p95": 7792,
+          "max": 7796
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_038",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "7822"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "7830"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "7838"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "7841"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "7849"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "7852"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "7803"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7807"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7811"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "7819"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 7800,
+          "p50": 7848,
+          "p95": 7892,
+          "max": 7896
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_039",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "7907"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "7930"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "7990"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "7916"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "7944"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "7953"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "7962"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "7976"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "7981"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "7939"
+            ],
+            "count": 2065
+          }
+        ],
+        "numeric_stats": {
+          "min": 7900,
+          "p50": 7948,
+          "p95": 7992,
+          "max": 7996
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_040",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "8052"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8083"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8085"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8001"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8003"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8015"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8019"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8021"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8026"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8034"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 8000,
+          "p50": 8048,
+          "p95": 8092,
+          "max": 8096
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_041",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "8193"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "8101"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8112"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8125"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8158"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8164"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8169"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8183"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8185"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8196"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 8100,
+          "p50": 8148,
+          "p95": 8192,
+          "max": 8196
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_042",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "8279"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "8203"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "8207"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "8241"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "8216"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "8225"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "8228"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "8232"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "8254"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "8257"
+            ],
+            "count": 2067
+          }
+        ],
+        "numeric_stats": {
+          "min": 8200,
+          "p50": 8248,
+          "p95": 8292,
+          "max": 8296
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_043",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "8318"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "8339"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8381"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8300"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8301"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8304"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8314"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8320"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8321"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8322"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 8300,
+          "p50": 8348,
+          "p95": 8392,
+          "max": 8396
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_044",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "8409"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8431"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8407"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8412"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8414"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8426"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8430"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8433"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8447"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8449"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 8400,
+          "p50": 8448,
+          "p95": 8492,
+          "max": 8496
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_045",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "8512"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "8518"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "8558"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "8561"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "8574"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "8577"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "8596"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "8502"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8515"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8526"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 8500,
+          "p50": 8548,
+          "p95": 8592,
+          "max": 8596
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_046",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "8668"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "8671"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "8692"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "8614"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8620"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8626"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8635"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8641"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8647"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "8656"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 8600,
+          "p50": 8648,
+          "p95": 8692,
+          "max": 8696
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_047",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "8706"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8710"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8712"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8714"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8718"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8722"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8726"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8728"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8739"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "8743"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 8700,
+          "p50": 8748,
+          "p95": 8792,
+          "max": 8796
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_048",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "8812"
+            ],
+            "count": 2130
+          },
+          {
+            "value": [
+              "int",
+              "8818"
+            ],
+            "count": 2130
+          },
+          {
+            "value": [
+              "int",
+              "8801"
+            ],
+            "count": 2129
+          },
+          {
+            "value": [
+              "int",
+              "8802"
+            ],
+            "count": 2129
+          },
+          {
+            "value": [
+              "int",
+              "8803"
+            ],
+            "count": 2129
+          },
+          {
+            "value": [
+              "int",
+              "8804"
+            ],
+            "count": 2129
+          },
+          {
+            "value": [
+              "int",
+              "8805"
+            ],
+            "count": 2129
+          },
+          {
+            "value": [
+              "int",
+              "8806"
+            ],
+            "count": 2129
+          },
+          {
+            "value": [
+              "int",
+              "8807"
+            ],
+            "count": 2129
+          },
+          {
+            "value": [
+              "int",
+              "8808"
+            ],
+            "count": 2129
+          }
+        ],
+        "numeric_stats": {
+          "min": 8800,
+          "p50": 8847,
+          "p95": 8892,
+          "max": 8896
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_049",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "8958"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "8996"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "8902"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "8961"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "8905"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "8950"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "8952"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "8955"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "8964"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "8988"
+            ],
+            "count": 2065
+          }
+        ],
+        "numeric_stats": {
+          "min": 8900,
+          "p50": 8948,
+          "p95": 8992,
+          "max": 8996
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_050",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "9001"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9004"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9025"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9046"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9073"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9081"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9090"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9094"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9000"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9008"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 9000,
+          "p50": 9048,
+          "p95": 9092,
+          "max": 9096
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_051",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "9158"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9177"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9184"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9188"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9106"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "9110"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "9114"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "9116"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "9118"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "9123"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 9100,
+          "p50": 9148,
+          "p95": 9192,
+          "max": 9196
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_052",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "9212"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9229"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9235"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9250"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9269"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9277"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9210"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9214"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9227"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9233"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 9200,
+          "p50": 9248,
+          "p95": 9292,
+          "max": 9296
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_053",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "9350"
+            ],
+            "count": 2087
+          },
+          {
+            "value": [
+              "int",
+              "9369"
+            ],
+            "count": 2087
+          },
+          {
+            "value": [
+              "int",
+              "9310"
+            ],
+            "count": 2086
+          },
+          {
+            "value": [
+              "int",
+              "9312"
+            ],
+            "count": 2086
+          },
+          {
+            "value": [
+              "int",
+              "9329"
+            ],
+            "count": 2086
+          },
+          {
+            "value": [
+              "int",
+              "9331"
+            ],
+            "count": 2086
+          },
+          {
+            "value": [
+              "int",
+              "9388"
+            ],
+            "count": 2086
+          },
+          {
+            "value": [
+              "int",
+              "9348"
+            ],
+            "count": 2084
+          },
+          {
+            "value": [
+              "int",
+              "9390"
+            ],
+            "count": 2084
+          },
+          {
+            "value": [
+              "int",
+              "9367"
+            ],
+            "count": 2082
+          }
+        ],
+        "numeric_stats": {
+          "min": 9300,
+          "p50": 9348,
+          "p95": 9392,
+          "max": 9396
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_054",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "9449"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "9428"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "9462"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "9485"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "9487"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "9409"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9411"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9426"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9430"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9451"
+            ],
+            "count": 2065
+          }
+        ],
+        "numeric_stats": {
+          "min": 9400,
+          "p50": 9448,
+          "p95": 9492,
+          "max": 9496
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_055",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "9507"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9530"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9503"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9547"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9549"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9553"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9566"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9568"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9587"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9591"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 9500,
+          "p50": 9548,
+          "p95": 9592,
+          "max": 9596
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_056",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "9674"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9639"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9643"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9649"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9655"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9658"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9677"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9683"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9693"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9605"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 9600,
+          "p50": 9648,
+          "p95": 9692,
+          "max": 9696
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_057",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "9730"
+            ],
+            "count": 2087
+          },
+          {
+            "value": [
+              "int",
+              "9703"
+            ],
+            "count": 2086
+          },
+          {
+            "value": [
+              "int",
+              "9792"
+            ],
+            "count": 2086
+          },
+          {
+            "value": [
+              "int",
+              "9722"
+            ],
+            "count": 2085
+          },
+          {
+            "value": [
+              "int",
+              "9738"
+            ],
+            "count": 2085
+          },
+          {
+            "value": [
+              "int",
+              "9749"
+            ],
+            "count": 2085
+          },
+          {
+            "value": [
+              "int",
+              "9757"
+            ],
+            "count": 2085
+          },
+          {
+            "value": [
+              "int",
+              "9765"
+            ],
+            "count": 2085
+          },
+          {
+            "value": [
+              "int",
+              "9711"
+            ],
+            "count": 2084
+          },
+          {
+            "value": [
+              "int",
+              "9746"
+            ],
+            "count": 2084
+          }
+        ],
+        "numeric_stats": {
+          "min": 9700,
+          "p50": 9748,
+          "p95": 9792,
+          "max": 9796
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_058",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "9801"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9859"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9879"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "9817"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9820"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9828"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9833"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9836"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9839"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9849"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 9800,
+          "p50": 9848,
+          "p95": 9892,
+          "max": 9896
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_059",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "9928"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9947"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9964"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "9907"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "9915"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "9921"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "9924"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "9930"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "9933"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "9943"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 9900,
+          "p50": 9948,
+          "p95": 9992,
+          "max": 9996
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_060",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "10020"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10023"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10026"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10004"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10007"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10037"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10040"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10043"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10054"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10070"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 10000,
+          "p50": 10048,
+          "p95": 10092,
+          "max": 10096
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_061",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "10122"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "10103"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "10141"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "10181"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "10106"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10160"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10165"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10173"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10184"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10119"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 10100,
+          "p50": 10148,
+          "p95": 10192,
+          "max": 10196
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_062",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "10201"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "10222"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "10264"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "10277"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "10209"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "10214"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "10217"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "10230"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "10238"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "10243"
+            ],
+            "count": 2067
+          }
+        ],
+        "numeric_stats": {
+          "min": 10200,
+          "p50": 10248,
+          "p95": 10292,
+          "max": 10296
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_063",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "10311"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10330"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10309"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10313"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10332"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10346"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10349"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10366"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10368"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10369"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 10300,
+          "p50": 10348,
+          "p95": 10392,
+          "max": 10396
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_064",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "10428"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10485"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10488"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10409"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "10410"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "10412"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "10420"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "10423"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "10425"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "10426"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 10400,
+          "p50": 10448,
+          "p95": 10492,
+          "max": 10496
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_065",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "10503"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10517"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10527"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10530"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10560"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10584"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10587"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10520"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10533"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10540"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 10500,
+          "p50": 10548,
+          "p95": 10592,
+          "max": 10596
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_066",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "10671"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "10603"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10622"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10626"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10641"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10652"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10657"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10660"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10674"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10690"
+            ],
+            "count": 2065
+          }
+        ],
+        "numeric_stats": {
+          "min": 10600,
+          "p50": 10648,
+          "p95": 10692,
+          "max": 10696
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_067",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "10730"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "10752"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "10708"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "10727"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "10761"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "10771"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "10774"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "10705"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "10739"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "10749"
+            ],
+            "count": 2066
+          }
+        ],
+        "numeric_stats": {
+          "min": 10700,
+          "p50": 10748,
+          "p95": 10792,
+          "max": 10796
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_068",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "10804"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10820"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10802"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10871"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10883"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10807"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "10815"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "10818"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "10822"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "10825"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 10800,
+          "p50": 10848,
+          "p95": 10892,
+          "max": 10896
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_069",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "10935"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "10933"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10949"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10952"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10971"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10981"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10984"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10990"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "10903"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "10906"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 10900,
+          "p50": 10948,
+          "p95": 10992,
+          "max": 10996
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_070",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "11012"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "11018"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "11052"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "11065"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "11002"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11008"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11029"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11035"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11039"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11055"
+            ],
+            "count": 2065
+          }
+        ],
+        "numeric_stats": {
+          "min": 11000,
+          "p50": 11048,
+          "p95": 11092,
+          "max": 11096
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_071",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "11171"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "11152"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11156"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11165"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11167"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11173"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11101"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11137"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11146"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11150"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 11100,
+          "p50": 11148,
+          "p95": 11192,
+          "max": 11196
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_072",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "11210"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "11212"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "11229"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "11231"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "11250"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "11269"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "11271"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "11216"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "11218"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "11223"
+            ],
+            "count": 2066
+          }
+        ],
+        "numeric_stats": {
+          "min": 11200,
+          "p50": 11248,
+          "p95": 11292,
+          "max": 11296
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_073",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "11330"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "11349"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "11387"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "11309"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "11347"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "11368"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "11389"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "11307"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "11311"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "11328"
+            ],
+            "count": 2067
+          }
+        ],
+        "numeric_stats": {
+          "min": 11300,
+          "p50": 11348,
+          "p95": 11392,
+          "max": 11396
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_074",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "11430"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "int",
+              "11424"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "11436"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "11460"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "11466"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "11400"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "11442"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "11418"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "11472"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "11403"
+            ],
+            "count": 2065
+          }
+        ],
+        "numeric_stats": {
+          "min": 11400,
+          "p50": 11448,
+          "p95": 11492,
+          "max": 11496
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_075",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "11509"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11566"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11585"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11501"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11528"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11532"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11507"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "11511"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "11515"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "11522"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 11500,
+          "p50": 11548,
+          "p95": 11592,
+          "max": 11596
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_076",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "11620"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11609"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11613"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11623"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11634"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11637"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11668"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11672"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11683"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11685"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 11600,
+          "p50": 11648,
+          "p95": 11692,
+          "max": 11696
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_077",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "11706"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11724"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11760"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11703"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11728"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11747"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11754"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11768"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11781"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11785"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 11700,
+          "p50": 11748,
+          "p95": 11792,
+          "max": 11796
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_078",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "11816"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11866"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11885"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11807"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11809"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11813"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11822"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11828"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11835"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11838"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 11800,
+          "p50": 11848,
+          "p95": 11892,
+          "max": 11896
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_079",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "11904"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "11930"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "11949"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "11956"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "11982"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "11909"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11923"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11975"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "11901"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "11906"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 11900,
+          "p50": 11948,
+          "p95": 11992,
+          "max": 11996
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_080",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "12018"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "12066"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "12039"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "12085"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "12088"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "12096"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "12002"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12010"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12026"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12028"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 12000,
+          "p50": 12048,
+          "p95": 12092,
+          "max": 12096
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_081",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "12130"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12101"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "12103"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "12108"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "12111"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "12120"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "12124"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "12127"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "12133"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "12139"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 12100,
+          "p50": 12148,
+          "p95": 12192,
+          "max": 12196
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_082",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "12201"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "12204"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "12242"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "12280"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "12203"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12218"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12221"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12222"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12239"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12260"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 12200,
+          "p50": 12248,
+          "p95": 12292,
+          "max": 12296
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_083",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "12310"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12323"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12328"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12329"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12334"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12347"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12352"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12355"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12360"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12366"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 12300,
+          "p50": 12348,
+          "p95": 12392,
+          "max": 12396
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_084",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "12402"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "12407"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "12412"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "12453"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "12458"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "12477"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "12418"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "12426"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "12434"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "12469"
+            ],
+            "count": 2065
+          }
+        ],
+        "numeric_stats": {
+          "min": 12400,
+          "p50": 12448,
+          "p95": 12492,
+          "max": 12496
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_085",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "12552"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "12555"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "12558"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "12505"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "12508"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "12511"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "12560"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "12519"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "12506"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12507"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 12500,
+          "p50": 12548,
+          "p95": 12592,
+          "max": 12596
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_086",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "12603"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "12606"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "12600"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12614"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12618"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12622"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12629"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12635"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12643"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12650"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 12600,
+          "p50": 12648,
+          "p95": 12692,
+          "max": 12696
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_087",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "12702"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "12706"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "12708"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "12712"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "12715"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "12718"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "12723"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "12725"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "12741"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "12742"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 12700,
+          "p50": 12748,
+          "p95": 12792,
+          "max": 12796
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_088",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "12869"
+            ],
+            "count": 2078
+          },
+          {
+            "value": [
+              "int",
+              "12807"
+            ],
+            "count": 2077
+          },
+          {
+            "value": [
+              "int",
+              "12810"
+            ],
+            "count": 2077
+          },
+          {
+            "value": [
+              "int",
+              "12842"
+            ],
+            "count": 2077
+          },
+          {
+            "value": [
+              "int",
+              "12877"
+            ],
+            "count": 2077
+          },
+          {
+            "value": [
+              "int",
+              "12880"
+            ],
+            "count": 2077
+          },
+          {
+            "value": [
+              "int",
+              "12888"
+            ],
+            "count": 2077
+          },
+          {
+            "value": [
+              "int",
+              "12896"
+            ],
+            "count": 2077
+          },
+          {
+            "value": [
+              "int",
+              "12815"
+            ],
+            "count": 2076
+          },
+          {
+            "value": [
+              "int",
+              "12818"
+            ],
+            "count": 2076
+          }
+        ],
+        "numeric_stats": {
+          "min": 12800,
+          "p50": 12848,
+          "p95": 12892,
+          "max": 12896
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_089",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "12965"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "12994"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "12901"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12912"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12944"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12959"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12963"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12967"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12973"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "12979"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 12900,
+          "p50": 12948,
+          "p95": 12992,
+          "max": 12996
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_090",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "13012"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "13090"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "13020"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "13029"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "13039"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "13048"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "13054"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "13071"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "13073"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "13075"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 13000,
+          "p50": 13048,
+          "p95": 13092,
+          "max": 13096
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_091",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "13131"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "13190"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "13108"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "13144"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "13167"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "13177"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "13106"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "13116"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "13129"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "13139"
+            ],
+            "count": 2065
+          }
+        ],
+        "numeric_stats": {
+          "min": 13100,
+          "p50": 13148,
+          "p95": 13192,
+          "max": 13196
+        },
+        "string_stats": null
+      }
+    ]
+  },
+  "scoring_mode_used": "MVP_LINEAR",
+  "findings": [],
+  "remediation_plan": []
+}

@@ -4,13 +4,11 @@
 
 | Campaign | Target | Algorithm | Checks | Date | Reproducibility | Report |
 | --- | --- | --- | --- | --- | --- | --- |
-| ALPHA_BENCHMARK_V1 | 0.1.0 (ready) | 1.0 | approved scope; not run | Not run | Proprietary target; artifact fingerprinted | Not available |
+| ALPHA_BENCHMARK_V1 | 0.1.0 | 1.0 | 11 declared | 2026-09-09 | Proprietary target; artifact fingerprinted | [Report](results/campaigns/alpha_benchmark_v1/REPORT.md) |
 
 ## Core Alpha — ALPHA_BENCHMARK_V1
 
-**READY / NOT YET RUN.** No benchmark measurements or figures have been published.
-
-The planned scope covers Check Set A, clean controls, boundary behavior, scores, hard gates, determinism, bounded sampling, runtime, throughput and peak RSS.
+See the frozen report in the campaign registry for methodology, tables, figures and limitations.
 
 ## Future campaigns
 

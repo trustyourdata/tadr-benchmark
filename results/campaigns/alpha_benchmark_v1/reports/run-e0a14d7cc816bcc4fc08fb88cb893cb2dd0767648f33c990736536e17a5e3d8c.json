@@ -1,0 +1,760 @@
+{
+  "readiness_score": 98,
+  "report_confidence": 87,
+  "total_risk": 2.16,
+  "category_risks": {
+    "schema": 2.16,
+    "quality": 0.00,
+    "leakage": 0.00,
+    "split": 0.00,
+    "inference_mismatch": 0.00,
+    "bias_signals": 0.00
+  },
+  "score_breakdown": {
+    "total_penalty": 2.16,
+    "penalty_by_category": {
+      "schema": 2.16,
+      "quality": 0.00,
+      "leakage": 0.00,
+      "split": 0.00,
+      "inference_mismatch": 0.00,
+      "bias_signals": 0.00
+    },
+    "counts_by_severity": {
+      "info": 0,
+      "low": 1,
+      "medium": 0,
+      "high": 0,
+      "critical": 0
+    },
+    "top_category": "schema",
+    "caps_applied": []
+  },
+  "analysis_stats": {
+    "row_count": 100,
+    "col_count": 9,
+    "sample_ratio": 1.0000,
+    "parse_failure_rate": 0.0000,
+    "analysis_mode": "full"
+  },
+  "dataset_profile": {
+    "columns": [
+      {
+        "name": "coord_a",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 10,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "0"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "1"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "2"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "3"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "4"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "5"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "6"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "7"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "8"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "9"
+            ],
+            "count": 10
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 4.5,
+          "p95": 9,
+          "max": 9
+        },
+        "string_stats": {
+          "avg_len": 1,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "coord_b",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 10,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "0"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "1"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "2"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "3"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "4"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "5"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "6"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "7"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "8"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "9"
+            ],
+            "count": 10
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 4.5,
+          "p95": 9,
+          "max": 9
+        },
+        "string_stats": {
+          "avg_len": 1,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "coord_c",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 1,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "0"
+            ],
+            "count": 100
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 0,
+          "p95": 0,
+          "max": 0
+        },
+        "string_stats": {
+          "avg_len": 1,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "signal_x",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 17,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "1000"
+            ],
+            "count": 6
+          },
+          {
+            "value": [
+              "string",
+              "1001"
+            ],
+            "count": 6
+          },
+          {
+            "value": [
+              "string",
+              "1002"
+            ],
+            "count": 6
+          },
+          {
+            "value": [
+              "string",
+              "1003"
+            ],
+            "count": 6
+          },
+          {
+            "value": [
+              "string",
+              "1004"
+            ],
+            "count": 6
+          },
+          {
+            "value": [
+              "string",
+              "1005"
+            ],
+            "count": 6
+          },
+          {
+            "value": [
+              "string",
+              "1006"
+            ],
+            "count": 6
+          },
+          {
+            "value": [
+              "string",
+              "1007"
+            ],
+            "count": 6
+          },
+          {
+            "value": [
+              "string",
+              "1008"
+            ],
+            "count": 6
+          },
+          {
+            "value": [
+              "string",
+              "1009"
+            ],
+            "count": 6
+          }
+        ],
+        "numeric_stats": {
+          "min": 1000,
+          "p50": 1008,
+          "p95": 1015.05,
+          "max": 1016
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "signal_z",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 6,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "2000"
+            ],
+            "count": 17
+          },
+          {
+            "value": [
+              "string",
+              "2001"
+            ],
+            "count": 17
+          },
+          {
+            "value": [
+              "string",
+              "2002"
+            ],
+            "count": 17
+          },
+          {
+            "value": [
+              "string",
+              "2003"
+            ],
+            "count": 17
+          },
+          {
+            "value": [
+              "string",
+              "2004"
+            ],
+            "count": 17
+          },
+          {
+            "value": [
+              "string",
+              "2005"
+            ],
+            "count": 15
+          }
+        ],
+        "numeric_stats": {
+          "min": 2000,
+          "p50": 2002,
+          "p95": 2005,
+          "max": 2005
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "flag",
+        "inferred_type": "bool",
+        "missing_rate": 0.0000,
+        "nunique": 2,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "false"
+            ],
+            "count": 50
+          },
+          {
+            "value": [
+              "string",
+              "true"
+            ],
+            "count": 50
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 4.5,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "segment",
+        "inferred_type": "text",
+        "missing_rate": 0.0000,
+        "nunique": 13,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "g0"
+            ],
+            "count": 14
+          },
+          {
+            "value": [
+              "string",
+              "g1"
+            ],
+            "count": 9
+          },
+          {
+            "value": [
+              "string",
+              "g10"
+            ],
+            "count": 7
+          },
+          {
+            "value": [
+              "string",
+              "g11"
+            ],
+            "count": 7
+          },
+          {
+            "value": [
+              "string",
+              "g12"
+            ],
+            "count": 7
+          },
+          {
+            "value": [
+              "string",
+              "g2"
+            ],
+            "count": 7
+          },
+          {
+            "value": [
+              "string",
+              "g3"
+            ],
+            "count": 7
+          },
+          {
+            "value": [
+              "string",
+              "g4"
+            ],
+            "count": 7
+          },
+          {
+            "value": [
+              "string",
+              "g5"
+            ],
+            "count": 7
+          },
+          {
+            "value": [
+              "string",
+              "g6"
+            ],
+            "count": 7
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 2.21,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "event_time",
+        "inferred_type": "datetime",
+        "missing_rate": 0.0000,
+        "nunique": 28,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "2020-01-01"
+            ],
+            "count": 4
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-02"
+            ],
+            "count": 4
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-03"
+            ],
+            "count": 4
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-04"
+            ],
+            "count": 4
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-05"
+            ],
+            "count": 4
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-06"
+            ],
+            "count": 4
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-07"
+            ],
+            "count": 4
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-08"
+            ],
+            "count": 4
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-09"
+            ],
+            "count": 4
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-10"
+            ],
+            "count": 4
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 10,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "probe_id",
+        "inferred_type": "text",
+        "missing_rate": 0.0000,
+        "nunique": 100,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "probe_0"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "string",
+              "probe_1"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "string",
+              "probe_10"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "string",
+              "probe_11"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "string",
+              "probe_12"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "string",
+              "probe_13"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "string",
+              "probe_14"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "string",
+              "probe_15"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "string",
+              "probe_16"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "string",
+              "probe_17"
+            ],
+            "count": 1
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 7.9,
+          "empty_rate": 0.0000
+        }
+      }
+    ]
+  },
+  "scoring_mode_used": "MVP_LINEAR",
+  "findings": [
+    {
+      "id": "schema.id_like_high_cardinality::column:probe_id",
+      "category": "schema",
+      "severity": "low",
+      "confidence": 0.60,
+      "title": "Id like high cardinality",
+      "summary": "Id like high cardinality.",
+      "affected_columns": [
+        "probe_id"
+      ],
+      "evidence": [
+        {
+          "title": "Id like high cardinality",
+          "details": {
+            "distinct_count": 100,
+            "nonmissing_rows": 100,
+            "unique_ratio": 1.0000
+          },
+          "sample_rows": null
+        }
+      ],
+      "actions": [
+        {
+          "code": "schema.review_identifier",
+          "title": "Review identifier role",
+          "rationale": "Near-unique values may represent an operational identifier.",
+          "params": {
+            "affected_columns": [
+              "probe_id"
+            ]
+          },
+          "pipeline_step": null
+        }
+      ],
+      "metadata": {
+        "check_id": "schema.id_like_high_cardinality",
+        "check_version": "1.0",
+        "thresholds": {
+          "minimum_nonmissing": 100,
+          "unique_ratio": 0.9800
+        },
+        "analysis_mode": "full",
+        "subject_kind": "column",
+        "subject_key": "column:probe_id",
+        "subject_columns": [
+          "probe_id"
+        ],
+        "evidence_class": "STATISTICAL",
+        "evidence_population": {
+          "eligible_rows": 100,
+          "evaluated_rows": 100,
+          "effective_rows": 100,
+          "coverage_ratio": 1.0000,
+          "relevant_parse_failure_rate": 0.0000,
+          "stability_flags": [
+            "WEAK_LEXICAL_HEURISTIC"
+          ]
+        },
+        "id_name_heuristic_matched": true
+      }
+    }
+  ],
+  "remediation_plan": [
+    {
+      "id": "fix.identifier::column:probe_id",
+      "title": "Review identifier role",
+      "description": "Near-unique values may represent an operational identifier. Affected: probe_id.",
+      "estimated_effort": "S",
+      "expected_score_gain": 1.30,
+      "applies_to_findings": [
+        "schema.id_like_high_cardinality::column:probe_id"
+      ],
+      "steps": [
+        "Review probe_id.",
+        "Review the column role and declare confirmed identifiers in the task intent.",
+        "Re-run TADR after the change."
+      ],
+      "pipeline_steps": [
+        {
+          "action": "schema.review_identifier",
+          "params": {
+            "affected_columns": [
+              "probe_id"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

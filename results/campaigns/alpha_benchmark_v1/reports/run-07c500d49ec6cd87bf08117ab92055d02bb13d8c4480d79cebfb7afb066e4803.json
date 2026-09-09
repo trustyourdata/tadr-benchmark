@@ -1,0 +1,1647 @@
+{
+  "readiness_score": 100,
+  "report_confidence": 83,
+  "total_risk": 0.00,
+  "category_risks": {
+    "schema": 0.00,
+    "quality": 0.00,
+    "leakage": 0.00,
+    "split": 0.00,
+    "inference_mismatch": 0.00,
+    "bias_signals": 0.00
+  },
+  "score_breakdown": {
+    "total_penalty": 0.00,
+    "penalty_by_category": {
+      "schema": 0.00,
+      "quality": 0.00,
+      "leakage": 0.00,
+      "split": 0.00,
+      "inference_mismatch": 0.00,
+      "bias_signals": 0.00
+    },
+    "counts_by_severity": {
+      "info": 0,
+      "low": 0,
+      "medium": 0,
+      "high": 0,
+      "critical": 0
+    },
+    "top_category": null,
+    "caps_applied": []
+  },
+  "analysis_stats": {
+    "row_count": 5000000,
+    "col_count": 20,
+    "sample_ratio": 0.0400,
+    "parse_failure_rate": 0.0000,
+    "analysis_mode": "sampled"
+  },
+  "dataset_profile": {
+    "columns": [
+      {
+        "name": "coord_a",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 1000,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "0"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "int",
+              "1"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "int",
+              "10"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "int",
+              "100"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "int",
+              "101"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "int",
+              "102"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "int",
+              "103"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "int",
+              "104"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "int",
+              "105"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "int",
+              "106"
+            ],
+            "count": 200
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 499.5,
+          "p95": 949.05,
+          "max": 999
+        },
+        "string_stats": null
+      },
+      {
+        "name": "coord_b",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 1000,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "0"
+            ],
+            "count": 1124
+          },
+          {
+            "value": [
+              "int",
+              "10"
+            ],
+            "count": 1124
+          },
+          {
+            "value": [
+              "int",
+              "13"
+            ],
+            "count": 1124
+          },
+          {
+            "value": [
+              "int",
+              "16"
+            ],
+            "count": 1124
+          },
+          {
+            "value": [
+              "int",
+              "23"
+            ],
+            "count": 1124
+          },
+          {
+            "value": [
+              "int",
+              "26"
+            ],
+            "count": 1124
+          },
+          {
+            "value": [
+              "int",
+              "3"
+            ],
+            "count": 1124
+          },
+          {
+            "value": [
+              "int",
+              "33"
+            ],
+            "count": 1124
+          },
+          {
+            "value": [
+              "int",
+              "36"
+            ],
+            "count": 1124
+          },
+          {
+            "value": [
+              "int",
+              "43"
+            ],
+            "count": 1124
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 339.5,
+          "p95": 933.05,
+          "max": 999
+        },
+        "string_stats": null
+      },
+      {
+        "name": "coord_c",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 5,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "0"
+            ],
+            "count": 78788
+          },
+          {
+            "value": [
+              "int",
+              "1"
+            ],
+            "count": 30303
+          },
+          {
+            "value": [
+              "int",
+              "2"
+            ],
+            "count": 30303
+          },
+          {
+            "value": [
+              "int",
+              "3"
+            ],
+            "count": 30303
+          },
+          {
+            "value": [
+              "int",
+              "4"
+            ],
+            "count": 30303
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 1,
+          "p95": 4,
+          "max": 4
+        },
+        "string_stats": null
+      },
+      {
+        "name": "signal_x",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 17,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "1000"
+            ],
+            "count": 11766
+          },
+          {
+            "value": [
+              "int",
+              "1001"
+            ],
+            "count": 11766
+          },
+          {
+            "value": [
+              "int",
+              "1002"
+            ],
+            "count": 11766
+          },
+          {
+            "value": [
+              "int",
+              "1003"
+            ],
+            "count": 11765
+          },
+          {
+            "value": [
+              "int",
+              "1012"
+            ],
+            "count": 11765
+          },
+          {
+            "value": [
+              "int",
+              "1013"
+            ],
+            "count": 11765
+          },
+          {
+            "value": [
+              "int",
+              "1014"
+            ],
+            "count": 11765
+          },
+          {
+            "value": [
+              "int",
+              "1015"
+            ],
+            "count": 11765
+          },
+          {
+            "value": [
+              "int",
+              "1016"
+            ],
+            "count": 11765
+          },
+          {
+            "value": [
+              "int",
+              "1004"
+            ],
+            "count": 11764
+          }
+        ],
+        "numeric_stats": {
+          "min": 1000,
+          "p50": 1008,
+          "p95": 1016,
+          "max": 1016
+        },
+        "string_stats": null
+      },
+      {
+        "name": "signal_z",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 19,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "2002"
+            ],
+            "count": 10531
+          },
+          {
+            "value": [
+              "int",
+              "2006"
+            ],
+            "count": 10531
+          },
+          {
+            "value": [
+              "int",
+              "2000"
+            ],
+            "count": 10530
+          },
+          {
+            "value": [
+              "int",
+              "2004"
+            ],
+            "count": 10530
+          },
+          {
+            "value": [
+              "int",
+              "2008"
+            ],
+            "count": 10530
+          },
+          {
+            "value": [
+              "int",
+              "2010"
+            ],
+            "count": 10530
+          },
+          {
+            "value": [
+              "int",
+              "2011"
+            ],
+            "count": 10530
+          },
+          {
+            "value": [
+              "int",
+              "2012"
+            ],
+            "count": 10530
+          },
+          {
+            "value": [
+              "int",
+              "2014"
+            ],
+            "count": 10530
+          },
+          {
+            "value": [
+              "int",
+              "2001"
+            ],
+            "count": 10529
+          }
+        ],
+        "numeric_stats": {
+          "min": 2000,
+          "p50": 2009,
+          "p95": 2018,
+          "max": 2018
+        },
+        "string_stats": null
+      },
+      {
+        "name": "flag",
+        "inferred_type": "bool",
+        "missing_rate": 0.0000,
+        "nunique": 2,
+        "top_values": [
+          {
+            "value": [
+              "bool",
+              false
+            ],
+            "count": 100000
+          },
+          {
+            "value": [
+              "bool",
+              true
+            ],
+            "count": 100000
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": null
+      },
+      {
+        "name": "segment",
+        "inferred_type": "categorical",
+        "missing_rate": 0.0000,
+        "nunique": 13,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "g2"
+            ],
+            "count": 15389
+          },
+          {
+            "value": [
+              "string",
+              "g3"
+            ],
+            "count": 15389
+          },
+          {
+            "value": [
+              "string",
+              "g4"
+            ],
+            "count": 15389
+          },
+          {
+            "value": [
+              "string",
+              "g5"
+            ],
+            "count": 15388
+          },
+          {
+            "value": [
+              "string",
+              "g0"
+            ],
+            "count": 15387
+          },
+          {
+            "value": [
+              "string",
+              "g1"
+            ],
+            "count": 15387
+          },
+          {
+            "value": [
+              "string",
+              "g10"
+            ],
+            "count": 15382
+          },
+          {
+            "value": [
+              "string",
+              "g11"
+            ],
+            "count": 15382
+          },
+          {
+            "value": [
+              "string",
+              "g12"
+            ],
+            "count": 15382
+          },
+          {
+            "value": [
+              "string",
+              "g9"
+            ],
+            "count": 15382
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 2.230769,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "event_time",
+        "inferred_type": "datetime",
+        "missing_rate": 0.0000,
+        "nunique": 28,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "2020-01-03"
+            ],
+            "count": 7144
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-08"
+            ],
+            "count": 7144
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-01"
+            ],
+            "count": 7143
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-02"
+            ],
+            "count": 7143
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-04"
+            ],
+            "count": 7143
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-05"
+            ],
+            "count": 7143
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-06"
+            ],
+            "count": 7143
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-07"
+            ],
+            "count": 7143
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-09"
+            ],
+            "count": 7143
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-10"
+            ],
+            "count": 7143
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 10,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "aux_000",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "4032"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "4035"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "4038"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "4041"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "4044"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "4023"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "4026"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "4029"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "4047"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "4050"
+            ],
+            "count": 2067
+          }
+        ],
+        "numeric_stats": {
+          "min": 4000,
+          "p50": 4048,
+          "p95": 4092,
+          "max": 4096
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_001",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "4187"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4102"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4104"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4108"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4111"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4117"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4123"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4130"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4132"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4135"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 4100,
+          "p50": 4148,
+          "p95": 4192,
+          "max": 4196
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_002",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "4203"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "4216"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "4218"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "4223"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "4231"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "4236"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "4238"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "4240"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "4245"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "4251"
+            ],
+            "count": 2068
+          }
+        ],
+        "numeric_stats": {
+          "min": 4200,
+          "p50": 4248,
+          "p95": 4292,
+          "max": 4296
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_003",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "4305"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4311"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4326"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4332"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4347"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4365"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4380"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4387"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4393"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4395"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 4300,
+          "p50": 4348,
+          "p95": 4392,
+          "max": 4396
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_004",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "4405"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "4407"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "4445"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "4452"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "int",
+              "4400"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4414"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4426"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4438"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4443"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4450"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 4400,
+          "p50": 4448,
+          "p95": 4492,
+          "max": 4496
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_005",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "4501"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "4552"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "int",
+              "4529"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "4547"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "4575"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "4580"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "4593"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "int",
+              "4506"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "4514"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "int",
+              "4524"
+            ],
+            "count": 2066
+          }
+        ],
+        "numeric_stats": {
+          "min": 4500,
+          "p50": 4548,
+          "p95": 4592,
+          "max": 4596
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_006",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "4607"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4626"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4631"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4650"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4658"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4669"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4677"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4696"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4604"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4612"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 4600,
+          "p50": 4648,
+          "p95": 4692,
+          "max": 4696
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_007",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "4701"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4708"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4710"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4717"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4718"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4731"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4732"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4739"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4745"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4747"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 4700,
+          "p50": 4748,
+          "p95": 4792,
+          "max": 4796
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_008",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "4821"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4802"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4804"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4818"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4823"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4831"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4833"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4845"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4847"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4848"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 4800,
+          "p50": 4848,
+          "p95": 4892,
+          "max": 4896
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_009",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "4952"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4985"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "4907"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4914"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4916"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4926"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4933"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4935"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4941"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "4943"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 4900,
+          "p50": 4948,
+          "p95": 4992,
+          "max": 4996
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_010",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "5051"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5062"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5083"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5094"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "int",
+              "5004"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "5008"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "5012"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "5015"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "5018"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "5019"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 5000,
+          "p50": 5048,
+          "p95": 5092,
+          "max": 5096
+        },
+        "string_stats": null
+      },
+      {
+        "name": "aux_011",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "int",
+              "5102"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "5108"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "5115"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "5118"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "5125"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "5128"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "5130"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "5141"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "5146"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "int",
+              "5149"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 5100,
+          "p50": 5148,
+          "p95": 5192,
+          "max": 5196
+        },
+        "string_stats": null
+      }
+    ]
+  },
+  "scoring_mode_used": "MVP_LINEAR",
+  "findings": [],
+  "remediation_plan": []
+}
