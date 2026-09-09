@@ -96,6 +96,8 @@ def freeze(root: Path, manifest: CampaignManifest, scenarios: list[ScenarioSpec]
         raise ValueError("publication review must be explicitly recorded before freeze")
     if manifest.status != "ready":
         raise ValueError("only a ready campaign can be frozen")
+    if manifest.campaign_id == "ALPHA_BENCHMARK_V1":
+        raise ValueError("Alpha requires the complete freeze_publication path and adjudication")
     destination = campaign_directory(root, manifest.campaign_id)
     if destination.exists():
         raise ValueError("frozen campaign directory already exists; create a new campaign ID")
@@ -113,7 +115,7 @@ def freeze(root: Path, manifest: CampaignManifest, scenarios: list[ScenarioSpec]
     summary = aggregate(manifest.campaign_id, runs, failures, attempts)
     frozen = CampaignManifest.model_validate({**manifest.model_dump(), "status": "frozen", "frozen_date": frozen_date})
     derived_tables = table_rows(ReportInputs(frozen, scenarios, runs, failures, reports, attempts, expectations, diagnostics))
-    figures = build_figures(derived_tables)
+    figures = build_figures(derived_tables, attempts=attempts)
     work = contained(root, ".work/freeze")
     work.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(dir=work) as temporary:
@@ -157,7 +159,12 @@ def freeze(root: Path, manifest: CampaignManifest, scenarios: list[ScenarioSpec]
     return destination
 
 
-def verify_frozen(directory: Path, *, check_directory_name: bool = True) -> tuple[CampaignManifest, CampaignSummary]:
+def verify_frozen(directory: Path, *, check_directory_name: bool = True,
+                  allow_staged: bool = False) -> tuple[CampaignManifest, CampaignSummary]:
+    if (directory / "publication_provenance.json").is_file():
+        from .publication import verify_publication
+        return verify_publication(directory, check_directory_name=check_directory_name,
+                                  allow_staged=allow_staged)
     if directory.is_symlink():
         raise ValueError("frozen directories cannot be symlinks")
     if any(path.is_symlink() for path in directory.rglob("*")):
@@ -177,6 +184,8 @@ def verify_frozen(directory: Path, *, check_directory_name: bool = True) -> tupl
     if scan_files(directory, sorted(actual)):
         raise ValueError("frozen artifacts failed public-safety scan")
     manifest = CampaignManifest.model_validate_json((directory / "manifest.json").read_bytes())
+    if manifest.campaign_id == "ALPHA_BENCHMARK_V1":
+        raise ValueError("Alpha publication provenance and adjudication are required")
     if manifest.status != "frozen":
         raise ValueError("missing frozen status")
     if check_directory_name and directory.name != manifest.campaign_id.lower():
@@ -211,7 +220,7 @@ def verify_frozen(directory: Path, *, check_directory_name: bool = True) -> tupl
     if (directory / "tables" / "summary.csv").read_text(encoding="utf-8") != summary_csv(summary):
         raise ValueError("frozen table is stale")
     derived_tables = table_rows(ReportInputs(manifest, scenarios, runs, failures, reports, attempts, expectations, diagnostics))
-    figures = build_figures(derived_tables)
+    figures = build_figures(derived_tables, attempts=attempts)
     if set(p.name for p in (directory / "tables").iterdir()) != set(derived_tables) | {"summary.csv"}:
         raise ValueError("frozen table inventory mismatch")
     if set(p.name for p in (directory / "figures").glob("*")) != set(figures):

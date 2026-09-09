@@ -118,14 +118,21 @@ input and task/schema mismatch. Define expected infrastructure errors separately
 from valid reports that miss defects. No error is silently converted to a
 successful zero-risk record.
 
-## Alpha definitions and planned execution
+## Alpha design and completed evidence
 
 Versioned families deterministically expand to 370 concrete specifications, with
 320 correctness cases, 36 sampling placements and 14 scale points. The source
-manifest is PLANNED. Generators, injectors, independent annotations, serializers
-and validation are implemented; the live research runner is deferred. There are
-no measured results. The [Alpha benchmark protocol](alpha_benchmark_protocol.md) records the current
-execution prerequisites and source representation policies.
+manifest retains the historical READY launch declaration. Scientific execution
+and approved normative adjudication are complete; publication awaits final freeze
+authorization. The [Alpha benchmark protocol](alpha_benchmark_protocol.md) records
+the fixed execution and source representation policies.
+
+Original physical/design labels remain unchanged historical evidence. The approved
+post-execution normative overlay corrects omitted category-cap annotations and
+the event_key contract frame from the pre-existing Algorithm 1.0 contract. Original
+and adjudicated results must both be published with their own denominators. A
+valid identifier's contract-required parse warning remains adverse practical
+specificity. Physical truth and the eight primary-clean registrations are unchanged.
 
 Labels have three separate layers: physical conditions, pinned-Alpha normative
 expectations, and research challenges. The eight clean task/representation

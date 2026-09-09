@@ -6,10 +6,12 @@ independent ground truth, measurement contracts and public research artifacts.
 TADR Core (`tadr-core`, imported as `tadr`) is the reference implementation under
 evaluation.
 
-**Status: Experimental framework. `ALPHA_BENCHMARK_V1` is READY / NOT YET RUN.**
+**Status: Experimental framework. `ALPHA_BENCHMARK_V1` execution and scientific
+adjudication are complete; immutable publication awaits final freeze authorization.**
 There are no published benchmark measurements, generated campaign datasets or
 Alpha figures. The [results index](RESULTS.md) records campaign status and will
-link to immutable reports when campaigns have been executed and reviewed.
+link to the immutable report only after verified freeze. Its current launch
+status is historical; the index is deliberately updated after freeze.
 
 ## Why an independent benchmark
 
@@ -102,11 +104,11 @@ independent rationale. Numeric target scores are not detection ground truth.
 The current [Alpha manifest](campaigns/ALPHA_BENCHMARK_V1.yaml) describes eleven
 Check Set A checks, clean controls, single defects, composites and boundary
 studies. CSV and Parquet and classification, regression, time-series and analytics
-tasks are planned where applicable. Pilot scale candidates are 10k, 100k, 1M and
+tasks are included where applicable. Scale points are 10k, 100k, 1M and
 5M rows, plus 300k paired sampling and small support cases. The approved finite
 plan contains 320 correctness, 36 sampling and 14 scale scenarios; 578 primary
-analysis calls (13 warmups included) and 72 auxiliary diagnostic calls are planned.
-These are planned invocation counts, not measured results. See the
+analysis calls (13 warmups included) and 72 auxiliary diagnostic calls. Execution
+is complete; raw evidence remains unpublished pending freeze. See the
 [Alpha benchmark protocol](docs/alpha_benchmark_protocol.md).
 
 Once frozen, a campaign and its scenario snapshots are immutable. A new method
@@ -149,14 +151,16 @@ installation artifact. They also record the benchmark revision, Python and
 dependency versions. `target_source_distribution` is `proprietary`; the public
 source URL is null.
 
-The benchmark methodology, synthetic datasets, ground truth, scenario definitions,
+The benchmark methodology, synthetic generators/recipes, ground truth, scenario definitions,
 execution protocol, evaluation code and published evaluation artifacts are public.
 The evaluated TADR Core implementation is proprietary. The exact implementation
 used for a campaign is identified by versioned target metadata and a cryptographic
 fingerprint of the execution artifact; the proprietary artifact and its source
 code are not distributed by this repository. Source-level rebuild reproducibility
 is not publicly available. Re-execution requires authorized access to the exact
-artifact. Alpha has not yet run. See the [reproducibility boundary](docs/reproducibility.md).
+artifact. Generated source CSV/Parquet files are excluded from the release;
+public recipes and identities support regeneration. See the
+[reproducibility boundary](docs/reproducibility.md).
 
 Install the target from an authorized private wheel. The adapter verifies the
 wheel hash, installed payload and package/runtime version before analysis. The
@@ -204,16 +208,17 @@ It covers two 10k inputs, one 300k full/bounded pair and 100k inputs with 20 and
 The explicit `campaigns.runner.run_campaign` API uses fresh workers and a verified
 resume ledger. There is no `run` CLI command. The source manifest keeps `benchmark_git_commit` null; clean-tree
 resolution records the existing HEAD in execution provenance and the frozen manifest.
-Alpha is READY / NOT YET RUN for the validated Ubuntu 24.04 WSL2 execution
+Alpha executed in the validated Ubuntu 24.04 WSL2 execution
 environment: Linux x86_64, Python 3.11.9, POLARS_MAX_THREADS=4 and WSL-native
 ext4 scientific storage. The manifest records verified instrumentation, target
 metadata and the exact private installation-artifact SHA-256. Scientific-methodology
-changes after READY require explicit new review. Execution still resolves the
-final clean committed benchmark HEAD; the tracked source SHA remains null.
+changes after READY require explicit new review. The source manifest retains its
+historical READY launch declaration and a null source SHA; original evidence
+retains the resolved scientific execution revision.
 `expand_run_plan` validates a finite plan without execution; `planned_runs` rejects PLANNED campaigns.
 All data and working outputs go under `.work/`.
 
-The freeze API accepts completed records, independent scenario specifications,
+The generic freeze API accepts completed records, independent scenario specifications,
 environment records, original canonical reports, typed terminal failures and
 required independent/observation companions. It requires a clean benchmark
 revision, complete terminal outcome inventory and explicit publication review; it validates
@@ -222,10 +227,20 @@ the target. Generated figures and tables are functions of the same raw records.
 
 ## Reproducing frozen results
 
-No frozen campaigns exist yet. A future artifact contains `manifest.json`,
+Alpha uses `campaigns.publication.freeze_publication` to include the full
+adjudication and original candidate history before checksumming and immutable
+creation. Execution, historical processing and publication assembly revisions
+are distinct. `stage_publication` validates the same package under ignored
+working storage with an unresolved publication revision/date; it cannot enter
+the results index or pass normal frozen verification. Both original-label and
+adjudicated results and all adverse observations remain visible.
+
+No frozen campaigns exist yet. The publication format contains `manifest.json`,
 `environment.json`, `run_specs.json`, `attempts.jsonl`, selected `runs.jsonl` and `failures.jsonl`, typed label,
 dataset identity, instrumentation and diagnostic companions, `summary.json`, scenario and
-canonical report snapshots, `protocol.md`, tables, figures, `REPORT.md` and `checksums.sha256`.
+canonical report snapshots, `protocol.md`, original tables/figures, original
+candidate history, the full `adjudication_v1/` bundle, publication provenance/
+inventory, `ADJUDICATION_REPRODUCTION.md`, public `REPORT.md` and outer checksums.
 Verify it with `tadr-benchmark verify-frozen results/campaigns/<campaign>` and use
 its exact benchmark revision, fingerprinted target artifact, dependencies and
 execution plan with the isolated runner.
@@ -256,7 +271,8 @@ prevalence, fairness, downstream model quality or production suitability.
 Deterministic sampling can miss adversarially placed defects; sampled RSS can
 miss short-lived peaks. Harness test success is not a scientific benchmark result.
 
-1. Validate the approved execution host and protocol, then authorize `ALPHA_BENCHMARK_V1` execution separately.
+1. Authorize and verify immutable `ALPHA_BENCHMARK_V1` publication using its
+   completed evidence and approved scientific adjudication.
 2. Evaluate complete Algorithm v1 in `TADR_BENCHMARK_V1` with an expanded corpus.
 3. Evaluate optimized Algorithm v1 in `TADR_BENCHMARK_V1_FINAL_RESULTS` while
    preserving the common historical subset.

@@ -102,5 +102,27 @@ def render_svg(query: PlotQuery) -> bytes:
     return output.getvalue()
 
 
-def build_figures(tables: dict[str, list[dict]]) -> dict[str, bytes]:
-    return {name: render_svg(query) for name, query in sorted(figure_queries(tables).items())}
+def plotting_tables(tables: dict[str, list[dict]], attempts) -> dict[str, list[dict]]:
+    """Restore the public ledger order used by the original Alpha figures.
+
+    CSV serialization sorts independently. Equal x values must retain the
+    selected attempt-ID order, never the caller's run or table iteration order.
+    """
+    selected = sorted((a for a in attempts if a.selected_as_final_outcome),
+                      key=lambda a: a.attempt_id)
+    rank = {a.run_id: index for index, a in enumerate(selected)}
+    if len(rank) != len(selected) or len({a.attempt_id for a in selected}) != len(selected):
+        raise ValueError("plotting requires unique selected outcomes")
+    result = dict(tables)
+    sweeps = tables["score_sweeps.csv"]
+    if any(row.get("run_id") not in rank for row in sweeps):
+        raise ValueError("plotting row has no selected attempt binding")
+    if len({row["run_id"] for row in sweeps}) != len(sweeps):
+        raise ValueError("plotting requires one score row per selected outcome")
+    result["score_sweeps.csv"] = sorted(sweeps, key=lambda row: rank[row["run_id"]])
+    return result
+
+
+def build_figures(tables: dict[str, list[dict]], *, attempts=None) -> dict[str, bytes]:
+    ordered = plotting_tables(tables, attempts) if attempts is not None else tables
+    return {name: render_svg(query) for name, query in sorted(figure_queries(ordered).items())}

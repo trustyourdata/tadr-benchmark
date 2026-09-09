@@ -13,6 +13,7 @@ from .safety import repository_issues
 from .serialization import canonical_bytes
 from .validation import validate_repository
 from .execution.attempts import AttemptRecord
+from .campaigns.publication import PublicationInventory, PublicationProvenance
 from .evaluation.metrics import DetectionMetrics, ReportCoverage
 
 
@@ -30,10 +31,14 @@ def main(argv: list[str] | None = None) -> int:
     results.add_argument("--check", action="store_true")
     frozen = sub.add_parser("verify-frozen", help="verify a frozen campaign directory")
     frozen.add_argument("directory", type=Path)
+    frozen.add_argument("--allow-staged", action="store_true",
+                        help="validate an unresolved dry-run publication without treating it as frozen")
+    frozen.add_argument("--no-directory-name-check", action="store_true",
+                        help="validate an ignored staging directory")
     history = sub.add_parser("verify-history", help="reject edits to historical frozen campaigns")
     history.add_argument("base_ref")
     schema = sub.add_parser("schema", help="print a versioned JSON schema")
-    models = {model.__name__: model for model in (CampaignManifest, ScenarioSpec, RunSpec, RunResult, DetectionMetrics, ReportCoverage,
+    models = {model.__name__: model for model in (PublicationProvenance, PublicationInventory, CampaignManifest, ScenarioSpec, RunSpec, RunResult, DetectionMetrics, ReportCoverage,
                                                  EnvironmentInfo, TargetMetadata, RunFailure, OutcomeAccounting, AttemptRecord,
                                                  ScenarioExpectations, PhysicalLedger, DatasetIdentity, WriterPolicy,
                                                  InstrumentationRecord, DiagnosticRecord, FamilyDefinition, FamilyInventory)}
@@ -66,8 +71,10 @@ def main(argv: list[str] | None = None) -> int:
             else:
                 destination.write_text(expected, encoding="utf-8", newline="\n")
         elif args.command == "verify-frozen":
-            verify_frozen(args.directory)
-            print("Frozen campaign verified.")
+            manifest, _ = verify_frozen(args.directory, check_directory_name=not args.no_directory_name_check,
+                                        allow_staged=args.allow_staged)
+            print("Publication stage verified; no campaign frozen." if manifest.status != "frozen"
+                  else "Frozen campaign verified.")
         elif args.command == "verify-history":
             verify_history(args.root, args.base_ref)
         elif args.command == "schema":

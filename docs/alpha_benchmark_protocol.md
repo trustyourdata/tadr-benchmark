@@ -1,16 +1,24 @@
 # Alpha benchmark protocol
 
-**ALPHA_BENCHMARK_V1: READY / NOT YET RUN. No benchmark measurements exist.**
+**ALPHA_BENCHMARK_V1: execution and scientific adjudication complete;
+immutable publication awaits final freeze authorization.**
 
 The scientific design is fixed for this READY campaign. Scientific-methodology
 changes require explicit new review.
 
 This document specifies the Alpha campaign inventory, source representations and
 execution protocol. Scenario definitions and supporting infrastructure are
-implemented; live campaign execution remains deferred. Package version is 0.1.0;
+implemented. The source READY manifest is the preserved launch declaration, not
+an assertion that execution remains pending. Package version is 0.1.0;
 benchmark, result, instrumentation, scenario and annotation versions are 1.0.
 
 ## Inventory and independent construction
+
+Publication retains original preregistered labels/results and the separately
+approved post-execution normative adjudication. The full machine-readable overlay
+and original history accompany the release; physical truth, scientific inputs
+and reports remain unchanged. Publication revision never replaces either
+scientific execution or historical aggregation revision.
 
 `scenarios/families/ALPHA_BENCHMARK_V1.json` declares finite templates/axes.
 `scenarios.families.expand_families` expands strict concrete specifications;

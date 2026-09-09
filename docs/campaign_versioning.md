@@ -7,9 +7,9 @@ installation artifact fingerprint, Python version, concrete scenarios, variants,
 determinism contexts, warmup/repeat counts and instrumentation policy.
 
 Tracked source manifests keep `benchmark_git_commit` null. `resolve_manifest`
-requires a clean working tree, resolves existing HEAD, and binds execution and
-frozen provenance to that SHA. Freeze checks that the revision remains clean and
-unchanged; it never requires a self-referential SHA edit in a source manifest.
+requires a clean working tree, resolves existing HEAD, and binds scientific
+execution to that SHA. Publication has a separate revision; it never replaces
+the execution SHA or requires a self-referential source SHA edit.
 Alpha also requires provisioned/validated Linux x86_64 execution, Python 3.11.9,
 four Polars threads before READY. The selected private target artifact must be
 available, fingerprinted, and verified against installed package/runtime metadata;
@@ -41,7 +41,52 @@ historical scenarios remain available through frozen snapshots.
 
 ## Freeze requirements
 
-`campaigns.freeze.freeze` accepts reviewed artifacts; it does not run experiments.
+### Complete Alpha publication
+
+Alpha uses `campaigns.publication.freeze_publication(root, sources, frozen_date,
+public_reviewed=True)`. `PublicationSources` supplies the original candidate,
+complete adjudication directory and original scientific review. Generic freeze
+rejects Alpha rather than omitting those companions.
+
+Three identities remain separate: scientific execution, historical post-execution
+processing, and clean publication assembly. Typed `publication_provenance.json`
+binds each role, target fingerprint, original/adjudication checksum manifests,
+original review, source-file generator hashes and actual publication environment.
+Runs always retain execution SHA; verification never requires the reviewer's
+HEAD to equal it. Use the publication generator code identified by content and
+its recorded rendering dependencies.
+
+`stage_publication(root, sources, destination)` supports pre-commit review under
+`.work/`. Its publication state is staged, assembly revision is null, and the root
+manifest remains READY with no freeze date. Explicitly validate with
+`verify_frozen(..., check_directory_name=False, allow_staged=True)`; default
+verification rejects unresolved stages. Staging never creates a results directory
+or assigns a fictitious revision to uncommitted code.
+
+The stage includes all original authoritative evidence and execution/processing
+companions, original summary/tables/figures, historical READY manifest/candidate
+report/checksums and scientific review, the entire existing `adjudication_v1/`
+bundle, public report, publication provenance/inventory and
+`ADJUDICATION_REPRODUCTION.md`. The inventory gives the exact original-candidate
+reconstruction mapping. Outer checksums cover the inner checksum manifest too.
+
+The frozen root manifest changes only status/date, retaining scientific
+execution and target/environment fields. Original labels and results remain
+historical evidence beside the post-execution normative overlay. Verification
+checks archive reconstruction, provenance, complete overlay/inner checksums,
+recomputed normative metrics, unchanged physical frames, practical event_key
+evidence, all original tables/figures and deterministic public report/note.
+Embedded operator scripts and target code are never executed.
+
+Generation and verification use stable selected attempt-ID plotting order to
+preserve original SVG bytes at tied x-values. All checks run before atomic
+rename; the overlay cannot be appended afterward. Sources, private target bytes,
+local configuration and preflight artifacts remain excluded. A staged package
+requires a fresh clean, explicitly authorized assembly to become a release.
+
+### Generic artifacts and common safeguards
+
+`campaigns.freeze.freeze` accepts generic reviewed artifacts; it does not run experiments.
 It requires a ready manifest, explicit `public_reviewed=True`, a clean benchmark
 working tree at its recorded revision, matching target/environment provenance,
 complete requested warmups and measurements as successful reports or adjudicated

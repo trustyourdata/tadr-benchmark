@@ -8,7 +8,7 @@ and versioned scenario, generator, injector, protocol, RNG and determinism defin
 
 ## Reproducibility boundary
 
-The benchmark methodology, synthetic datasets, ground truth, execution protocol,
+The benchmark methodology, synthetic generators/recipes, ground truth, execution protocol,
 and published evaluation artifacts are public. The evaluated TADR Core
 implementation is proprietary. The exact implementation used for a campaign is
 identified by versioned target metadata and a cryptographic fingerprint of the
@@ -68,7 +68,9 @@ A missing artifact, unresolved/mismatched fingerprint, unverified metadata or
 unvalidated execution environment blocks scientific execution. Proprietary source
 distribution limits source-level reproduction claims; it does not block READY.
 Alpha's exact execution artifact and installed metadata are verified, and the
-manifest records its fingerprint and readiness flags. Alpha is READY / NOT YET RUN.
+manifest records its fingerprint and readiness flags as a historical launch
+declaration. Alpha execution and scientific adjudication are complete; immutable
+publication awaits final freeze authorization.
 
 Frozen artifacts include exact canonical reports and hashes, canonical scenario
 snapshots, all requested run records including warmups, environment inventory,
@@ -100,14 +102,49 @@ execution plan on a controlled environment. Detection and score comparisons may 
 performance claims require explicit reviewed equivalence and identical protocol.
 
 The tracked source benchmark SHA stays null. Resolve a clean existing HEAD before
-execution and bind all success/failure records to that revision; freeze resolves
-and rechecks it. Initial schema/protocol versions remain 1.0 and package 0.1.0.
+execution and bind all success/failure records to that revision. Alpha publication
+resolves its own clean assembly revision and preserves both scientific execution
+and historical processing bindings. Initial schema/protocol versions remain 1.0
+and package 0.1.0.
 Alpha's validated execution environment is Ubuntu 24.04 under WSL2, Linux x86_64,
 Python 3.11.9 and POLARS_MAX_THREADS=4, with WSL-native ext4 scientific storage.
-Its host and instrumentation gates are satisfied; it is READY / NOT YET RUN,
-with no measurements. WSL2 performance is environment-specific; equivalence to
+Its host and instrumentation gates were satisfied before the completed
+execution. WSL2 performance is environment-specific; equivalence to
 native Linux is not claimed. Parquet writer behavior pins PyArrow 25.0.1;
 Polars is pinned to 1.44.1.
+
+## Publication and adjudication reproduction
+
+Original execution requires authorized access to the fingerprinted proprietary
+wheel. Public source-level rebuilding of Core is unavailable. Public generators,
+recipes and identities support regeneration; generated source CSV/Parquet files
+are excluded from the release.
+
+Original aggregation is identified by `processing_provenance.json` and can be
+reproduced from public reports/outcomes without Core. A third typed
+`publication_provenance.json` identifies release assembly code by revision and
+source-file hashes, plus its environment. Historical revisions are never
+overwritten. Pre-commit stages leave assembly revision/date unresolved.
+
+The full adjudication retains old/corrected labels and frames, metric effects,
+original/adjudicated summaries, contract basis, adverse event_key observations,
+preservation records and supplemental operator bytes/content hashes. No
+fictitious Git revision is assigned to those scripts. Historical Windows
+annotation processing remains distinct from Linux scientific execution and
+aggregation. The durable verifier recomputes metrics without importing embedded
+operator scripts.
+
+`ADJUDICATION_REPRODUCTION.md` gives input/path roles and pure correction/evaluation
+reconstruction. The historical operator wrapper is layout- and environment-bound,
+not a portable one-command frozen reader; the pure layer remains reconstructible
+from public artifacts. Independent semantic inspection of proprietary Core still
+requires authorized artifact access. Contract hashes do not disclose its code.
+
+Plotting uses selected attempt-ID order reconstructed from `attempts.jsonl`,
+preserving original SVG bytes at tied x-values while leaving tables, canonical
+RunSpecs/runs and chronological execution untouched. Original candidate bytes are
+recoverable through `publication_inventory.json` and the archived checksums.
+The longitudinal RESULTS index is generated only after successful freeze.
 
 Current lightweight verification:
 

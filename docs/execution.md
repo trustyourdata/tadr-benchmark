@@ -2,8 +2,9 @@
 
 The explicit `campaigns.runner.run_campaign` API accepts a resolved READY plan.
 There is no campaign execution in pull-request CI. PLANNED manifests cannot run,
-and the execution API never publishes or freezes results. Alpha still requires
-its approved Linux host, instrumentation validation and target provenance.
+and the execution API never publishes or freezes results. Alpha's approved Linux
+execution and scientific adjudication are complete. Original host, instrumentation
+and target bindings remain historical evidence; freeze is a separate authorization.
 
 ## Execution schedule
 
@@ -158,6 +159,19 @@ clean and committed. The campaign manifest, RunResults, attempts and diagnostic
 records retain their original execution revision. This sidecar records processing
 history; it does not authorize a freeze, change scientific support or replace the
 execution binding. Freeze remains a separate reviewed operation.
+
+Complete publication records a third role in `publication_provenance.json`:
+the clean revision assembling the public release. It does not rebind the original
+manifest, runs or historical processing record. Pre-commit `stage_publication`
+leaves this revision and the freeze date unresolved and creates only a staged
+package under `.work/`. Normal frozen verification rejects that state.
+
+Original candidate manifest/report/checksum bytes remain under `history/`.
+The complete adjudication, inner checksums, publication inventory, reproduction
+note and public report exist before outer checksumming and atomic rename.
+Plotting reconstructs selected attempt-ID order from `attempts.jsonl` for tied
+values. Generation and verification share that order, independent of
+chronological execution and canonical RunSpec/run serialization.
 
 No attempt, failure or instrumentation artifact contains process identifiers,
 command lines, local paths, environment dumps, raw exception messages or tracebacks.
