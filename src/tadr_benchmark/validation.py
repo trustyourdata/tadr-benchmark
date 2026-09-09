@@ -173,9 +173,8 @@ def validate_completed(manifest: CampaignManifest, scenarios: list[ScenarioSpec]
                 raise ValueError("resource abort differs from approved Alpha limit")
             continue
         if scenario.scenario_id.startswith("sampling."):
-            mode, ratio = ("full", 1.0) if run.analysis_variant == "full_reference" else ("sampled", 2/3)
-            if run.analysis_mode != mode or abs(run.sample_ratio-ratio) > 1e-6:
-                raise ValueError("sampling mode/ratio violates protocol")
+            from .report_precision import validate_sampling_observation
+            validate_sampling_observation(run.analysis_variant, run.analysis_mode, run.sample_ratio)
         for field in ("task_type", "source_format", "row_count", "column_count"):
             if getattr(run, field) != getattr(scenario, field):
                 raise ValueError(f"run differs from scenario: {field}")

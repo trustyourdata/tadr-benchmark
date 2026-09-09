@@ -143,6 +143,22 @@ only; it never invokes this live preflight.
 
 ## Public output
 
+Completed-run and diagnostic companion validation compare the observed sampling
+mode and ratio exactly against the same expected public representation. The
+expected ratio from the declared counts is rounded to four decimal places using
+round-half-even. Observed report values are not rounded or rewritten, and no
+numeric tolerance admits a different canonical value.
+
+Post-execution validation may use a reviewed benchmark revision different from
+the revision that produced the observations. Candidate processing records a
+separate `processing_provenance.json` with `execution_git_commit`,
+`processing_git_commit`, hashes of the immutable execution binding and typed
+attempt export, and the processing environment. The processing revision must be
+clean and committed. The campaign manifest, RunResults, attempts and diagnostic
+records retain their original execution revision. This sidecar records processing
+history; it does not authorize a freeze, change scientific support or replace the
+execution binding. Freeze remains a separate reviewed operation.
+
 No attempt, failure or instrumentation artifact contains process identifiers,
 command lines, local paths, environment dumps, raw exception messages or tracebacks.
 Strict contracts and public-safety checks apply before freezing. See the

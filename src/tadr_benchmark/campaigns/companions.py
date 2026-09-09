@@ -84,7 +84,5 @@ def validate_companions(manifest: CampaignManifest, scenarios: list[ScenarioSpec
                       "determinism_case_id", "determinism_context", "constraints", "analysis_mode", "sample_ratio"):
             if getattr(diagnostic, field) != getattr(run, field):
                 raise ValueError("diagnostic provenance differs from primary run: "+field)
-        # sample_ratio is the observed canonical report value (four decimals).
-        expected_mode, expected_ratio = ("full", 1.0) if run.analysis_variant == "full_reference" else ("sampled", 0.6667)
-        if diagnostic.analysis_mode != expected_mode or diagnostic.sample_ratio != expected_ratio:
-            raise ValueError("sampling analysis mode/ratio violates protocol")
+        from ..report_precision import validate_sampling_observation
+        validate_sampling_observation(run.analysis_variant, diagnostic.analysis_mode, diagnostic.sample_ratio)

@@ -3,12 +3,13 @@
 import json
 import subprocess
 import sys
-from decimal import Decimal, ROUND_HALF_EVEN, localcontext
+from decimal import Decimal
 from pathlib import Path
 
 from ..companions import DiagnosticRecord, DiagnosticValue
 from ..models import RunResult, TargetMetadata
 from ..serialization import sha256, canonical_bytes
+from ..report_precision import canonical_report_rate
 from .context import worker_environment
 from .process_tree import spawn
 from .ledger import write_once
@@ -35,9 +36,7 @@ def report_visible_facts(bundle_data: dict) -> dict:
             if not value.is_finite():
                 raise ValueError("nonfinite public bundle fact")
             if key in rates:
-                with localcontext() as context:
-                    context.prec = 50
-                    value = value.quantize(Decimal("0.0001"), rounding=ROUND_HALF_EVEN)
+                value = canonical_report_rate(value)
             return int(value) if value == value.to_integral_value() else float(value)
         return value
     return {k: visit(bundle_data[k]) for k in ("analysis_stats", "dataset_profile")}
