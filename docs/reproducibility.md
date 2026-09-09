@@ -20,7 +20,7 @@ distributed by this repository.
 | Benchmark methodology and scenarios | Public definitions, opportunity mapping and evaluation/aggregation code describe the method independently of Core source. |
 | Synthetic datasets and ground truth | Public deterministic generators, recipes, independent labels and identity rules support regeneration without Core. Generated datasets remain ignored working artifacts. |
 | Execution protocol | Public worker, timing, RSS, context, scheduling and retry contracts describe execution. Re-execution requires authorized access to the exact target artifact and a validated environment. |
-| Published evaluation artifacts | Public frozen records, checksums and derivation code support verification and re-aggregation without Core. Alpha has no published measurements yet. |
+| Published evaluation artifacts | Public frozen records, checksums and derivation code support verification and re-aggregation without Core. Alpha measurements, tables and figures are available in the [frozen report](../results/campaigns/alpha_benchmark_v1/REPORT.md). |
 | Target implementation | Reproducibly identified by artifact SHA-256 and version metadata. Source-level rebuild reproducibility is not publicly available. |
 
 ## Target installation provenance
@@ -69,8 +69,8 @@ unvalidated execution environment blocks scientific execution. Proprietary sourc
 distribution limits source-level reproduction claims; it does not block READY.
 Alpha's exact execution artifact and installed metadata are verified, and the
 manifest records its fingerprint and readiness flags as a historical launch
-declaration. Alpha execution and scientific adjudication are complete; immutable
-publication awaits final freeze authorization.
+declaration. The [frozen Alpha publication](../results/campaigns/alpha_benchmark_v1/REPORT.md)
+retains the completed execution and adjudication evidence.
 
 Frozen artifacts include exact canonical reports and hashes, canonical scenario
 snapshots, all requested run records including warmups, environment inventory,
@@ -86,7 +86,7 @@ Parquet with changed serialization remains a different physical input even if it
 logical hash matches. Strict performance comparison requires identical source hashes.
 For artifacts too large for Git, a later explicit release mechanism should retain
 immutable manifest, checksums and release reference in the repository. Such an
-external-artifact transport is not implemented at bootstrap.
+external-artifact transport is not currently implemented.
 
 Use `verify-frozen` before analyzing a frozen artifact. The verifier rechecks
 schemas, relational consistency, original report hashes, run completion, derived
@@ -134,7 +134,8 @@ annotation processing remains distinct from Linux scientific execution and
 aggregation. The durable verifier recomputes metrics without importing embedded
 operator scripts.
 
-`ADJUDICATION_REPRODUCTION.md` gives input/path roles and pure correction/evaluation
+The frozen [adjudication reproduction note](../results/campaigns/alpha_benchmark_v1/ADJUDICATION_REPRODUCTION.md)
+gives input/path roles and pure correction/evaluation
 reconstruction. The historical operator wrapper is layout- and environment-bound,
 not a portable one-command frozen reader; the pure layer remains reconstructible
 from public artifacts. Independent semantic inspection of proprietary Core still

@@ -24,15 +24,15 @@ does not create an exception to the public-data boundary.
 
 Frozen artifacts are scanned again before publication. Generated figure binaries
 under frozen campaign directories require human visual/metadata review; SVG is
-the bootstrap's output format and remains scanned text. Pattern-based validation
+the current figure output format and remains scanned text. Pattern-based validation
 cannot prove the absence of secrets, identify all confidential prose or establish
 data licensing. Review source values in canonical reports as well as metadata.
 
 Do not add detector allowlists to bypass a real disclosure. Test detector behavior
 with synthetic strings assembled at runtime, so test sources themselves do not
 contain apparent leaked values. Publication requires explicit review in addition
-to automated checks. No third-party datasets are included in this foundation.
+to automated checks. No third-party datasets are included in this repository.
 
 Repository administrators should enable secret scanning and push protection where
 available and configure branch protection requiring CI. These hosting settings
-are not changed by local bootstrap work.
+require administrator configuration outside the local repository.

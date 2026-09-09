@@ -1,9 +1,9 @@
 # Alpha benchmark protocol
 
-**ALPHA_BENCHMARK_V1: execution and scientific adjudication complete;
-immutable publication awaits final freeze authorization.**
+The [frozen Alpha report](../results/campaigns/alpha_benchmark_v1/REPORT.md)
+records the completed experiment and publication dated 2026-09-09.
 
-The scientific design is fixed for this READY campaign. Scientific-methodology
+The scientific design is fixed for this frozen campaign. Scientific-methodology
 changes require explicit new review.
 
 This document specifies the Alpha campaign inventory, source representations and
@@ -87,8 +87,9 @@ Its typed logical identity is distinct from string-only transports.
 Parquet writer policy pins PyArrow 25.0.1, format 2.6, Zstandard level 3,
 100000-row groups, data page version 1.0, 1 MiB page size, 1024 write batch,
 statistics enabled, dictionary/page-index/page-checksum/byte-stream-split disabled,
-and stored Arrow schema. Polars is pinned to 1.44.1. The future execution host
-must still be validated. Exact generated file bytes receive a separate SHA-256.
+and stored Arrow schema. Polars is pinned to 1.44.1. Alpha used the validated
+Ubuntu 24.04 WSL2 execution environment described in
+[reproducibility](reproducibility.md). Exact generated file bytes receive a separate SHA-256.
 Changed serialization with unchanged logical rows never qualifies as identical
 physical input. Strict performance comparison requires matching source hashes.
 
@@ -127,14 +128,17 @@ follow the [campaign freeze requirements](campaign_versioning.md).
 
 ## Execution prerequisites
 
-The preferred host is Linux x86_64, Python 3.11.9, POLARS_MAX_THREADS=4. Provision
-and validate it before READY. The [execution contract](execution.md) defines
+Alpha used validated Linux x86_64, Python 3.11.9, POLARS_MAX_THREADS=4 under
+Ubuntu 24.04 WSL2. A future execution host requires validation before READY. The [execution contract](execution.md) defines
 worker barriers, the analyze-only timer, sampled process-tree RSS, context
 acknowledgements, supervisor limits, recently prepared cache conditions and
 immutable attempt history.
 
-Source manifests retain a null benchmark SHA. Clean-tree resolution binds runs
-and the frozen manifest to an existing HEAD and checks it again before publication.
+Source manifests retain a null benchmark SHA. Clean-tree resolution at execution
+binds runs and the frozen manifest to that scientific execution revision. Historical
+processing and publication assembly have separate recorded revisions; neither
+replaces the execution binding. Frozen verification does not require the reader's
+HEAD to match the execution revision.
 The approved Core package/algorithm/profile/bundle/baseline metadata remain fixed.
 The implementation is proprietary, with no public source URL or source-rebuild
 claim. READY requires an available fingerprinted installation artifact and verified

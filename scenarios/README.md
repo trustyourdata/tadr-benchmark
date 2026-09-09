@@ -1,9 +1,12 @@
 # Scenario corpus
 
-Phase 1 implements the approved 370-case Alpha corpus as versioned family
-specifications in `families/ALPHA_BENCHMARK_V1.json`. No campaign datasets or
-executed scenarios are included. Tiny software fixtures and small in-memory
-construction recounts are never registered as benchmark evidence.
+This directory defines the 370-case Alpha corpus through versioned family
+specifications in [families/ALPHA_BENCHMARK_V1.json](families/ALPHA_BENCHMARK_V1.json).
+Generated scientific source datasets are excluded from publication. Executed
+scenario snapshots and scientific evidence are retained in the
+[frozen Alpha publication](../results/campaigns/alpha_benchmark_v1/REPORT.md).
+Tiny software fixtures and small in-memory construction recounts are not
+registered as benchmark evidence.
 
 Each family declares an ID template and finite, explicit axes. Deterministic
 expansion produces strict `ScenarioSpec` objects with task roles, dimensions,
@@ -18,8 +21,8 @@ The corpus contains 320 correctness cases, 36 sampling placements and 14 scale
 points. Measurement and lexical-name specificity challenges are excluded from the
 eight primary clean-control registrations; expected INFO Findings remain visible.
 
-Before a first public release/freeze, approved draft semantics can be corrected
-within initial version 1.0. Historical scenario snapshots must remain immutable
-once compatibility obligations begin. See the [Alpha benchmark protocol](../docs/alpha_benchmark_protocol.md).
+Alpha is frozen, so its scenario snapshots and versioned content are immutable.
+The pre-first-release window for correcting draft semantics within version 1.0
+has closed. Changes follow the [versioning policy](../docs/campaign_versioning.md). See the [Alpha benchmark protocol](../docs/alpha_benchmark_protocol.md).
 
 See [methodology](../docs/methodology.md) and [schema](../docs/result_schema.md).

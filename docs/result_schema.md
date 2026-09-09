@@ -1,13 +1,32 @@
 # Result and environment schemas
 
-Pydantic contracts live in `src/tadr_benchmark/models.py`. Unknown fields and
-invalid types are rejected; non-finite numbers are forbidden. Get the exact JSON
-schema with `tadr-benchmark schema CampaignManifest`, `ScenarioSpec`, `RunSpec`,
-`RunResult`, `RunFailure`, `ScenarioExpectations`, `DatasetIdentity`, `WriterPolicy`,
-`InstrumentationRecord`, `DiagnosticRecord`, `AttemptRecord`, `OutcomeAccounting`, `FamilyInventory`,
-`TargetMetadata`, `EnvironmentInfo`, `ReportCoverage` or `DetectionMetrics`. Serialized objects sort keys;
-arrays retain their declared order. Target canonical bytes use the target's own
-serializer and are never reconstructed for hashing.
+## Schema discovery and ownership
+
+Pydantic contracts reject unknown fields, invalid types and non-finite numbers.
+Inspect a model with `tadr-benchmark schema <ModelName>`; `tadr-benchmark schema --help`
+lists the available names. For example:
+
+```sh
+tadr-benchmark schema RunResult
+tadr-benchmark schema PublicationProvenance
+tadr-benchmark schema PublicationInventory
+```
+
+The CLI exposes models from these modules under `src/tadr_benchmark/`:
+
+| Module | Exposed models |
+| --- | --- |
+| `models.py` | `CampaignManifest`, `ScenarioSpec`, `RunSpec`, `RunResult`, `TargetMetadata`, `EnvironmentInfo` |
+| `companions.py` | `RunFailure`, `OutcomeAccounting`, `ScenarioExpectations`, `PhysicalLedger`, `DatasetIdentity`, `WriterPolicy`, `InstrumentationRecord`, `DiagnosticRecord` |
+| `execution/attempts.py` | `AttemptRecord` |
+| `scenarios/families.py` | `FamilyDefinition`, `FamilyInventory` |
+| `evaluation/metrics.py` | `ReportCoverage`, `DetectionMetrics` |
+| `campaigns/publication.py` | `PublicationProvenance`, `PublicationInventory` |
+
+Serialized objects sort keys; arrays retain their declared order. Target canonical
+bytes use the target's own serializer and are never reconstructed for hashing.
+
+## Artifact roles
 
 | Model | Required information |
 | --- | --- |
@@ -23,6 +42,17 @@ serializer and are never reconstructed for hashing.
 | Environment | OS/version; architecture; Python; optional CPU model/core counts; RAM; allowlisted dependency versions |
 | Report coverage | Finding evaluability; planned/evaluable/unevaluable opportunities by positive/negative class; successful/planned/pending reports; selected target failures by category; opportunity-weighted coverage ratios |
 | Detection metrics | Report coverage plus conditional TP/FP/FN/TN and precision/recall/FPR; separate physical end-to-end detection yield; severity/localization/scenario metrics; mapped detector details |
+| Publication provenance | Separate scientific execution, historical processing and publication assembly revisions; target fingerprint; original/adjudication checksum bindings; review hash; generator source hashes and publication environment |
+| Publication inventory | Sorted, unique artifact paths and classifications; one-to-one mapping for reconstructing original candidate files |
+
+Publication contracts are defined in `campaigns/publication.py`. A staged package
+has an unresolved assembly revision; a frozen publication records its committed
+assembly revision. The inventory distinguishes authoritative, derived and
+supplemental adjudication artifacts. See [campaign versioning](campaign_versioning.md)
+for validation and immutable assembly, and [reproducibility](reproducibility.md)
+for historical evidence reconstruction.
+
+## Provenance and observations
 
 All target provenance fields use the `target_` prefix: `name`, `package_version`,
 `source_distribution`, `repository_url_or_null`, `algorithm_version`,

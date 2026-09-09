@@ -24,9 +24,10 @@ Campaign IDs identify experiments. `benchmark_protocol_version` and
 independent. Each scenario has its own version and canonical content hash.
 Unknown protocol/result versions are rejected until an explicit reader migration
 exists. The approved Alpha additions belong to initial 1.0 contracts and package
-0.1.0; there is no compatibility reader for the unpublished bootstrap draft.
+0.1.0; there is no compatibility reader for the earlier unpublished draft.
 Historical compatibility starts with the first frozen campaign or explicit public
-schema/package release. Never rewrite those historical records for a newer schema.
+schema/package release. Alpha is now frozen and those compatibility obligations
+apply. Never rewrite historical records for a newer schema.
 
 The selected scenario list defines concrete task/format/scale cases. Execution
 expands these cases over declared variants, determinism contexts and warmup/

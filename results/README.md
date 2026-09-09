@@ -1,29 +1,45 @@
-# Reviewed research artifacts
+# Frozen research artifacts
 
-No campaigns have been run or frozen. Do not create empty measurement files,
-placeholder charts or fabricated performance values here.
+[ALPHA_BENCHMARK_V1](campaigns/alpha_benchmark_v1/REPORT.md) is frozen as of
+2026-09-09. Its publication contains measured outcomes, canonical reports,
+CSV result tables, 11 SVG figures, provenance and scientific/adjudication history.
+The generated [results index](../RESULTS.md) is the longitudinal campaign registry.
 
-Future frozen output uses `results/campaigns/<lowercase-campaign-id>/` with:
+## Reading the publication
 
-```text
-manifest.json
-environment.json
-run_specs.json
-runs.jsonl
-summary.json
-scenarios/*.json
-reports/*.json
-tables/summary.csv
-figures/runtime.svg
-REPORT.md
-checksums.sha256
-```
+The frozen [REPORT.md](campaigns/alpha_benchmark_v1/REPORT.md) is the public entry
+point. It distinguishes original preregistered results from the separately
+adjudicated normative layer and retains physical-condition findings and limitations.
+Root tables and figures preserve original-label results; the adjudication bundle
+contains the corrected normative layer.
 
-Canonical reports must contain only reviewed public source values. Generated
-datasets remain under ignored `.work/datasets/`. Verified comparison artifacts
-may later live in `results/comparisons/`. Large immutable artifacts need a
-separately reviewed release transport, checksums and registry reference.
+The [publication inventory](campaigns/alpha_benchmark_v1/publication_inventory.json)
+and verification tooling define the complete artifact set and original-candidate
+mapping. [Publication provenance](campaigns/alpha_benchmark_v1/publication_provenance.json)
+records assembly separately from scientific execution and historical processing.
+The [reproduction note](campaigns/alpha_benchmark_v1/ADJUDICATION_REPRODUCTION.md)
+explains archived paths and adjudication reconstruction. Historical banners and
+relative links remain unchanged evidence.
 
-Root [RESULTS.md](../RESULTS.md) is generated from validated campaign manifests
-and frozen artifacts by `tadr-benchmark results-index`. Frozen contents cannot
-be overwritten; corrections require a new campaign identity.
+## Publication boundaries
+
+Frozen campaigns live under `results/campaigns/<lowercase-campaign-id>/`.
+All contents are immutable: they cannot be overwritten, deleted or appended to.
+Corrections require a new campaign identity under the
+[campaign policy](../docs/campaign_versioning.md). Do not add empty measurement
+files, placeholder charts or fabricated values.
+
+Canonical reports contain reviewed public source values. Generated scientific
+source CSV/Parquet datasets remain under ignored `.work/datasets/`; public recipes,
+scenario snapshots and dataset identities support regeneration. CSV result tables
+are published. Proprietary Core source and wheel bytes are excluded. See the
+[reproducibility boundary](../docs/reproducibility.md).
+
+Use `tadr-benchmark verify-frozen results/campaigns/alpha_benchmark_v1` to verify
+Alpha. `tadr-benchmark results-index --check` checks the generated registry without
+writing it; `results-index` updates it through tooling after verified freeze.
+Neither command executes the target. Verification requires the recorded rendering
+dependencies for byte-identical figures.
+
+Future comparison artifacts and external transport for large publications require
+separate review, compatibility assessment, checksums and registry references.

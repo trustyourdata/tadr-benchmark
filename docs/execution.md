@@ -3,8 +3,10 @@
 The explicit `campaigns.runner.run_campaign` API accepts a resolved READY plan.
 There is no campaign execution in pull-request CI. PLANNED manifests cannot run,
 and the execution API never publishes or freezes results. Alpha's approved Linux
-execution and scientific adjudication are complete. Original host, instrumentation
-and target bindings remain historical evidence; freeze is a separate authorization.
+execution, scientific adjudication and immutable publication are complete. Original
+host, instrumentation and target bindings remain historical evidence in the
+[frozen report](../results/campaigns/alpha_benchmark_v1/REPORT.md). For future
+campaigns, freeze requires authorization separate from execution.
 
 ## Execution schedule
 
