@@ -1,0 +1,616 @@
+{
+  "scenario_set_version": "1.0",
+  "families": [
+    {
+      "family_id": "clean",
+      "family_version": "1.0",
+      "id_template": "clean.{task}.n10000.{representation}",
+      "axes": {
+        "task": [
+          "classification",
+          "regression",
+          "time_series",
+          "analytics"
+        ],
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "parse",
+      "family_version": "1.0",
+      "id_template": "parse.numeric.f{count}.n10000.{representation}",
+      "axes": {
+        "count": [
+          0,
+          99,
+          100,
+          101,
+          499,
+          500,
+          501,
+          1999,
+          2000,
+          2001,
+          4000,
+          6000
+        ],
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "feature_missing",
+      "family_version": "1.0",
+      "id_template": "missing.feature.m{count}.n10000.{representation}",
+      "axes": {
+        "count": [
+          0,
+          500,
+          999,
+          1000,
+          1001,
+          2000,
+          2999,
+          3000,
+          3001,
+          5000
+        ],
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "target_missing",
+      "family_version": "1.0",
+      "id_template": "missing.target.m{count}.n10000.{representation}",
+      "axes": {
+        "count": [
+          0,
+          99,
+          100,
+          101,
+          500
+        ],
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "row_duplicates",
+      "family_version": "1.0",
+      "id_template": "duplicate.rows.e{count}.n10000.{representation}",
+      "axes": {
+        "count": [
+          0,
+          9,
+          10,
+          11,
+          99,
+          100,
+          101,
+          499,
+          500,
+          501,
+          1000
+        ],
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "key_duplicates",
+      "family_version": "1.0",
+      "id_template": "duplicate.keys.e{count}.n10000.{representation}",
+      "axes": {
+        "count": [
+          0,
+          9,
+          10,
+          11,
+          99,
+          100,
+          101
+        ],
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "class_imbalance",
+      "family_version": "1.0",
+      "id_template": "class.binary.min{count}.n10000.{representation}",
+      "axes": {
+        "count": [
+          5000,
+          1001,
+          1000,
+          999,
+          201,
+          200,
+          199,
+          100,
+          1,
+          0
+        ],
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "class_support",
+      "family_version": "1.0",
+      "id_template": "class.support.n{rows}.min5.{representation}",
+      "axes": {
+        "rows": [
+          99,
+          100
+        ],
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "id_ratio",
+      "family_version": "1.0",
+      "id_template": "identifier.{case}.u{count}.n10000.{representation}",
+      "axes": {
+        "case": [
+          "probe_id",
+          "measurement"
+        ],
+        "count": [
+          9799,
+          9800,
+          9801
+        ],
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "id_support",
+      "family_version": "1.0",
+      "id_template": "identifier.support.n{rows}.{representation}",
+      "axes": {
+        "rows": [
+          99,
+          100
+        ],
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "timestamp",
+      "family_version": "1.0",
+      "id_template": "timestamp.{task}.valid{count}.n10000.{representation}",
+      "axes": {
+        "task": [
+          "time_series",
+          "regression"
+        ],
+        "count": [
+          0,
+          7999,
+          8000,
+          8001,
+          9499,
+          9500,
+          9501,
+          10000
+        ],
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "timestamp_absent",
+      "family_version": "1.0",
+      "id_template": "timestamp.{task}.absent.n10000.{representation}",
+      "axes": {
+        "task": [
+          "time_series",
+          "regression"
+        ],
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "time_split",
+      "family_version": "1.0",
+      "id_template": "split.{case}.n10000.{representation}",
+      "axes": {
+        "case": [
+          "ts_random",
+          "ts_group",
+          "reg_random_valid",
+          "reg_time_valid",
+          "reg_random_degraded",
+          "analytics_random_valid"
+        ],
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "group",
+      "family_version": "1.0",
+      "id_template": "group.{case}.r{count}.n10000.{representation}",
+      "axes": {
+        "case": [
+          "random",
+          "time",
+          "group"
+        ],
+        "count": [
+          0,
+          499,
+          500,
+          501,
+          1999,
+          2000,
+          2001
+        ],
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "inference_analytics",
+      "family_version": "1.0",
+      "id_template": "inference.analytics.{case}.n10000.{representation}",
+      "axes": {
+        "case": [
+          "null",
+          "complete",
+          "omit_one",
+          "omit_two",
+          "empty",
+          "superset",
+          "roles_only_excluded"
+        ],
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "inference_supervised",
+      "family_version": "1.0",
+      "id_template": "inference.{task}.omit_one.n10000.{representation}",
+      "axes": {
+        "task": [
+          "classification",
+          "regression",
+          "time_series"
+        ],
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "leak_equality",
+      "family_version": "1.0",
+      "id_template": "leak.equality.m{count}.n10000.{representation}",
+      "axes": {
+        "count": [
+          0,
+          9989,
+          9990,
+          9991,
+          10000
+        ],
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "leak_mapping",
+      "family_version": "1.0",
+      "id_template": "leak.mapping.r{count}.n10000.{representation}",
+      "axes": {
+        "count": [
+          9989,
+          9990,
+          9991,
+          10000
+        ],
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "leak_controls",
+      "family_version": "1.0",
+      "id_template": "leak.control.{case}.n10000.{representation}",
+      "axes": {
+        "case": [
+          "allowlisted_copy",
+          "constant_target",
+          "zero_pairs",
+          "numeric_normalization",
+          "bool_numeric_mapping",
+          "many_to_one",
+          "one_to_many",
+          "joint_mode_exceptions"
+        ],
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "leak_support",
+      "family_version": "1.0",
+      "id_template": "leak.control.support{rows}.{representation}",
+      "axes": {
+        "rows": [
+          49,
+          50,
+          200
+        ],
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "negative",
+      "family_version": "1.0",
+      "id_template": "negative.{case}.n10000.{representation}",
+      "axes": {
+        "case": [
+          "analytics_entity",
+          "supervised_target_omitted",
+          "declared_id"
+        ],
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "specificity_challenge",
+      "family_version": "1.0",
+      "id_template": "challenge.lexical_paid.n10000.{representation}",
+      "axes": {
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "composite",
+      "family_version": "1.0",
+      "id_template": "composite.{case}.n10000.{representation}",
+      "axes": {
+        "case": [
+          "duplicates_group_random",
+          "duplicates_group_group",
+          "missing_parse",
+          "leak_missing",
+          "timestamp_random",
+          "inference_missing",
+          "quality_accumulation_k1",
+          "quality_accumulation_k2",
+          "quality_accumulation_k3",
+          "multicategory",
+          "leak_inference",
+          "timestamp_null_random"
+        ],
+        "representation": [
+          "csv",
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "sampling",
+      "family_version": "1.0",
+      "id_template": "sampling.{case}.{placement}.n300000.{representation}",
+      "axes": {
+        "case": [
+          "missingness",
+          "parse",
+          "duplicate_rows",
+          "duplicate_keys",
+          "class_rare",
+          "class_boundary",
+          "cardinality",
+          "group",
+          "leakage"
+        ],
+        "placement": [
+          "head",
+          "middle",
+          "tail",
+          "gaps"
+        ],
+        "representation": [
+          "pqstr"
+        ]
+      }
+    },
+    {
+      "family_id": "scale_0",
+      "family_version": "1.0",
+      "id_template": "scale.analytics.n10000.w20.{representation}",
+      "axes": {
+        "representation": [
+          "csv"
+        ]
+      }
+    },
+    {
+      "family_id": "scale_1",
+      "family_version": "1.0",
+      "id_template": "scale.analytics.n10000.w20.{representation}",
+      "axes": {
+        "representation": [
+          "pqnative"
+        ]
+      }
+    },
+    {
+      "family_id": "scale_2",
+      "family_version": "1.0",
+      "id_template": "scale.analytics.n10000.w300.{representation}",
+      "axes": {
+        "representation": [
+          "csv"
+        ]
+      }
+    },
+    {
+      "family_id": "scale_3",
+      "family_version": "1.0",
+      "id_template": "scale.analytics.n10000.w300.{representation}",
+      "axes": {
+        "representation": [
+          "pqnative"
+        ]
+      }
+    },
+    {
+      "family_id": "scale_4",
+      "family_version": "1.0",
+      "id_template": "scale.analytics.n100000.w20.{representation}",
+      "axes": {
+        "representation": [
+          "csv"
+        ]
+      }
+    },
+    {
+      "family_id": "scale_5",
+      "family_version": "1.0",
+      "id_template": "scale.analytics.n100000.w20.{representation}",
+      "axes": {
+        "representation": [
+          "pqnative"
+        ]
+      }
+    },
+    {
+      "family_id": "scale_6",
+      "family_version": "1.0",
+      "id_template": "scale.analytics.n100000.w100.{representation}",
+      "axes": {
+        "representation": [
+          "csv"
+        ]
+      }
+    },
+    {
+      "family_id": "scale_7",
+      "family_version": "1.0",
+      "id_template": "scale.analytics.n100000.w100.{representation}",
+      "axes": {
+        "representation": [
+          "pqnative"
+        ]
+      }
+    },
+    {
+      "family_id": "scale_8",
+      "family_version": "1.0",
+      "id_template": "scale.analytics.n1000000.w20.{representation}",
+      "axes": {
+        "representation": [
+          "csv"
+        ]
+      }
+    },
+    {
+      "family_id": "scale_9",
+      "family_version": "1.0",
+      "id_template": "scale.analytics.n1000000.w20.{representation}",
+      "axes": {
+        "representation": [
+          "pqnative"
+        ]
+      }
+    },
+    {
+      "family_id": "scale_10",
+      "family_version": "1.0",
+      "id_template": "scale.analytics.n1000000.w100.{representation}",
+      "axes": {
+        "representation": [
+          "pqnative"
+        ]
+      }
+    },
+    {
+      "family_id": "scale_11",
+      "family_version": "1.0",
+      "id_template": "scale.analytics.n5000000.w20.{representation}",
+      "axes": {
+        "representation": [
+          "pqnative"
+        ]
+      }
+    },
+    {
+      "family_id": "scale_12",
+      "family_version": "1.0",
+      "id_template": "scale.regression.n100000.w20.{representation}",
+      "axes": {
+        "representation": [
+          "pqnative"
+        ]
+      }
+    },
+    {
+      "family_id": "scale_13",
+      "family_version": "1.0",
+      "id_template": "scale.regression.n1000000.w20.{representation}",
+      "axes": {
+        "representation": [
+          "pqnative"
+        ]
+      }
+    }
+  ]
+}

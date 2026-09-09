@@ -1,0 +1,699 @@
+{
+  "readiness_score": 89,
+  "report_confidence": 92,
+  "total_risk": 11.34,
+  "category_risks": {
+    "schema": 11.34,
+    "quality": 0.00,
+    "leakage": 0.00,
+    "split": 0.00,
+    "inference_mismatch": 0.00,
+    "bias_signals": 0.00
+  },
+  "score_breakdown": {
+    "total_penalty": 11.34,
+    "penalty_by_category": {
+      "schema": 11.34,
+      "quality": 0.00,
+      "leakage": 0.00,
+      "split": 0.00,
+      "inference_mismatch": 0.00,
+      "bias_signals": 0.00
+    },
+    "counts_by_severity": {
+      "info": 0,
+      "low": 0,
+      "medium": 0,
+      "high": 1,
+      "critical": 0
+    },
+    "top_category": "schema",
+    "caps_applied": []
+  },
+  "analysis_stats": {
+    "row_count": 10000,
+    "col_count": 8,
+    "sample_ratio": 1.0000,
+    "parse_failure_rate": 0.0333,
+    "analysis_mode": "full"
+  },
+  "dataset_profile": {
+    "columns": [
+      {
+        "name": "coord_a",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 1000,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "0"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "1"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "10"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "100"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "101"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "102"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "103"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "104"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "105"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "106"
+            ],
+            "count": 10
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 499.5,
+          "p95": 949.05,
+          "max": 999
+        },
+        "string_stats": {
+          "avg_len": 2.89,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "coord_b",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 10,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "0"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "1"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "2"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "3"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "4"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "5"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "6"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "7"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "8"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "9"
+            ],
+            "count": 1000
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 4.5,
+          "p95": 9,
+          "max": 9
+        },
+        "string_stats": {
+          "avg_len": 1,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "coord_c",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 1,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "0"
+            ],
+            "count": 10000
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 0,
+          "p95": 0,
+          "max": 0
+        },
+        "string_stats": {
+          "avg_len": 1,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "signal_x",
+        "inferred_type": "categorical",
+        "missing_rate": 0.0000,
+        "nunique": 18,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "bad"
+            ],
+            "count": 2000
+          },
+          {
+            "value": [
+              "string",
+              "1000"
+            ],
+            "count": 471
+          },
+          {
+            "value": [
+              "string",
+              "1001"
+            ],
+            "count": 471
+          },
+          {
+            "value": [
+              "string",
+              "1002"
+            ],
+            "count": 471
+          },
+          {
+            "value": [
+              "string",
+              "1003"
+            ],
+            "count": 471
+          },
+          {
+            "value": [
+              "string",
+              "1011"
+            ],
+            "count": 471
+          },
+          {
+            "value": [
+              "string",
+              "1012"
+            ],
+            "count": 471
+          },
+          {
+            "value": [
+              "string",
+              "1013"
+            ],
+            "count": 471
+          },
+          {
+            "value": [
+              "string",
+              "1014"
+            ],
+            "count": 471
+          },
+          {
+            "value": [
+              "string",
+              "1015"
+            ],
+            "count": 471
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 3.8,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "signal_z",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 19,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "2000"
+            ],
+            "count": 527
+          },
+          {
+            "value": [
+              "string",
+              "2001"
+            ],
+            "count": 527
+          },
+          {
+            "value": [
+              "string",
+              "2002"
+            ],
+            "count": 527
+          },
+          {
+            "value": [
+              "string",
+              "2003"
+            ],
+            "count": 527
+          },
+          {
+            "value": [
+              "string",
+              "2004"
+            ],
+            "count": 527
+          },
+          {
+            "value": [
+              "string",
+              "2005"
+            ],
+            "count": 527
+          },
+          {
+            "value": [
+              "string",
+              "2006"
+            ],
+            "count": 527
+          },
+          {
+            "value": [
+              "string",
+              "2007"
+            ],
+            "count": 527
+          },
+          {
+            "value": [
+              "string",
+              "2008"
+            ],
+            "count": 527
+          },
+          {
+            "value": [
+              "string",
+              "2009"
+            ],
+            "count": 527
+          }
+        ],
+        "numeric_stats": {
+          "min": 2000,
+          "p50": 2009,
+          "p95": 2018,
+          "max": 2018
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "flag",
+        "inferred_type": "bool",
+        "missing_rate": 0.0000,
+        "nunique": 2,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "false"
+            ],
+            "count": 5000
+          },
+          {
+            "value": [
+              "string",
+              "true"
+            ],
+            "count": 5000
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 4.5,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "segment",
+        "inferred_type": "categorical",
+        "missing_rate": 0.0000,
+        "nunique": 13,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "g0"
+            ],
+            "count": 770
+          },
+          {
+            "value": [
+              "string",
+              "g1"
+            ],
+            "count": 770
+          },
+          {
+            "value": [
+              "string",
+              "g10"
+            ],
+            "count": 770
+          },
+          {
+            "value": [
+              "string",
+              "g2"
+            ],
+            "count": 770
+          },
+          {
+            "value": [
+              "string",
+              "g3"
+            ],
+            "count": 770
+          },
+          {
+            "value": [
+              "string",
+              "g4"
+            ],
+            "count": 770
+          },
+          {
+            "value": [
+              "string",
+              "g5"
+            ],
+            "count": 770
+          },
+          {
+            "value": [
+              "string",
+              "g6"
+            ],
+            "count": 770
+          },
+          {
+            "value": [
+              "string",
+              "g7"
+            ],
+            "count": 770
+          },
+          {
+            "value": [
+              "string",
+              "g8"
+            ],
+            "count": 770
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 2.23,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "event_time",
+        "inferred_type": "datetime",
+        "missing_rate": 0.0000,
+        "nunique": 28,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "2020-01-01"
+            ],
+            "count": 358
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-02"
+            ],
+            "count": 358
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-03"
+            ],
+            "count": 358
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-04"
+            ],
+            "count": 358
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-05"
+            ],
+            "count": 357
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-06"
+            ],
+            "count": 357
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-07"
+            ],
+            "count": 357
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-08"
+            ],
+            "count": 357
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-09"
+            ],
+            "count": 357
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-10"
+            ],
+            "count": 357
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 10,
+          "empty_rate": 0.0000
+        }
+      }
+    ]
+  },
+  "scoring_mode_used": "MVP_LINEAR",
+  "findings": [
+    {
+      "id": "schema.parse_failures::column:signal_x",
+      "category": "schema",
+      "severity": "high",
+      "confidence": 0.70,
+      "title": "Parse failures",
+      "summary": "Parse failures.",
+      "affected_columns": [
+        "signal_x"
+      ],
+      "evidence": [
+        {
+          "title": "Parse failures",
+          "details": {
+            "canonical_attempts": 10000,
+            "canonical_failures": 2000,
+            "failure_rate": 0.2000
+          },
+          "sample_rows": null
+        }
+      ],
+      "actions": [
+        {
+          "code": "schema.correct_parsing",
+          "title": "Correct parsing",
+          "rationale": "Canonical coercion failures undermine usable values.",
+          "params": {
+            "affected_columns": [
+              "signal_x"
+            ]
+          },
+          "pipeline_step": null
+        }
+      ],
+      "metadata": {
+        "check_id": "schema.parse_failures",
+        "check_version": "1.0",
+        "thresholds": {
+          "high": 0.2000,
+          "low": 0.0100,
+          "medium": 0.0500
+        },
+        "analysis_mode": "full",
+        "subject_kind": "column",
+        "subject_key": "column:signal_x",
+        "subject_columns": [
+          "signal_x"
+        ],
+        "evidence_class": "STATISTICAL",
+        "evidence_population": {
+          "eligible_rows": 10000,
+          "evaluated_rows": 10000,
+          "effective_rows": 10000,
+          "coverage_ratio": 1.0000,
+          "relevant_parse_failure_rate": 0.2000,
+          "stability_flags": []
+        },
+        "id_name_heuristic_matched": null
+      }
+    }
+  ],
+  "remediation_plan": [
+    {
+      "id": "fix.parse::column:signal_x",
+      "title": "Correct parsing",
+      "description": "Canonical coercion failures undermine usable values. Affected: signal_x.",
+      "estimated_effort": "M",
+      "expected_score_gain": 6.80,
+      "applies_to_findings": [
+        "schema.parse_failures::column:signal_x"
+      ],
+      "steps": [
+        "Review signal_x.",
+        "Review failed values and correct the source representation or parsing rules.",
+        "Re-run TADR after the change."
+      ],
+      "pipeline_steps": [
+        {
+          "action": "schema.correct_parsing",
+          "params": {
+            "affected_columns": [
+              "signal_x"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

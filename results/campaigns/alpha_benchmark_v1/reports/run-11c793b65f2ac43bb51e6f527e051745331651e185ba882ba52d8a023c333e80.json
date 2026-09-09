@@ -1,0 +1,959 @@
+{
+  "readiness_score": 73,
+  "report_confidence": 81,
+  "total_risk": 27.50,
+  "category_risks": {
+    "schema": 10.04,
+    "quality": 17.46,
+    "leakage": 0.00,
+    "split": 0.00,
+    "inference_mismatch": 0.00,
+    "bias_signals": 0.00
+  },
+  "score_breakdown": {
+    "total_penalty": 27.50,
+    "penalty_by_category": {
+      "schema": 10.04,
+      "quality": 17.46,
+      "leakage": 0.00,
+      "split": 0.00,
+      "inference_mismatch": 0.00,
+      "bias_signals": 0.00
+    },
+    "counts_by_severity": {
+      "info": 0,
+      "low": 0,
+      "medium": 0,
+      "high": 2,
+      "critical": 0
+    },
+    "top_category": "quality",
+    "caps_applied": []
+  },
+  "analysis_stats": {
+    "row_count": 300000,
+    "col_count": 10,
+    "sample_ratio": 1.0000,
+    "parse_failure_rate": 0.1429,
+    "analysis_mode": "full"
+  },
+  "dataset_profile": {
+    "columns": [
+      {
+        "name": "coord_a",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 1000,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "0"
+            ],
+            "count": 300
+          },
+          {
+            "value": [
+              "string",
+              "1"
+            ],
+            "count": 300
+          },
+          {
+            "value": [
+              "string",
+              "10"
+            ],
+            "count": 300
+          },
+          {
+            "value": [
+              "string",
+              "100"
+            ],
+            "count": 300
+          },
+          {
+            "value": [
+              "string",
+              "101"
+            ],
+            "count": 300
+          },
+          {
+            "value": [
+              "string",
+              "102"
+            ],
+            "count": 300
+          },
+          {
+            "value": [
+              "string",
+              "103"
+            ],
+            "count": 300
+          },
+          {
+            "value": [
+              "string",
+              "104"
+            ],
+            "count": 300
+          },
+          {
+            "value": [
+              "string",
+              "105"
+            ],
+            "count": 300
+          },
+          {
+            "value": [
+              "string",
+              "106"
+            ],
+            "count": 300
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 499.5,
+          "p95": 949.05,
+          "max": 999
+        },
+        "string_stats": {
+          "avg_len": 2.89,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "coord_b",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 300,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "0"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "1"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "10"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "100"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "101"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "102"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "103"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "104"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "105"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "106"
+            ],
+            "count": 1000
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 149.5,
+          "p95": 284.05,
+          "max": 299
+        },
+        "string_stats": {
+          "avg_len": 2.6333333333333333333333333333333333333333333333333,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "coord_c",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 1,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "0"
+            ],
+            "count": 300000
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 0,
+          "p95": 0,
+          "max": 0
+        },
+        "string_stats": {
+          "avg_len": 1,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "signal_x",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 17,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "1000"
+            ],
+            "count": 17648
+          },
+          {
+            "value": [
+              "string",
+              "1001"
+            ],
+            "count": 17647
+          },
+          {
+            "value": [
+              "string",
+              "1002"
+            ],
+            "count": 17647
+          },
+          {
+            "value": [
+              "string",
+              "1003"
+            ],
+            "count": 17647
+          },
+          {
+            "value": [
+              "string",
+              "1004"
+            ],
+            "count": 17647
+          },
+          {
+            "value": [
+              "string",
+              "1005"
+            ],
+            "count": 17647
+          },
+          {
+            "value": [
+              "string",
+              "1006"
+            ],
+            "count": 17647
+          },
+          {
+            "value": [
+              "string",
+              "1007"
+            ],
+            "count": 17647
+          },
+          {
+            "value": [
+              "string",
+              "1008"
+            ],
+            "count": 17647
+          },
+          {
+            "value": [
+              "string",
+              "1009"
+            ],
+            "count": 17647
+          }
+        ],
+        "numeric_stats": {
+          "min": 1000,
+          "p50": 1008,
+          "p95": 1016,
+          "max": 1016
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "signal_z",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 19,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "2000"
+            ],
+            "count": 15793
+          },
+          {
+            "value": [
+              "string",
+              "2001"
+            ],
+            "count": 15793
+          },
+          {
+            "value": [
+              "string",
+              "2002"
+            ],
+            "count": 15793
+          },
+          {
+            "value": [
+              "string",
+              "2003"
+            ],
+            "count": 15793
+          },
+          {
+            "value": [
+              "string",
+              "2004"
+            ],
+            "count": 15793
+          },
+          {
+            "value": [
+              "string",
+              "2005"
+            ],
+            "count": 15793
+          },
+          {
+            "value": [
+              "string",
+              "2006"
+            ],
+            "count": 15793
+          },
+          {
+            "value": [
+              "string",
+              "2007"
+            ],
+            "count": 15793
+          },
+          {
+            "value": [
+              "string",
+              "2008"
+            ],
+            "count": 15793
+          },
+          {
+            "value": [
+              "string",
+              "2009"
+            ],
+            "count": 15793
+          }
+        ],
+        "numeric_stats": {
+          "min": 2000,
+          "p50": 2009,
+          "p95": 2018,
+          "max": 2018
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "flag",
+        "inferred_type": "bool",
+        "missing_rate": 0.0000,
+        "nunique": 2,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "false"
+            ],
+            "count": 150000
+          },
+          {
+            "value": [
+              "string",
+              "true"
+            ],
+            "count": 150000
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 4.5,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "segment",
+        "inferred_type": "categorical",
+        "missing_rate": 0.0000,
+        "nunique": 13,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "g0"
+            ],
+            "count": 23079
+          },
+          {
+            "value": [
+              "string",
+              "g1"
+            ],
+            "count": 23079
+          },
+          {
+            "value": [
+              "string",
+              "g2"
+            ],
+            "count": 23079
+          },
+          {
+            "value": [
+              "string",
+              "g3"
+            ],
+            "count": 23079
+          },
+          {
+            "value": [
+              "string",
+              "g4"
+            ],
+            "count": 23079
+          },
+          {
+            "value": [
+              "string",
+              "g5"
+            ],
+            "count": 23079
+          },
+          {
+            "value": [
+              "string",
+              "g6"
+            ],
+            "count": 23079
+          },
+          {
+            "value": [
+              "string",
+              "g7"
+            ],
+            "count": 23079
+          },
+          {
+            "value": [
+              "string",
+              "g8"
+            ],
+            "count": 23079
+          },
+          {
+            "value": [
+              "string",
+              "g9"
+            ],
+            "count": 23073
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 2.23072,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "event_time",
+        "inferred_type": "datetime",
+        "missing_rate": 0.0000,
+        "nunique": 28,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "2020-01-01"
+            ],
+            "count": 10715
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-02"
+            ],
+            "count": 10715
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-03"
+            ],
+            "count": 10715
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-04"
+            ],
+            "count": 10715
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-05"
+            ],
+            "count": 10715
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-06"
+            ],
+            "count": 10715
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-07"
+            ],
+            "count": 10715
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-08"
+            ],
+            "count": 10715
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-09"
+            ],
+            "count": 10714
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-10"
+            ],
+            "count": 10714
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 10,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "entity_key",
+        "inferred_type": "text",
+        "missing_rate": 0.0000,
+        "nunique": 294000,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "entity_0"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "entity_1"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "entity_10"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "entity_100"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "entity_1000"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "entity_1001"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "entity_1002"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "entity_1003"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "entity_1004"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "entity_1005"
+            ],
+            "count": 2
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 12.585933333333333333333333333333333333333333333333,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "event_key",
+        "inferred_type": "text",
+        "missing_rate": 0.0000,
+        "nunique": 294000,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "event_0"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "event_1"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "event_10"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "event_100"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "event_1000"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "event_1001"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "event_1002"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "event_1003"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "event_1004"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "event_1005"
+            ],
+            "count": 2
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 11.585933333333333333333333333333333333333333333333,
+          "empty_rate": 0.0000
+        }
+      }
+    ]
+  },
+  "scoring_mode_used": "MVP_LINEAR",
+  "findings": [
+    {
+      "id": "quality.duplicates::entity:entity_key|event_key",
+      "category": "quality",
+      "severity": "high",
+      "confidence": 0.97,
+      "title": "Duplicates",
+      "summary": "Duplicates.",
+      "affected_columns": [
+        "entity_key",
+        "event_key"
+      ],
+      "evidence": [
+        {
+          "title": "Duplicates",
+          "details": {
+            "branch": "keys",
+            "duplicate_rate": 0.0200,
+            "excess_rows": 6000,
+            "population_rows": 300000
+          },
+          "sample_rows": null
+        }
+      ],
+      "actions": [
+        {
+          "code": "quality.remove_duplicates",
+          "title": "Review and remove duplicates",
+          "rationale": "Duplicate observations or keys may distort analysis.",
+          "params": {
+            "affected_columns": [
+              "entity_key",
+              "event_key"
+            ]
+          },
+          "pipeline_step": null
+        }
+      ],
+      "metadata": {
+        "check_id": "quality.duplicates",
+        "check_version": "1.0",
+        "thresholds": {
+          "high": 0.0100,
+          "medium": 0.0010
+        },
+        "analysis_mode": "full",
+        "subject_kind": "entity",
+        "subject_key": "entity:entity_key|event_key",
+        "subject_columns": [
+          "entity_key",
+          "event_key"
+        ],
+        "evidence_class": "EXACT_FULL_SCAN",
+        "evidence_population": {
+          "eligible_rows": 300000,
+          "evaluated_rows": 300000,
+          "effective_rows": 300000,
+          "coverage_ratio": 1.0000,
+          "relevant_parse_failure_rate": 0.0000,
+          "stability_flags": []
+        },
+        "id_name_heuristic_matched": null
+      }
+    },
+    {
+      "id": "schema.parse_failures::column:event_key",
+      "category": "schema",
+      "severity": "high",
+      "confidence": 0.62,
+      "title": "Parse failures",
+      "summary": "Parse failures.",
+      "affected_columns": [
+        "event_key"
+      ],
+      "evidence": [
+        {
+          "title": "Parse failures",
+          "details": {
+            "canonical_attempts": 300000,
+            "canonical_failures": 300000,
+            "failure_rate": 1.0000
+          },
+          "sample_rows": null
+        }
+      ],
+      "actions": [
+        {
+          "code": "schema.correct_parsing",
+          "title": "Correct parsing",
+          "rationale": "Canonical coercion failures undermine usable values.",
+          "params": {
+            "affected_columns": [
+              "event_key"
+            ]
+          },
+          "pipeline_step": null
+        }
+      ],
+      "metadata": {
+        "check_id": "schema.parse_failures",
+        "check_version": "1.0",
+        "thresholds": {
+          "high": 0.2000,
+          "low": 0.0100,
+          "medium": 0.0500
+        },
+        "analysis_mode": "full",
+        "subject_kind": "column",
+        "subject_key": "column:event_key",
+        "subject_columns": [
+          "event_key"
+        ],
+        "evidence_class": "STATISTICAL",
+        "evidence_population": {
+          "eligible_rows": 300000,
+          "evaluated_rows": 300000,
+          "effective_rows": 300000,
+          "coverage_ratio": 1.0000,
+          "relevant_parse_failure_rate": 1.0000,
+          "stability_flags": []
+        },
+        "id_name_heuristic_matched": null
+      }
+    }
+  ],
+  "remediation_plan": [
+    {
+      "id": "fix.duplicates::entity:entity_key|event_key",
+      "title": "Review and remove duplicates",
+      "description": "Duplicate observations or keys may distort analysis. Affected: entity_key, event_key.",
+      "estimated_effort": "S",
+      "expected_score_gain": 10.48,
+      "applies_to_findings": [
+        "quality.duplicates::entity:entity_key|event_key"
+      ],
+      "steps": [
+        "Review entity_key, event_key.",
+        "Confirm duplicate semantics and remove unintended duplicates with an audit trail.",
+        "Re-run TADR after the change."
+      ],
+      "pipeline_steps": [
+        {
+          "action": "quality.remove_duplicates",
+          "params": {
+            "affected_columns": [
+              "entity_key",
+              "event_key"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fix.parse::column:event_key",
+      "title": "Correct parsing",
+      "description": "Canonical coercion failures undermine usable values. Affected: event_key.",
+      "estimated_effort": "M",
+      "expected_score_gain": 6.03,
+      "applies_to_findings": [
+        "schema.parse_failures::column:event_key"
+      ],
+      "steps": [
+        "Review event_key.",
+        "Review failed values and correct the source representation or parsing rules.",
+        "Re-run TADR after the change."
+      ],
+      "pipeline_steps": [
+        {
+          "action": "schema.correct_parsing",
+          "params": {
+            "affected_columns": [
+              "event_key"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

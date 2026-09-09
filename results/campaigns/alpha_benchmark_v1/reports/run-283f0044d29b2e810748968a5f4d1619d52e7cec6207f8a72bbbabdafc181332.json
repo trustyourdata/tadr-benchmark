@@ -1,0 +1,1673 @@
+{
+  "readiness_score": 100,
+  "report_confidence": 87,
+  "total_risk": 0.00,
+  "category_risks": {
+    "schema": 0.00,
+    "quality": 0.00,
+    "leakage": 0.00,
+    "split": 0.00,
+    "inference_mismatch": 0.00,
+    "bias_signals": 0.00
+  },
+  "score_breakdown": {
+    "total_penalty": 0.00,
+    "penalty_by_category": {
+      "schema": 0.00,
+      "quality": 0.00,
+      "leakage": 0.00,
+      "split": 0.00,
+      "inference_mismatch": 0.00,
+      "bias_signals": 0.00
+    },
+    "counts_by_severity": {
+      "info": 0,
+      "low": 0,
+      "medium": 0,
+      "high": 0,
+      "critical": 0
+    },
+    "top_category": null,
+    "caps_applied": []
+  },
+  "analysis_stats": {
+    "row_count": 1000000,
+    "col_count": 20,
+    "sample_ratio": 0.2000,
+    "parse_failure_rate": 0.0000,
+    "analysis_mode": "sampled"
+  },
+  "dataset_profile": {
+    "columns": [
+      {
+        "name": "coord_a",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 1000,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "0"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "string",
+              "1"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "string",
+              "10"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "string",
+              "100"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "string",
+              "101"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "string",
+              "102"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "string",
+              "103"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "string",
+              "104"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "string",
+              "105"
+            ],
+            "count": 200
+          },
+          {
+            "value": [
+              "string",
+              "106"
+            ],
+            "count": 200
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 499.5,
+          "p95": 949.05,
+          "max": 999
+        },
+        "string_stats": {
+          "avg_len": 2.89,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "coord_b",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 1000,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "0"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "1"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "10"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "11"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "12"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "13"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "14"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "15"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "16"
+            ],
+            "count": 1000
+          },
+          {
+            "value": [
+              "string",
+              "17"
+            ],
+            "count": 1000
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 366,
+          "p95": 936,
+          "max": 999
+        },
+        "string_stats": {
+          "avg_len": 2.89,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "coord_c",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 1,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "0"
+            ],
+            "count": 200000
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 0,
+          "p95": 0,
+          "max": 0
+        },
+        "string_stats": {
+          "avg_len": 1,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "signal_x",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 17,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "1000"
+            ],
+            "count": 11766
+          },
+          {
+            "value": [
+              "string",
+              "1002"
+            ],
+            "count": 11766
+          },
+          {
+            "value": [
+              "string",
+              "1001"
+            ],
+            "count": 11765
+          },
+          {
+            "value": [
+              "string",
+              "1003"
+            ],
+            "count": 11765
+          },
+          {
+            "value": [
+              "string",
+              "1005"
+            ],
+            "count": 11765
+          },
+          {
+            "value": [
+              "string",
+              "1007"
+            ],
+            "count": 11765
+          },
+          {
+            "value": [
+              "string",
+              "1009"
+            ],
+            "count": 11765
+          },
+          {
+            "value": [
+              "string",
+              "1011"
+            ],
+            "count": 11765
+          },
+          {
+            "value": [
+              "string",
+              "1013"
+            ],
+            "count": 11765
+          },
+          {
+            "value": [
+              "string",
+              "1015"
+            ],
+            "count": 11765
+          }
+        ],
+        "numeric_stats": {
+          "min": 1000,
+          "p50": 1008,
+          "p95": 1016,
+          "max": 1016
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "signal_z",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 19,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "2001"
+            ],
+            "count": 11458
+          },
+          {
+            "value": [
+              "string",
+              "2002"
+            ],
+            "count": 11458
+          },
+          {
+            "value": [
+              "string",
+              "2004"
+            ],
+            "count": 11458
+          },
+          {
+            "value": [
+              "string",
+              "2005"
+            ],
+            "count": 11458
+          },
+          {
+            "value": [
+              "string",
+              "2006"
+            ],
+            "count": 11458
+          },
+          {
+            "value": [
+              "string",
+              "2008"
+            ],
+            "count": 11458
+          },
+          {
+            "value": [
+              "string",
+              "2009"
+            ],
+            "count": 11458
+          },
+          {
+            "value": [
+              "string",
+              "2011"
+            ],
+            "count": 11458
+          },
+          {
+            "value": [
+              "string",
+              "2012"
+            ],
+            "count": 11458
+          },
+          {
+            "value": [
+              "string",
+              "2014"
+            ],
+            "count": 11458
+          }
+        ],
+        "numeric_stats": {
+          "min": 2000,
+          "p50": 2009,
+          "p95": 2018,
+          "max": 2018
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "flag",
+        "inferred_type": "bool",
+        "missing_rate": 0.0000,
+        "nunique": 2,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "false"
+            ],
+            "count": 100000
+          },
+          {
+            "value": [
+              "string",
+              "true"
+            ],
+            "count": 100000
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 4.5,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "segment",
+        "inferred_type": "categorical",
+        "missing_rate": 0.0000,
+        "nunique": 13,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "g0"
+            ],
+            "count": 15388
+          },
+          {
+            "value": [
+              "string",
+              "g1"
+            ],
+            "count": 15388
+          },
+          {
+            "value": [
+              "string",
+              "g2"
+            ],
+            "count": 15388
+          },
+          {
+            "value": [
+              "string",
+              "g3"
+            ],
+            "count": 15388
+          },
+          {
+            "value": [
+              "string",
+              "g5"
+            ],
+            "count": 15388
+          },
+          {
+            "value": [
+              "string",
+              "g4"
+            ],
+            "count": 15387
+          },
+          {
+            "value": [
+              "string",
+              "g10"
+            ],
+            "count": 15382
+          },
+          {
+            "value": [
+              "string",
+              "g12"
+            ],
+            "count": 15382
+          },
+          {
+            "value": [
+              "string",
+              "g6"
+            ],
+            "count": 15382
+          },
+          {
+            "value": [
+              "string",
+              "g7"
+            ],
+            "count": 15382
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 2.230769,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "event_time",
+        "inferred_type": "datetime",
+        "missing_rate": 0.0000,
+        "nunique": 28,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "2020-01-05"
+            ],
+            "count": 7144
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-18"
+            ],
+            "count": 7144
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-01"
+            ],
+            "count": 7143
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-02"
+            ],
+            "count": 7143
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-03"
+            ],
+            "count": 7143
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-04"
+            ],
+            "count": 7143
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-06"
+            ],
+            "count": 7143
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-07"
+            ],
+            "count": 7143
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-08"
+            ],
+            "count": 7143
+          },
+          {
+            "value": [
+              "string",
+              "2020-01-09"
+            ],
+            "count": 7143
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 10,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "aux_000",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "4041"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4047"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4003"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4009"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4022"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4028"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4030"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4035"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4036"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4043"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 4000,
+          "p50": 4048,
+          "p95": 4092,
+          "max": 4096
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "aux_001",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "4105"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4120"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4126"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4130"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4133"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4136"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4139"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4141"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4145"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4160"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 4100,
+          "p50": 4148,
+          "p95": 4192,
+          "max": 4196
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "aux_002",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "4218"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4285"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4201"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4207"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4213"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4216"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4230"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4233"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4236"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4239"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 4200,
+          "p50": 4248,
+          "p95": 4292,
+          "max": 4296
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "aux_003",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "4301"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "string",
+              "4346"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "string",
+              "4359"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "string",
+              "4304"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "string",
+              "4314"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "string",
+              "4317"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "string",
+              "4330"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "string",
+              "4343"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "string",
+              "4372"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "string",
+              "4385"
+            ],
+            "count": 2067
+          }
+        ],
+        "numeric_stats": {
+          "min": 4300,
+          "p50": 4348,
+          "p95": 4392,
+          "max": 4396
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "aux_004",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "4407"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4424"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4436"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4441"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4458"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4481"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4401"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4402"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4404"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4418"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 4400,
+          "p50": 4448,
+          "p95": 4492,
+          "max": 4496
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "aux_005",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "4507"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4510"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4549"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4565"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4569"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4571"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4585"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4589"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4503"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4509"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 4500,
+          "p50": 4548,
+          "p95": 4592,
+          "max": 4596
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "aux_006",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "4677"
+            ],
+            "count": 2080
+          },
+          {
+            "value": [
+              "string",
+              "4605"
+            ],
+            "count": 2079
+          },
+          {
+            "value": [
+              "string",
+              "4630"
+            ],
+            "count": 2079
+          },
+          {
+            "value": [
+              "string",
+              "4652"
+            ],
+            "count": 2079
+          },
+          {
+            "value": [
+              "string",
+              "4655"
+            ],
+            "count": 2079
+          },
+          {
+            "value": [
+              "string",
+              "4658"
+            ],
+            "count": 2079
+          },
+          {
+            "value": [
+              "string",
+              "4680"
+            ],
+            "count": 2079
+          },
+          {
+            "value": [
+              "string",
+              "4608"
+            ],
+            "count": 2078
+          },
+          {
+            "value": [
+              "string",
+              "4633"
+            ],
+            "count": 2078
+          },
+          {
+            "value": [
+              "string",
+              "4683"
+            ],
+            "count": 2078
+          }
+        ],
+        "numeric_stats": {
+          "min": 4600,
+          "p50": 4648,
+          "p95": 4692,
+          "max": 4696
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "aux_007",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "4703"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4733"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4752"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4762"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4768"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4781"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4784"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4792"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4708"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4709"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 4700,
+          "p50": 4748,
+          "p95": 4792,
+          "max": 4796
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "aux_008",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "4814"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "string",
+              "4816"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "string",
+              "4818"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "string",
+              "4847"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "string",
+              "4850"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "string",
+              "4877"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "string",
+              "4879"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "string",
+              "4881"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "string",
+              "4882"
+            ],
+            "count": 2066
+          },
+          {
+            "value": [
+              "string",
+              "4812"
+            ],
+            "count": 2065
+          }
+        ],
+        "numeric_stats": {
+          "min": 4800,
+          "p50": 4848,
+          "p95": 4892,
+          "max": 4896
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "aux_009",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "4952"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "string",
+              "4905"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4909"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4946"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4977"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4992"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4996"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "4902"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4912"
+            ],
+            "count": 2063
+          },
+          {
+            "value": [
+              "string",
+              "4914"
+            ],
+            "count": 2063
+          }
+        ],
+        "numeric_stats": {
+          "min": 4900,
+          "p50": 4948,
+          "p95": 4992,
+          "max": 4996
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "aux_010",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "5039"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "string",
+              "5088"
+            ],
+            "count": 2069
+          },
+          {
+            "value": [
+              "string",
+              "5002"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "string",
+              "5028"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "string",
+              "5054"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "string",
+              "5058"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "string",
+              "5069"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "string",
+              "5073"
+            ],
+            "count": 2068
+          },
+          {
+            "value": [
+              "string",
+              "5017"
+            ],
+            "count": 2067
+          },
+          {
+            "value": [
+              "string",
+              "5043"
+            ],
+            "count": 2067
+          }
+        ],
+        "numeric_stats": {
+          "min": 5000,
+          "p50": 5048,
+          "p95": 5092,
+          "max": 5096
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "aux_011",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 97,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "5141"
+            ],
+            "count": 2065
+          },
+          {
+            "value": [
+              "string",
+              "5100"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "5103"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "5108"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "5112"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "5148"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "5154"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "5171"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "5190"
+            ],
+            "count": 2064
+          },
+          {
+            "value": [
+              "string",
+              "5192"
+            ],
+            "count": 2064
+          }
+        ],
+        "numeric_stats": {
+          "min": 5100,
+          "p50": 5148,
+          "p95": 5192,
+          "max": 5196
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      }
+    ]
+  },
+  "scoring_mode_used": "MVP_LINEAR",
+  "findings": [],
+  "remediation_plan": []
+}

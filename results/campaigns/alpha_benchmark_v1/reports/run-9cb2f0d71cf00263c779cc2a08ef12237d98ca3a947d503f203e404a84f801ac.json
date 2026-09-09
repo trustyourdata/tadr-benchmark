@@ -1,0 +1,533 @@
+{
+  "readiness_score": 100,
+  "report_confidence": 80,
+  "total_risk": 0.00,
+  "category_risks": {
+    "schema": 0.00,
+    "quality": 0.00,
+    "leakage": 0.00,
+    "split": 0.00,
+    "inference_mismatch": 0.00,
+    "bias_signals": 0.00
+  },
+  "score_breakdown": {
+    "total_penalty": 0.00,
+    "penalty_by_category": {
+      "schema": 0.00,
+      "quality": 0.00,
+      "leakage": 0.00,
+      "split": 0.00,
+      "inference_mismatch": 0.00,
+      "bias_signals": 0.00
+    },
+    "counts_by_severity": {
+      "info": 0,
+      "low": 0,
+      "medium": 0,
+      "high": 0,
+      "critical": 0
+    },
+    "top_category": null,
+    "caps_applied": []
+  },
+  "analysis_stats": {
+    "row_count": 99,
+    "col_count": 8,
+    "sample_ratio": 1.0000,
+    "parse_failure_rate": 0.0000,
+    "analysis_mode": "full"
+  },
+  "dataset_profile": {
+    "columns": [
+      {
+        "name": "coord_a",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 10,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "0"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "1"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "2"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "3"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "4"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "5"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "6"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "7"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "8"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "9"
+            ],
+            "count": 9
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 4,
+          "p95": 9,
+          "max": 9
+        },
+        "string_stats": {
+          "avg_len": 1,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "coord_b",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 10,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "0"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "1"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "2"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "3"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "4"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "5"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "6"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "7"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "8"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "9"
+            ],
+            "count": 9
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 4,
+          "p95": 9,
+          "max": 9
+        },
+        "string_stats": {
+          "avg_len": 1,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "coord_c",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 1,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "0"
+            ],
+            "count": 99
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 0,
+          "p95": 0,
+          "max": 0
+        },
+        "string_stats": {
+          "avg_len": 1,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "signal_x",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 17,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "1000"
+            ],
+            "count": 6
+          },
+          {
+            "value": [
+              "string",
+              "1001"
+            ],
+            "count": 6
+          },
+          {
+            "value": [
+              "string",
+              "1002"
+            ],
+            "count": 6
+          },
+          {
+            "value": [
+              "string",
+              "1003"
+            ],
+            "count": 6
+          },
+          {
+            "value": [
+              "string",
+              "1004"
+            ],
+            "count": 6
+          },
+          {
+            "value": [
+              "string",
+              "1005"
+            ],
+            "count": 6
+          },
+          {
+            "value": [
+              "string",
+              "1006"
+            ],
+            "count": 6
+          },
+          {
+            "value": [
+              "string",
+              "1007"
+            ],
+            "count": 6
+          },
+          {
+            "value": [
+              "string",
+              "1008"
+            ],
+            "count": 6
+          },
+          {
+            "value": [
+              "string",
+              "1009"
+            ],
+            "count": 6
+          }
+        ],
+        "numeric_stats": {
+          "min": 1000,
+          "p50": 1008,
+          "p95": 1015.1,
+          "max": 1016
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "signal_z",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 6,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "2000"
+            ],
+            "count": 17
+          },
+          {
+            "value": [
+              "string",
+              "2001"
+            ],
+            "count": 17
+          },
+          {
+            "value": [
+              "string",
+              "2002"
+            ],
+            "count": 17
+          },
+          {
+            "value": [
+              "string",
+              "2003"
+            ],
+            "count": 17
+          },
+          {
+            "value": [
+              "string",
+              "2004"
+            ],
+            "count": 17
+          },
+          {
+            "value": [
+              "string",
+              "2005"
+            ],
+            "count": 14
+          }
+        ],
+        "numeric_stats": {
+          "min": 2000,
+          "p50": 2002,
+          "p95": 2005,
+          "max": 2005
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "flag",
+        "inferred_type": "bool",
+        "missing_rate": 0.0000,
+        "nunique": 2,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "false"
+            ],
+            "count": 50
+          },
+          {
+            "value": [
+              "string",
+              "true"
+            ],
+            "count": 49
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 4.5050505050505050505050505050505050505050505050505,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "segment",
+        "inferred_type": "text",
+        "missing_rate": 0.0000,
+        "nunique": 13,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "g0"
+            ],
+            "count": 14
+          },
+          {
+            "value": [
+              "string",
+              "g1"
+            ],
+            "count": 8
+          },
+          {
+            "value": [
+              "string",
+              "g10"
+            ],
+            "count": 7
+          },
+          {
+            "value": [
+              "string",
+              "g11"
+            ],
+            "count": 7
+          },
+          {
+            "value": [
+              "string",
+              "g12"
+            ],
+            "count": 7
+          },
+          {
+            "value": [
+              "string",
+              "g2"
+            ],
+            "count": 7
+          },
+          {
+            "value": [
+              "string",
+              "g3"
+            ],
+            "count": 7
+          },
+          {
+            "value": [
+              "string",
+              "g4"
+            ],
+            "count": 7
+          },
+          {
+            "value": [
+              "string",
+              "g5"
+            ],
+            "count": 7
+          },
+          {
+            "value": [
+              "string",
+              "g6"
+            ],
+            "count": 7
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 2.2121212121212121212121212121212121212121212121212,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "y",
+        "inferred_type": "categorical",
+        "missing_rate": 0.0000,
+        "nunique": 2,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "L0"
+            ],
+            "count": 94
+          },
+          {
+            "value": [
+              "string",
+              "L1"
+            ],
+            "count": 5
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 2,
+          "empty_rate": 0.0000
+        }
+      }
+    ]
+  },
+  "scoring_mode_used": "MVP_LINEAR",
+  "findings": [],
+  "remediation_plan": []
+}

@@ -1,0 +1,813 @@
+{
+  "readiness_score": 60,
+  "report_confidence": 87,
+  "total_risk": 40.00,
+  "category_risks": {
+    "schema": 0.00,
+    "quality": 0.00,
+    "leakage": 40.00,
+    "split": 0.00,
+    "inference_mismatch": 0.00,
+    "bias_signals": 0.00
+  },
+  "score_breakdown": {
+    "total_penalty": 40.00,
+    "penalty_by_category": {
+      "schema": 0.00,
+      "quality": 0.00,
+      "leakage": 40.00,
+      "split": 0.00,
+      "inference_mismatch": 0.00,
+      "bias_signals": 0.00
+    },
+    "counts_by_severity": {
+      "info": 0,
+      "low": 0,
+      "medium": 0,
+      "high": 0,
+      "critical": 1
+    },
+    "top_category": "leakage",
+    "caps_applied": [
+      {
+        "type": "category_cap",
+        "category": "leakage",
+        "value": 40,
+        "reason": "Category penalty capped at 40."
+      },
+      {
+        "type": "hard_gate",
+        "category": "leakage",
+        "value": 60,
+        "reason": "Critical leakage with confidence >= 0.70 limits readiness score to 60."
+      }
+    ]
+  },
+  "analysis_stats": {
+    "row_count": 200,
+    "col_count": 9,
+    "sample_ratio": 1.0000,
+    "parse_failure_rate": 0.0000,
+    "analysis_mode": "full"
+  },
+  "dataset_profile": {
+    "columns": [
+      {
+        "name": "coord_a",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 10,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "0"
+            ],
+            "count": 20
+          },
+          {
+            "value": [
+              "string",
+              "1"
+            ],
+            "count": 20
+          },
+          {
+            "value": [
+              "string",
+              "2"
+            ],
+            "count": 20
+          },
+          {
+            "value": [
+              "string",
+              "3"
+            ],
+            "count": 20
+          },
+          {
+            "value": [
+              "string",
+              "4"
+            ],
+            "count": 20
+          },
+          {
+            "value": [
+              "string",
+              "5"
+            ],
+            "count": 20
+          },
+          {
+            "value": [
+              "string",
+              "6"
+            ],
+            "count": 20
+          },
+          {
+            "value": [
+              "string",
+              "7"
+            ],
+            "count": 20
+          },
+          {
+            "value": [
+              "string",
+              "8"
+            ],
+            "count": 20
+          },
+          {
+            "value": [
+              "string",
+              "9"
+            ],
+            "count": 20
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 4.5,
+          "p95": 9,
+          "max": 9
+        },
+        "string_stats": {
+          "avg_len": 1,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "coord_b",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 20,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "0"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "1"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "10"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "11"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "12"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "13"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "14"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "15"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "16"
+            ],
+            "count": 10
+          },
+          {
+            "value": [
+              "string",
+              "17"
+            ],
+            "count": 10
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 9.5,
+          "p95": 18.05,
+          "max": 19
+        },
+        "string_stats": {
+          "avg_len": 1.5,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "coord_c",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 1,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "0"
+            ],
+            "count": 200
+          }
+        ],
+        "numeric_stats": {
+          "min": 0,
+          "p50": 0,
+          "p95": 0,
+          "max": 0
+        },
+        "string_stats": {
+          "avg_len": 1,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "signal_x",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 17,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "1000"
+            ],
+            "count": 12
+          },
+          {
+            "value": [
+              "string",
+              "1001"
+            ],
+            "count": 12
+          },
+          {
+            "value": [
+              "string",
+              "1002"
+            ],
+            "count": 12
+          },
+          {
+            "value": [
+              "string",
+              "1003"
+            ],
+            "count": 12
+          },
+          {
+            "value": [
+              "string",
+              "1004"
+            ],
+            "count": 12
+          },
+          {
+            "value": [
+              "string",
+              "1005"
+            ],
+            "count": 12
+          },
+          {
+            "value": [
+              "string",
+              "1006"
+            ],
+            "count": 12
+          },
+          {
+            "value": [
+              "string",
+              "1007"
+            ],
+            "count": 12
+          },
+          {
+            "value": [
+              "string",
+              "1008"
+            ],
+            "count": 12
+          },
+          {
+            "value": [
+              "string",
+              "1009"
+            ],
+            "count": 12
+          }
+        ],
+        "numeric_stats": {
+          "min": 1000,
+          "p50": 1008,
+          "p95": 1016,
+          "max": 1016
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "signal_z",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 12,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "2000"
+            ],
+            "count": 17
+          },
+          {
+            "value": [
+              "string",
+              "2001"
+            ],
+            "count": 17
+          },
+          {
+            "value": [
+              "string",
+              "2002"
+            ],
+            "count": 17
+          },
+          {
+            "value": [
+              "string",
+              "2003"
+            ],
+            "count": 17
+          },
+          {
+            "value": [
+              "string",
+              "2004"
+            ],
+            "count": 17
+          },
+          {
+            "value": [
+              "string",
+              "2005"
+            ],
+            "count": 17
+          },
+          {
+            "value": [
+              "string",
+              "2006"
+            ],
+            "count": 17
+          },
+          {
+            "value": [
+              "string",
+              "2007"
+            ],
+            "count": 17
+          },
+          {
+            "value": [
+              "string",
+              "2008"
+            ],
+            "count": 17
+          },
+          {
+            "value": [
+              "string",
+              "2009"
+            ],
+            "count": 17
+          }
+        ],
+        "numeric_stats": {
+          "min": 2000,
+          "p50": 2005,
+          "p95": 2011,
+          "max": 2011
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "flag",
+        "inferred_type": "bool",
+        "missing_rate": 0.0000,
+        "nunique": 2,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "false"
+            ],
+            "count": 100
+          },
+          {
+            "value": [
+              "string",
+              "true"
+            ],
+            "count": 100
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 4.5,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "segment",
+        "inferred_type": "text",
+        "missing_rate": 0.0000,
+        "nunique": 13,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "g0"
+            ],
+            "count": 21
+          },
+          {
+            "value": [
+              "string",
+              "g1"
+            ],
+            "count": 21
+          },
+          {
+            "value": [
+              "string",
+              "g2"
+            ],
+            "count": 18
+          },
+          {
+            "value": [
+              "string",
+              "g10"
+            ],
+            "count": 14
+          },
+          {
+            "value": [
+              "string",
+              "g11"
+            ],
+            "count": 14
+          },
+          {
+            "value": [
+              "string",
+              "g12"
+            ],
+            "count": 14
+          },
+          {
+            "value": [
+              "string",
+              "g3"
+            ],
+            "count": 14
+          },
+          {
+            "value": [
+              "string",
+              "g4"
+            ],
+            "count": 14
+          },
+          {
+            "value": [
+              "string",
+              "g5"
+            ],
+            "count": 14
+          },
+          {
+            "value": [
+              "string",
+              "g6"
+            ],
+            "count": 14
+          }
+        ],
+        "numeric_stats": null,
+        "string_stats": {
+          "avg_len": 2.21,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "y",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 101,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "3000"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "3001"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "3002"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "3003"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "3004"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "3005"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "3006"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "3007"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "3008"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "3009"
+            ],
+            "count": 2
+          }
+        ],
+        "numeric_stats": {
+          "min": 3000,
+          "p50": 3049.5,
+          "p95": 3094.05,
+          "max": 3100
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      },
+      {
+        "name": "probe_x",
+        "inferred_type": "numeric",
+        "missing_rate": 0.0000,
+        "nunique": 101,
+        "top_values": [
+          {
+            "value": [
+              "string",
+              "3000"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "3001"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "3002"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "3003"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "3004"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "3005"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "3006"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "3007"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "3008"
+            ],
+            "count": 2
+          },
+          {
+            "value": [
+              "string",
+              "3009"
+            ],
+            "count": 2
+          }
+        ],
+        "numeric_stats": {
+          "min": 3000,
+          "p50": 3049.5,
+          "p95": 3094.05,
+          "max": 3100
+        },
+        "string_stats": {
+          "avg_len": 4,
+          "empty_rate": 0.0000
+        }
+      }
+    ]
+  },
+  "scoring_mode_used": "MVP_LINEAR",
+  "findings": [
+    {
+      "id": "leakage.target_direct::column:probe_x",
+      "category": "leakage",
+      "severity": "critical",
+      "confidence": 0.92,
+      "title": "Target direct",
+      "summary": "Target direct.",
+      "affected_columns": [
+        "probe_x"
+      ],
+      "evidence": [
+        {
+          "title": "Target direct",
+          "details": {
+            "complete_pairs": 200,
+            "equal_pairs": 200,
+            "primary_branch": "equality",
+            "qualifying_branches": [
+              "equality"
+            ],
+            "reciprocal_pairs": null
+          },
+          "sample_rows": null
+        }
+      ],
+      "actions": [
+        {
+          "code": "leakage.remove_feature",
+          "title": "Remove target-leaking features",
+          "rationale": "Direct target representations compromise evaluation.",
+          "params": {
+            "affected_columns": [
+              "probe_x"
+            ]
+          },
+          "pipeline_step": null
+        }
+      ],
+      "metadata": {
+        "check_id": "leakage.target_direct",
+        "check_version": "1.0",
+        "thresholds": {
+          "minimum_distinct_target_values": 2,
+          "minimum_match_rate": 0.9990
+        },
+        "analysis_mode": "full",
+        "subject_kind": "column",
+        "subject_key": "column:probe_x",
+        "subject_columns": [
+          "probe_x"
+        ],
+        "evidence_class": "EXACT_FULL_SCAN",
+        "evidence_population": {
+          "eligible_rows": 200,
+          "evaluated_rows": 200,
+          "effective_rows": 200,
+          "coverage_ratio": 1.0000,
+          "relevant_parse_failure_rate": 0.0000,
+          "stability_flags": []
+        },
+        "id_name_heuristic_matched": null
+      }
+    }
+  ],
+  "remediation_plan": [
+    {
+      "id": "fix.remove-feature::column:probe_x",
+      "title": "Remove target-leaking features",
+      "description": "Direct target representations compromise evaluation. Affected: probe_x.",
+      "estimated_effort": "S",
+      "expected_score_gain": 24.73,
+      "applies_to_findings": [
+        "leakage.target_direct::column:probe_x"
+      ],
+      "steps": [
+        "Review probe_x.",
+        "Exclude the target-leaking features from training and inference inputs.",
+        "Re-run TADR after the change."
+      ],
+      "pipeline_steps": [
+        {
+          "action": "leakage.remove_feature",
+          "params": {
+            "affected_columns": [
+              "probe_x"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
