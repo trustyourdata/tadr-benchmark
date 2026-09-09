@@ -13,3 +13,6 @@
 *.parquet binary
 *.png binary
 *.pdf binary
+
+# Frozen campaign publications are immutable; preserve their bytes exactly.
+results/campaigns/** -whitespace
